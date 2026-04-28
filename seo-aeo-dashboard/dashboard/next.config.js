@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  output: "export",          // enables `next build` → static HTML in /out
-  trailingSlash: true,       // required for static hosting (Vercel, Netlify, S3)
-  images: { unoptimized: true },
+  // output: "export" removed — Vercel runs Next.js natively (no static export needed)
+  // For non-Vercel static hosting, re-add: output: "export", trailingSlash: true
 };
