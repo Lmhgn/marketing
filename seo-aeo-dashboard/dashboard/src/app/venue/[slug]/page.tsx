@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getVenue, venues } from "@/lib/data";
 import { getVenueHistory, getScoreDeltas } from "@/lib/history";
-import { getVenueCitations, citationMeta, citationBandBg, dailySearches } from "@/lib/citations";
+import { getVenueCitations, citationMeta, citationBandBg, dailySearches, computeReadinessScore, readinessBand } from "@/lib/citations";
 import { generateMusicVenueSchema, generateFaqSchema } from "@/lib/schema-snippets";
 import { ScoreBadge } from "@/components/ScoreBadge";
 import { RadarChart } from "@/components/RadarChart";
@@ -51,6 +51,10 @@ export default function VenueDetail({ params }: { params: { slug: string } }) {
           <div className="flex gap-6">
             <ScoreBadge score={v.aeo_score} band={v.aeo_band} label="AEO score" />
             <ScoreBadge score={v.geo_score} band={v.geo_band} label="GEO score" />
+            {citations && (() => {
+              const rs = computeReadinessScore(v.aeo_score, v.geo_score, citations.citation_rate);
+              return <ScoreBadge score={rs} band={readinessBand(rs)} label="AI Readiness" />;
+            })()}
           </div>
         </div>
         <p className="text-sm text-slate-700 leading-relaxed">{v.summary}</p>

@@ -109,3 +109,36 @@ export function dailySearches(monthly: number): string {
   if (d >= 1000) return `~${(d / 1000).toFixed(1)}k/day`;
   return `~${d}/day`;
 }
+
+export function computeReadinessScore(aeoScore: number, geoScore: number, citationRate: number): number {
+  return Math.round((aeoScore * 0.40 + geoScore * 0.35 + citationRate * 0.25) * 10) / 10;
+}
+
+export function readinessBand(score: number): "critical" | "weak" | "moderate" | "good" | "strong" {
+  if (score >= 67) return "strong";
+  if (score >= 50) return "good";
+  if (score >= 35) return "moderate";
+  if (score >= 20) return "weak";
+  return "critical";
+}
+
+export function computePortfolioStats(allCitations: Record<string, CitationResult>) {
+  let totalMonthly = 0;
+  let citedMonthly = 0;
+  for (const c of Object.values(allCitations)) {
+    for (const p of c.prompts) {
+      totalMonthly += p.monthly_searches;
+      if (p.cited) citedMonthly += p.monthly_searches;
+    }
+  }
+  const missedMonthly = totalMonthly - citedMonthly;
+  return {
+    captureRate: totalMonthly > 0 ? Math.round(citedMonthly / totalMonthly * 100) : 0,
+    citedDaily:  Math.round(citedMonthly  / 30),
+    missedDaily: Math.round(missedMonthly / 30),
+    totalDaily:  Math.round(totalMonthly  / 30),
+    citedMonthly,
+    missedMonthly,
+    totalMonthly,
+  };
+}
