@@ -166,12 +166,18 @@ export default function VenueDetail({ params }: { params: { slug: string } }) {
             )}
           </div>
 
-          <div className="mt-3 pt-3 border-t border-slate-100">
+          <div className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap gap-4">
             <Link
               href={`/venue/${params.slug}/citations`}
               className="text-xs text-blue-600 hover:underline"
             >
               View full citation report — all {citationMeta.total_prompts} prompts, search volumes &amp; gap analysis →
+            </Link>
+            <Link
+              href={`/venue/${params.slug}/brief`}
+              className="text-xs text-indigo-600 hover:underline font-medium"
+            >
+              Open content brief → schema markup &amp; content actions
             </Link>
           </div>
         </section>
