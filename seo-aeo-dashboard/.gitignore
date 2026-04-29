@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node / Next
+dashboard/node_modules/
+dashboard/.next/
+dashboard/out/
+dashboard/next-env.d.ts
+dashboard/tsconfig.tsbuildinfo
+
+# Generated data (keep venues_sample.json)
+data/venues.json

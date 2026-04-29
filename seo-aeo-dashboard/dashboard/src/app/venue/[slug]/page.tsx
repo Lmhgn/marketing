@@ -1,0 +1,247 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getVenue, venues } from "@/lib/data";
+import { getVenueHistory, getScoreDeltas } from "@/lib/history";
+import { getVenueCitations, getPromptDetails, citationMeta, citationBandBg, dailySearches } from "@/lib/citations";
+import { generateMusicVenueSchema, generateFaqSchema } from "@/lib/schema-snippets";
+import { ScoreBadge } from "@/components/ScoreBadge";
+import { RadarChart } from "@/components/RadarChart";
+import { RecommendationPanel } from "@/components/RecommendationPanel";
+import TrendChart from "@/components/TrendChart";
+import CitationBar from "@/components/CitationBar";
+import SchemaSnippet from "@/components/SchemaSnippet";
+import { AEO_LABELS, GEO_LABELS } from "@/types/venue";
+
+export function generateStaticParams() {
+  return venues.map(v => ({ slug: v.slug }));
+}
+
+export default function VenueDetail({ params }: { params: { slug: string } }) {
+  const v = getVenue(params.slug);
+  if (!v) notFound();
+
+  const aeoRadar = Object.entries(v.aeo_components).map(([k, c]) => ({
+    metric: AEO_LABELS[k] ?? k,
+    score: c.score,
+  }));
+  const geoRadar = Object.entries(v.geo_components).map(([k, c]) => ({
+    metric: GEO_LABELS[k] ?? k,
+    score: c.score,
+  }));
+
+  const history = getVenueHistory(params.slug);
+  const deltas = getScoreDeltas(params.slug);
+  const citations = getVenueCitations(params.slug);
+  const citedPrompts = citations ? getPromptDetails(citations.cited_by_prompts) : [];
+  const missedPrompts = citations ? getPromptDetails(citations.missed_by_prompts) : [];
+  const musicVenueSchema = generateMusicVenueSchema(v);
+  const faqSchema = generateFaqSchema(v);
+
+  return (
+    <div className="space-y-6">
+      <Link href="/" className="text-sm text-blue-600 hover:underline">← Back to overview</Link>
+
+      <section className="bg-white rounded-lg border border-slate-200 p-6">
+        <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+          <div>
+            <h1 className="text-2xl font-semibold text-slate-900">{v.venue_name}</h1>
+            <p className="text-sm text-slate-500">{v.region}</p>
+            <a href={v.url} target="_blank" rel="noreferrer" className="text-xs text-blue-600 hover:underline">{v.url}</a>
+          </div>
+          <div className="flex gap-6">
+            <ScoreBadge score={v.aeo_score} band={v.aeo_band} label="AEO score" />
+            <ScoreBadge score={v.geo_score} band={v.geo_band} label="GEO score" />
+          </div>
+        </div>
+        <p className="text-sm text-slate-700 leading-relaxed">{v.summary}</p>
+      </section>
+
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <RadarChart title="AEO breakdown" data={aeoRadar} color="#2563eb" />
+        <RadarChart title="GEO breakdown" data={geoRadar} color="#9333ea" />
+      </section>
+
+      {history.length > 1 && (
+        <section className="bg-white rounded-lg border border-slate-200 p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-sm font-medium text-slate-700">Score trend — last 4 weeks</h2>
+            {deltas && (
+              <div className="flex gap-4 text-xs">
+                <DeltaBadge label="AEO" delta={deltas.aeo} />
+                <DeltaBadge label="GEO" delta={deltas.geo} />
+              </div>
+            )}
+          </div>
+          <TrendChart data={history} />
+        </section>
+      )}
+
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <ComponentList title="AEO components" components={v.aeo_components} labels={AEO_LABELS} />
+        <ComponentList title="GEO components" components={v.geo_components} labels={GEO_LABELS} />
+      </section>
+
+      {citations && (
+        <section className="bg-white rounded-lg border border-slate-200 p-4">
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <h2 className="text-sm font-medium text-slate-700">LLM citation performance</h2>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Model: {citationMeta.model} · {citationMeta.total_prompts} test prompts · {citationMeta.run_date}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className={`px-2 py-1 rounded text-xs font-medium ${citationBandBg(citations.relevant_citation_band)}`}>
+                {citations.relevant_citation_band}
+              </span>
+              <Link
+                href={`/venue/${params.slug}/citations`}
+                className="text-xs text-blue-600 hover:underline whitespace-nowrap"
+              >
+                Full report →
+              </Link>
+            </div>
+          </div>
+
+          {/* Relevant citation rate (primary) */}
+          <div className="mb-3">
+            <p className="text-xs text-slate-500 mb-1">
+              Relevant citation rate — {citations.relevant_citation_count}/{citations.relevant_prompt_ids.length} applicable queries
+            </p>
+            <CitationBar
+              rate={citations.relevant_citation_rate}
+              band={citations.relevant_citation_band}
+              count={citations.relevant_citation_count}
+              total={citations.relevant_prompt_ids.length}
+            />
+          </div>
+
+          {/* Top cited + top missed — only relevant prompts */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mt-4">
+            {citedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length > 0 && (
+              <div>
+                <p className="font-medium text-emerald-700 mb-2">
+                  Cited in {citedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length} relevant prompt{citedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length !== 1 ? "s" : ""}
+                </p>
+                <ul className="space-y-1.5">
+                  {citedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).map(p => (
+                    <li key={p.id} className="flex gap-2">
+                      <span className="text-emerald-500 mt-0.5 shrink-0">✓</span>
+                      <div>
+                        <span className="text-slate-600">{p.text}</span>
+                        {p.monthly_searches && (
+                          <span className="ml-1.5 text-slate-400">{dailySearches(p.monthly_searches)}</span>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {missedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length > 0 && (
+              <div>
+                <p className="font-medium text-red-600 mb-2">
+                  Missed in {missedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length} relevant prompt{missedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length !== 1 ? "s" : ""}
+                </p>
+                <ul className="space-y-1.5">
+                  {missedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).slice(0, 5).map(p => (
+                    <li key={p.id} className="flex gap-2">
+                      <span className="text-red-400 mt-0.5 shrink-0">✗</span>
+                      <div>
+                        <span className="text-slate-500">{p.text}</span>
+                        {p.monthly_searches && (
+                          <span className="ml-1.5 text-slate-400">{dailySearches(p.monthly_searches)}</span>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
+          <div className="mt-3 pt-3 border-t border-slate-100">
+            <Link
+              href={`/venue/${params.slug}/citations`}
+              className="text-xs text-blue-600 hover:underline"
+            >
+              View full citation report — all {citationMeta.total_prompts} prompts, search volumes &amp; gap analysis →
+            </Link>
+          </div>
+        </section>
+      )}
+
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <RecommendationPanel title="Quick wins" items={v.quick_wins} accent="green" />
+        <RecommendationPanel title="Priority fixes" items={v.priority_fixes} accent="red" />
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-lg font-medium text-slate-900">Recommendations by category</h2>
+        <RecommendationPanel title="Schema / Technical" items={v.schema_recommendations} accent="blue" />
+        <RecommendationPanel title="Content" items={v.content_recommendations} accent="amber" />
+        <RecommendationPanel title="Internal linking" items={v.internal_linking_recommendations} accent="blue" />
+      </section>
+
+      <section className="space-y-4">
+        <div>
+          <h2 className="text-lg font-medium text-slate-900">Schema code snippets</h2>
+          <p className="text-sm text-slate-500 mt-1">
+            Copy-paste ready JSON-LD. Replace <code className="bg-slate-100 px-1 rounded text-xs">REPLACE_WITH_*</code> placeholders before deploying.
+            Add both blocks inside the <code className="bg-slate-100 px-1 rounded text-xs">&lt;head&gt;</code> of the venue page.
+          </p>
+        </div>
+        <SchemaSnippet
+          title="MusicVenue schema"
+          code={musicVenueSchema}
+          note="Update address, telephone, and geo coordinates with real values. Add sameAs Wikidata/Wikipedia links where the venue has a Wikipedia article."
+        />
+        <SchemaSnippet
+          title="FAQPage schema"
+          code={faqSchema}
+          note="Replace every [FILL IN …] placeholder with real venue-specific answers before publishing."
+        />
+      </section>
+    </div>
+  );
+}
+
+function DeltaBadge({ label, delta }: { label: string; delta: number }) {
+  const positive = delta >= 0;
+  return (
+    <span className={`font-mono ${positive ? "text-emerald-600" : "text-red-500"}`}>
+      {label}: {positive ? "+" : ""}{delta}
+    </span>
+  );
+}
+
+function ComponentList({
+  title,
+  components,
+  labels,
+}: {
+  title: string;
+  components: Record<string, { score: number; weighted: number; findings: string[] }>;
+  labels: Record<string, string>;
+}) {
+  return (
+    <div className="bg-white rounded-lg border border-slate-200 p-4">
+      <h3 className="text-sm font-medium text-slate-700 mb-3">{title}</h3>
+      <ul className="space-y-3">
+        {Object.entries(components).map(([k, c]) => (
+          <li key={k} className="border-b border-slate-100 pb-2 last:border-0">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-slate-800">{labels[k] ?? k}</span>
+              <span className={`font-mono text-sm ${c.score < 30 ? "text-red-600" : c.score < 60 ? "text-amber-600" : "text-emerald-600"}`}>
+                {c.score}
+              </span>
+            </div>
+            {c.findings.length > 0 && (
+              <p className="text-xs text-slate-500 mt-1">{c.findings[0]}</p>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
