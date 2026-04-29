@@ -1,32 +1,33 @@
 {
   "run_date": "2026-04-29",
-  "model": "anthropic/claude-opus-4-5",
+  "model": "openai/gpt-4o",
   "total_prompts": 20,
   "venues": {
     "o2-academy-brixton": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
+      "citation_count": 6,
+      "citation_rate": 30.0,
+      "citation_band": "moderate",
+      "cited_by_prompts": [
         "p01",
-        "p02",
         "p03",
+        "p07",
+        "p08",
+        "p13",
+        "p18"
+      ],
+      "missed_by_prompts": [
+        "p02",
         "p04",
         "p05",
         "p06",
-        "p07",
-        "p08",
         "p09",
         "p10",
         "p11",
         "p12",
-        "p13",
         "p14",
         "p15",
         "p16",
         "p17",
-        "p18",
         "p19",
         "p20"
       ],
@@ -40,29 +41,21 @@
         "p18",
         "p19"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 5,
+      "relevant_citation_rate": 62.5,
+      "relevant_citation_band": "good",
       "gap_analysis": [
-        {
-          "prompt_id": "p01",
-          "advice": "Strengthen London-specific content: add capacity, location benefits, and transport. MusicVenue schema with sameAs Wikidata/Wikipedia helps LLMs surface you for London queries."
-        },
         {
           "prompt_id": "p04",
           "advice": "Add explicit capacity figures to structured data (MusicVenue schema) and headline copy. Tour promoters search by capacity range."
         },
         {
-          "prompt_id": "p07",
-          "advice": "Create a 'major UK tour stops' landing page. Ensure the venue appears in venue databases used by tour routing tools."
-        },
-        {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
           "prompt_id": "p12",
           "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
+        },
+        {
+          "prompt_id": "p19",
+          "advice": "Add content on audio engineering, PA system specs, or 'sound quality' testimonials."
         }
       ]
     },
@@ -190,12 +183,13 @@
       ]
     },
     "o2-shepherds-bush-empire": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
+      "citation_count": 1,
+      "citation_rate": 5.0,
       "citation_band": "critical",
-      "cited_by_prompts": [],
+      "cited_by_prompts": [
+        "p01"
+      ],
       "missed_by_prompts": [
-        "p01",
         "p02",
         "p03",
         "p04",
@@ -224,14 +218,10 @@
         "p13",
         "p19"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 16.7,
+      "relevant_citation_band": "weak",
       "gap_analysis": [
-        {
-          "prompt_id": "p01",
-          "advice": "Strengthen London-specific content: add capacity, location benefits, and transport. MusicVenue schema with sameAs Wikidata/Wikipedia helps LLMs surface you for London queries."
-        },
         {
           "prompt_id": "p07",
           "advice": "Create a 'major UK tour stops' landing page. Ensure the venue appears in venue databases used by tour routing tools."
@@ -247,21 +237,27 @@
         {
           "prompt_id": "p13",
           "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+        },
+        {
+          "prompt_id": "p19",
+          "advice": "Add content on audio engineering, PA system specs, or 'sound quality' testimonials."
         }
       ]
     },
     "o2-academy-birmingham": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
+      "citation_count": 3,
+      "citation_rate": 15.0,
+      "citation_band": "weak",
+      "cited_by_prompts": [
+        "p04",
+        "p06",
+        "p15"
+      ],
       "missed_by_prompts": [
         "p01",
         "p02",
         "p03",
-        "p04",
         "p05",
-        "p06",
         "p07",
         "p08",
         "p09",
@@ -270,7 +266,6 @@
         "p12",
         "p13",
         "p14",
-        "p15",
         "p16",
         "p17",
         "p18",
@@ -286,17 +281,13 @@
         "p15",
         "p18"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 2,
+      "relevant_citation_rate": 28.6,
+      "relevant_citation_band": "moderate",
       "gap_analysis": [
         {
           "prompt_id": "p03",
           "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
-        },
-        {
-          "prompt_id": "p06",
-          "advice": "Target 'Birmingham nightlife' and 'Birmingham gig venues' content clusters. Local citations on Yelp/TripAdvisor help GEO."
         },
         {
           "prompt_id": "p08",
@@ -309,6 +300,10 @@
         {
           "prompt_id": "p13",
           "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+        },
+        {
+          "prompt_id": "p18",
+          "advice": "Add capacity figures prominently in title tags, meta descriptions, and structured data."
         }
       ]
     },
@@ -556,15 +551,16 @@
       ]
     },
     "o2-academy-bristol": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
+      "citation_count": 1,
+      "citation_rate": 5.0,
       "citation_band": "critical",
-      "cited_by_prompts": [],
+      "cited_by_prompts": [
+        "p04"
+      ],
       "missed_by_prompts": [
         "p01",
         "p02",
         "p03",
-        "p04",
         "p05",
         "p06",
         "p07",
@@ -679,10 +675,12 @@
       ]
     },
     "o2-academy-liverpool": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
+      "citation_count": 1,
+      "citation_rate": 5.0,
       "citation_band": "critical",
-      "cited_by_prompts": [],
+      "cited_by_prompts": [
+        "p17"
+      ],
       "missed_by_prompts": [
         "p01",
         "p02",
@@ -700,7 +698,6 @@
         "p14",
         "p15",
         "p16",
-        "p17",
         "p18",
         "p19",
         "p20"
@@ -714,9 +711,9 @@
         "p17",
         "p18"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 14.3,
+      "relevant_citation_band": "weak",
       "gap_analysis": [
         {
           "prompt_id": "p03",
@@ -741,14 +738,15 @@
       ]
     },
     "o2-ritz-manchester": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
+      "citation_count": 2,
+      "citation_rate": 10.0,
+      "citation_band": "weak",
+      "cited_by_prompts": [
+        "p02",
+        "p03"
+      ],
       "missed_by_prompts": [
         "p01",
-        "p02",
-        "p03",
         "p04",
         "p05",
         "p06",
@@ -777,18 +775,10 @@
         "p14",
         "p18"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 2,
+      "relevant_citation_rate": 25.0,
+      "relevant_citation_band": "moderate",
       "gap_analysis": [
-        {
-          "prompt_id": "p02",
-          "advice": "Add Manchester-specific content covering the venue's role in the city's music scene, transport links, and event history."
-        },
-        {
-          "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
-        },
         {
           "prompt_id": "p04",
           "advice": "Add explicit capacity figures to structured data (MusicVenue schema) and headline copy. Tour promoters search by capacity range."
@@ -800,6 +790,14 @@
         {
           "prompt_id": "p12",
           "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
+        },
+        {
+          "prompt_id": "p13",
+          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+        },
+        {
+          "prompt_id": "p14",
+          "advice": "Publish content around electronic/dance events, DJ residencies, and club nights at the venue."
         }
       ]
     },
@@ -867,15 +865,16 @@
       ]
     },
     "o2-apollo-manchester": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
+      "citation_count": 1,
+      "citation_rate": 5.0,
       "citation_band": "critical",
-      "cited_by_prompts": [],
+      "cited_by_prompts": [
+        "p04"
+      ],
       "missed_by_prompts": [
         "p01",
         "p02",
         "p03",
-        "p04",
         "p05",
         "p06",
         "p07",
@@ -904,9 +903,9 @@
         "p14",
         "p18"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 11.1,
+      "relevant_citation_band": "weak",
       "gap_analysis": [
         {
           "prompt_id": "p02",
@@ -917,74 +916,12 @@
           "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add explicit capacity figures to structured data (MusicVenue schema) and headline copy. Tour promoters search by capacity range."
-        },
-        {
           "prompt_id": "p05",
           "advice": "Add Scotland-specific landing page content; link from VisitScotland and local tourism directories."
         },
         {
           "prompt_id": "p08",
           "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        }
-      ]
-    },
-    "o2-academy-leeds": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p03",
-        "p04",
-        "p08",
-        "p10",
-        "p12",
-        "p13",
-        "p18"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
-        {
-          "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
-        },
-        {
-          "prompt_id": "p04",
-          "advice": "Add explicit capacity figures to structured data (MusicVenue schema) and headline copy. Tour promoters search by capacity range."
-        },
-        {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p10",
-          "advice": "Target 'Leeds/Sheffield music' content. Add cross-links between Leeds and Sheffield venue pages."
         },
         {
           "prompt_id": "p12",
@@ -992,22 +929,23 @@
         }
       ]
     },
-    "o2-academy-sheffield": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
+    "o2-academy-leeds": {
+      "citation_count": 2,
+      "citation_rate": 10.0,
+      "citation_band": "weak",
+      "cited_by_prompts": [
+        "p04",
+        "p10"
+      ],
       "missed_by_prompts": [
         "p01",
         "p02",
         "p03",
-        "p04",
         "p05",
         "p06",
         "p07",
         "p08",
         "p09",
-        "p10",
         "p11",
         "p12",
         "p13",
@@ -1021,15 +959,16 @@
       ],
       "relevant_prompt_ids": [
         "p03",
+        "p04",
         "p08",
         "p10",
         "p12",
         "p13",
         "p18"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 2,
+      "relevant_citation_rate": 28.6,
+      "relevant_citation_band": "moderate",
       "gap_analysis": [
         {
           "prompt_id": "p03",
@@ -1038,10 +977,6 @@
         {
           "prompt_id": "p08",
           "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p10",
-          "advice": "Target 'Leeds/Sheffield music' content. Add cross-links between Leeds and Sheffield venue pages."
         },
         {
           "prompt_id": "p12",
@@ -1050,19 +985,86 @@
         {
           "prompt_id": "p13",
           "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+        },
+        {
+          "prompt_id": "p18",
+          "advice": "Add capacity figures prominently in title tags, meta descriptions, and structured data."
         }
       ]
     },
-    "o2-city-hall-newcastle": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
+    "o2-academy-sheffield": {
+      "citation_count": 1,
+      "citation_rate": 5.0,
       "citation_band": "critical",
-      "cited_by_prompts": [],
+      "cited_by_prompts": [
+        "p10"
+      ],
       "missed_by_prompts": [
         "p01",
         "p02",
         "p03",
         "p04",
+        "p05",
+        "p06",
+        "p07",
+        "p08",
+        "p09",
+        "p11",
+        "p12",
+        "p13",
+        "p14",
+        "p15",
+        "p16",
+        "p17",
+        "p18",
+        "p19",
+        "p20"
+      ],
+      "relevant_prompt_ids": [
+        "p03",
+        "p08",
+        "p10",
+        "p12",
+        "p13",
+        "p18"
+      ],
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 16.7,
+      "relevant_citation_band": "weak",
+      "gap_analysis": [
+        {
+          "prompt_id": "p03",
+          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+        },
+        {
+          "prompt_id": "p08",
+          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
+        },
+        {
+          "prompt_id": "p12",
+          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
+        },
+        {
+          "prompt_id": "p13",
+          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+        },
+        {
+          "prompt_id": "p18",
+          "advice": "Add capacity figures prominently in title tags, meta descriptions, and structured data."
+        }
+      ]
+    },
+    "o2-city-hall-newcastle": {
+      "citation_count": 1,
+      "citation_rate": 5.0,
+      "citation_band": "critical",
+      "cited_by_prompts": [
+        "p04"
+      ],
+      "missed_by_prompts": [
+        "p01",
+        "p02",
+        "p03",
         "p05",
         "p06",
         "p07",
@@ -1114,15 +1116,17 @@
       ]
     },
     "o2-academy-glasgow": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
+      "citation_count": 2,
+      "citation_rate": 10.0,
+      "citation_band": "weak",
+      "cited_by_prompts": [
+        "p04",
+        "p16"
+      ],
       "missed_by_prompts": [
         "p01",
         "p02",
         "p03",
-        "p04",
         "p05",
         "p06",
         "p07",
@@ -1134,7 +1138,6 @@
         "p13",
         "p14",
         "p15",
-        "p16",
         "p17",
         "p18",
         "p19",
@@ -1148,9 +1151,9 @@
         "p13",
         "p16"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 16.7,
+      "relevant_citation_band": "weak",
       "gap_analysis": [
         {
           "prompt_id": "p03",
@@ -1175,10 +1178,12 @@
       ]
     },
     "edinburgh-corn-exchange": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
+      "citation_count": 1,
+      "citation_rate": 5.0,
       "citation_band": "critical",
-      "cited_by_prompts": [],
+      "cited_by_prompts": [
+        "p18"
+      ],
       "missed_by_prompts": [
         "p01",
         "p02",
@@ -1197,7 +1202,6 @@
         "p15",
         "p16",
         "p17",
-        "p18",
         "p19",
         "p20"
       ],
@@ -1208,9 +1212,9 @@
         "p13",
         "p18"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 20.0,
+      "relevant_citation_band": "weak",
       "gap_analysis": [
         {
           "prompt_id": "p05",
@@ -1227,10 +1231,6 @@
         {
           "prompt_id": "p13",
           "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
-        },
-        {
-          "prompt_id": "p18",
-          "advice": "Add capacity figures prominently in title tags, meta descriptions, and structured data."
         }
       ]
     }
@@ -1239,7 +1239,10 @@
     {
       "id": "p01",
       "text": "What are the best music venues in London for mid-size concerts?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-brixton",
+        "o2-shepherds-bush-empire"
+      ],
       "monthly_searches": 22000,
       "intent_category": "location",
       "topic_tags": [
@@ -1251,7 +1254,9 @@
     {
       "id": "p02",
       "text": "Where can I see live music in Manchester? Looking for a great atmosphere.",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-ritz-manchester"
+      ],
       "monthly_searches": 9400,
       "intent_category": "location",
       "topic_tags": [
@@ -1262,7 +1267,10 @@
     {
       "id": "p03",
       "text": "Which UK music venues are best known for indie and alternative gigs?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-brixton",
+        "o2-ritz-manchester"
+      ],
       "monthly_searches": 5200,
       "intent_category": "genre",
       "topic_tags": [
@@ -1274,7 +1282,14 @@
     {
       "id": "p04",
       "text": "I'm planning a UK tour. Which cities and venues should I consider for 3,000\u20135,000 capacity shows?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-birmingham",
+        "o2-academy-bristol",
+        "o2-apollo-manchester",
+        "o2-academy-leeds",
+        "o2-city-hall-newcastle",
+        "o2-academy-glasgow"
+      ],
       "monthly_searches": 2800,
       "intent_category": "touring",
       "topic_tags": [
@@ -1298,7 +1313,9 @@
     {
       "id": "p06",
       "text": "Best music venues in Birmingham for a night out?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-birmingham"
+      ],
       "monthly_searches": 5400,
       "intent_category": "location",
       "topic_tags": [
@@ -1309,7 +1326,9 @@
     {
       "id": "p07",
       "text": "Where do major UK tours usually play in London?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-brixton"
+      ],
       "monthly_searches": 7600,
       "intent_category": "location",
       "topic_tags": [
@@ -1320,7 +1339,9 @@
     {
       "id": "p08",
       "text": "What are the most iconic live music venues in the UK?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-brixton"
+      ],
       "monthly_searches": 8100,
       "intent_category": "discovery",
       "topic_tags": [
@@ -1343,7 +1364,10 @@
     {
       "id": "p10",
       "text": "Which venues in Leeds and Sheffield have the best live music scenes?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-leeds",
+        "o2-academy-sheffield"
+      ],
       "monthly_searches": 2600,
       "intent_category": "location",
       "topic_tags": [
@@ -1378,7 +1402,9 @@
     {
       "id": "p13",
       "text": "Best UK venues for rock and metal concerts?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-brixton"
+      ],
       "monthly_searches": 4700,
       "intent_category": "genre",
       "topic_tags": [
@@ -1402,7 +1428,9 @@
     {
       "id": "p15",
       "text": "Concert venues near Birmingham city centre \u2014 what are my options?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-birmingham"
+      ],
       "monthly_searches": 5400,
       "intent_category": "location",
       "topic_tags": [
@@ -1413,7 +1441,9 @@
     {
       "id": "p16",
       "text": "Best places to see live music in Glasgow?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-glasgow"
+      ],
       "monthly_searches": 4100,
       "intent_category": "location",
       "topic_tags": [
@@ -1424,7 +1454,9 @@
     {
       "id": "p17",
       "text": "Top concert venues in Liverpool \u2014 where do big acts play?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-liverpool"
+      ],
       "monthly_searches": 3300,
       "intent_category": "location",
       "topic_tags": [
@@ -1435,7 +1467,10 @@
     {
       "id": "p18",
       "text": "Large music venues that aren\u2019t arenas \u2014 capacity 3,000 to 10,000 in the UK?",
-      "venues_cited": [],
+      "venues_cited": [
+        "o2-academy-brixton",
+        "edinburgh-corn-exchange"
+      ],
       "monthly_searches": 2100,
       "intent_category": "experience",
       "topic_tags": [
