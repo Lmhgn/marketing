@@ -12,15 +12,15 @@ const citations = getAllCitations();
 type SortCol = "readiness" | "aeo" | "geo" | "citation";
 
 function SortHeader({
-  label, col, active, dir, onClick, align = "right",
+  label, col, active, dir, onClick, align = "right", tooltip,
 }: {
   label: string; col: SortCol; active: SortCol; dir: "asc" | "desc";
-  onClick: (c: SortCol) => void; align?: "left" | "right";
+  onClick: (c: SortCol) => void; align?: "left" | "right"; tooltip?: string;
 }) {
   const isActive = col === active;
   return (
     <th
-      className={`px-4 py-3 font-medium cursor-pointer select-none hover:text-slate-900 ${align === "right" ? "text-right" : "text-left"}`}
+      className={`px-4 py-3 font-medium cursor-pointer select-none hover:text-slate-900 relative group/hdr ${align === "right" ? "text-right" : "text-left"}`}
       onClick={() => onClick(col)}
     >
       <span className="inline-flex items-center gap-1">
@@ -30,12 +30,20 @@ function SortHeader({
           </span>
         )}
         {label}
+        {tooltip && <span className="ml-0.5 text-slate-400 text-xs font-normal">ⓘ</span>}
         {align === "left" && (
           <span className={`text-xs ${isActive ? "text-slate-700" : "text-slate-300"}`}>
             {isActive ? (dir === "desc" ? "↓" : "↑") : "⇅"}
           </span>
         )}
       </span>
+
+      {tooltip && (
+        <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 z-30 w-64 p-3 bg-slate-900 text-white text-xs rounded-lg shadow-xl opacity-0 group-hover/hdr:opacity-100 pointer-events-none transition-opacity normal-case font-normal text-left leading-relaxed whitespace-normal">
+          <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-slate-900 rotate-45 rounded-sm" />
+          {tooltip}
+        </div>
+      )}
     </th>
   );
 }
@@ -110,10 +118,14 @@ export function VenueTable({ venues }: { venues: VenueReport[] }) {
             <tr>
               <th className="text-left px-4 py-3 font-medium">Venue</th>
               <th className="text-left px-4 py-3 font-medium">Region</th>
-              <SortHeader label="AI Readiness" col="readiness" active={sortCol} dir={sortDir} onClick={handleSort} />
-              <SortHeader label="AEO"          col="aeo"       active={sortCol} dir={sortDir} onClick={handleSort} />
-              <SortHeader label="GEO"          col="geo"       active={sortCol} dir={sortDir} onClick={handleSort} />
-              <SortHeader label="LLM citation" col="citation"  active={sortCol} dir={sortDir} onClick={handleSort} align="left" />
+              <SortHeader label="AI Readiness" col="readiness" active={sortCol} dir={sortDir} onClick={handleSort}
+                tooltip="A combined score: AEO (40%) + GEO (35%) + LLM Citation rate (25%). Shows how ready each venue is to appear in AI-generated answers across search, chatbots, and voice assistants." />
+              <SortHeader label="AEO" col="aeo" active={sortCol} dir={sortDir} onClick={handleSort}
+                tooltip="Answer Engine Optimisation — how well the venue's website is structured for AI to extract facts. Scores schema markup, FAQ content, heading quality, and content volume. Rated 0–100." />
+              <SortHeader label="GEO" col="geo" active={sortCol} dir={sortDir} onClick={handleSort}
+                tooltip="Generative Engine Optimisation — how completely the venue exists as a named entity inside AI systems. Scores topical coverage, external references (Wikipedia / Wikidata), entity clarity, and schema richness. Rated 0–100." />
+              <SortHeader label="LLM citation" col="citation" active={sortCol} dir={sortDir} onClick={handleSort} align="left"
+                tooltip="The % of venue-specific test prompts where an AI model actually named this venue in its response. Based on 15 prompts per venue sent to Claude. Click the bar to see the full breakdown." />
               <th className="px-4 py-3" />
             </tr>
           </thead>
