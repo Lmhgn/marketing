@@ -315,6 +315,15 @@ def main() -> None:
         verbose=args.verbose,
     )
 
+    # Fail loudly if every call errored — surfaces API key / quota problems
+    error_count = sum(1 for r in results if r.response_text.startswith("__ERROR__"))
+    if error_count == len(results):
+        first_err = next(r.response_text for r in results if r.response_text.startswith("__ERROR__"))
+        logger.error("All %d prompts failed. First error: %s", len(results), first_err)
+        sys.exit(1)
+    elif error_count:
+        logger.warning("%d/%d prompts failed — partial results written.", error_count, len(results))
+
     # ── Debug dump ────────────────────────────────────────────────────────────
     if args.debug:
         debug_path = DATA_DIR / "citation_debug.json"

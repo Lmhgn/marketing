@@ -234,10 +234,13 @@ def run_live(
         try:
             response_text = call_fn(prompt.text)
         except Exception as exc:
-            logger.warning("Prompt %s failed: %s", prompt.id, exc)
-            response_text = ""
+            logger.error("Prompt %s FAILED: %s", prompt.id, exc)
+            response_text = f"__ERROR__: {exc}"
 
-        cited = detect_citations(response_text, slugs)
+        if response_text.startswith("__ERROR__"):
+            cited = []
+        else:
+            cited = detect_citations(response_text, slugs)
 
         if verbose:
             logger.info("  Response:\n%s", response_text)
