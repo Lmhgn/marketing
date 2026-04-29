@@ -42,8 +42,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 DATA_DIR = ROOT / "data"
-VENUES_FILE = DATA_DIR / "venues_sample.json"
-CITATIONS_FILE = DATA_DIR / "citation_results.json"
+VENUES_FILE      = DATA_DIR / "venues_sample.json"
+COMPETITORS_FILE = DATA_DIR / "competitors_sample.json"
+CITATIONS_FILE   = DATA_DIR / "citation_results.json"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -80,6 +81,7 @@ def venue_is_cited(response: str, venue_name: str, slug: str) -> bool:
     # Slug-derived short names (e.g. "brixton" for o2-academy-brixton)
     # Also check known distinctive words per slug
     SLUG_SIGNALS: dict[str, list[str]] = {
+        # Portfolio venues
         "o2-academy-brixton":            ["brixton academy", "o2 brixton"],
         "o2-academy-islington":          ["islington academy", "o2 islington"],
         "o2-forum-kentish-town":         ["kentish town forum", "forum kentish town", "o2 forum"],
@@ -100,11 +102,31 @@ def venue_is_cited(response: str, venue_name: str, slug: str) -> bool:
         "o2-city-hall-newcastle":        ["city hall newcastle", "newcastle city hall", "o2 newcastle"],
         "o2-academy-glasgow":            ["glasgow academy", "o2 glasgow"],
         "edinburgh-corn-exchange":       ["corn exchange edinburgh", "edinburgh corn exchange"],
+        # Competitor venues
+        "roundhouse":                    ["roundhouse"],
+        "koko-london":                   ["koko"],
+        "electric-ballroom":             ["electric ballroom"],
+        "fabric-london":                 ["fabric london", "fabric club"],
+        "manchester-academy":            ["manchester academy", "academy manchester"],
+        "band-on-the-wall":              ["band on the wall"],
+        "leadmill-sheffield":            ["leadmill", "the leadmill"],
+        "brudenell-social-club":         ["brudenell"],
+        "swx-bristol":                   ["swx"],
+        "usher-hall-edinburgh":          ["usher hall"],
     }
     for sig in SLUG_SIGNALS.get(slug, []):
         if sig in lower:
             return True
     return False
+
+
+def find_also_cited(response: str, excluded_slug: str, all_venues: list[dict]) -> list[str]:
+    """Return slugs of other venues mentioned in the response, excluding the target venue."""
+    return [
+        v["slug"] for v in all_venues
+        if v["slug"] != excluded_slug
+        and venue_is_cited(response, v["venue_name"], v["slug"])
+    ]
 
 
 def _call_anthropic(client, model: str, prompt_text: str) -> str:
@@ -169,6 +191,9 @@ def main() -> None:
     args = parser.parse_args()
 
     venues_data = json.loads(VENUES_FILE.read_text())
+    competitors_data = json.loads(COMPETITORS_FILE.read_text()) if COMPETITORS_FILE.exists() else []
+    all_venues = venues_data + competitors_data  # used for also_cited detection
+
     if args.venue:
         venues_data = [v for v in venues_data if v["slug"] == args.venue]
         if not venues_data:
@@ -254,12 +279,14 @@ def main() -> None:
 
             if response_text.startswith("__ERROR__"):
                 cited = False
+                also_cited: list[str] = []
             else:
                 cited = venue_is_cited(response_text, name, slug)
+                also_cited = [] if cited else find_also_cited(response_text, slug, all_venues)
 
             if args.verbose:
                 logger.info("  Response: %s", response_text[:200])
-            logger.info("  Cited: %s", cited)
+            logger.info("  Cited: %s  Also cited: %s", cited, also_cited or "-")
 
             if args.debug:
                 debug_log.append({
@@ -267,10 +294,11 @@ def main() -> None:
                     "prompt_id": t.id,
                     "prompt_text": prompt_text,
                     "cited": cited,
+                    "also_cited": also_cited,
                     "response_text": response_text,
                 })
 
-            prompt_results.append({
+            entry: dict = {
                 "id": t.id,
                 "text": prompt_text,
                 "monthly_searches": t.monthly_searches,
@@ -278,7 +306,10 @@ def main() -> None:
                 "topic_tags": t.topic_tags,
                 "cited": cited,
                 "advice": t.advice,
-            })
+            }
+            if also_cited:
+                entry["also_cited"] = also_cited
+            prompt_results.append(entry)
 
             if call_n < total_calls:
                 time.sleep(args.rate_limit)

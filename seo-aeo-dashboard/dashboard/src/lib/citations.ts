@@ -8,6 +8,7 @@ export interface VenuePrompt {
   topic_tags: string[];
   cited: boolean;
   advice: string;
+  also_cited?: string[];
 }
 
 export interface CitationResult {
@@ -120,6 +121,28 @@ export function readinessBand(score: number): "critical" | "weak" | "moderate" |
   if (score >= 35) return "moderate";
   if (score >= 20) return "weak";
   return "critical";
+}
+
+export interface AlsoCitedEntry {
+  slug: string;
+  appearances: number;
+  weighted_monthly: number;
+}
+
+export function getCompetitorCitationLeaderboard(): AlsoCitedEntry[] {
+  const acc: Record<string, AlsoCitedEntry> = {};
+  for (const result of Object.values(data.venues)) {
+    for (const p of result.prompts) {
+      if (!p.cited && p.also_cited) {
+        for (const slug of p.also_cited) {
+          if (!acc[slug]) acc[slug] = { slug, appearances: 0, weighted_monthly: 0 };
+          acc[slug].appearances     += 1;
+          acc[slug].weighted_monthly += p.monthly_searches;
+        }
+      }
+    }
+  }
+  return Object.values(acc).sort((a, b) => b.weighted_monthly - a.weighted_monthly);
 }
 
 export function computePortfolioStats(allCitations: Record<string, CitationResult>) {

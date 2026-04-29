@@ -1,7 +1,14 @@
 import { competitors, portfolio, getAllPlotPoints, getMarketAverages } from "@/lib/competitors";
 import { bandColor } from "@/lib/data";
+import { getCompetitorCitationLeaderboard } from "@/lib/citations";
 import ScatterPlot from "@/components/ScatterPlot";
 import Link from "next/link";
+
+// Build slug → name maps for the co-citation leaderboard display
+const PORTFOLIO_MAP:  Record<string, string> = {};
+const COMPETITOR_MAP: Record<string, string> = {};
+for (const v of portfolio)   PORTFOLIO_MAP[v.slug]  = v.venue_name;
+for (const v of competitors) COMPETITOR_MAP[v.slug] = v.venue_name;
 
 export default function Benchmarking() {
   const points  = getAllPlotPoints();
@@ -10,6 +17,9 @@ export default function Benchmarking() {
     aeo: Math.round((averages.portfolio.aeo  - averages.competitors.aeo)  * 10) / 10,
     geo: Math.round((averages.portfolio.geo  - averages.competitors.geo)  * 10) / 10,
   };
+
+  const leaderboard = getCompetitorCitationLeaderboard();
+  const maxWeighted = leaderboard[0]?.weighted_monthly ?? 1;
 
   const allVenues = [
     ...competitors.map(v => ({ ...v, type: "competitor" as const })),
@@ -72,6 +82,54 @@ export default function Benchmarking() {
         </p>
         <ScatterPlot data={points} />
       </section>
+
+      {/* Co-citation leaderboard */}
+      {leaderboard.length > 0 && (
+        <section className="bg-white rounded-lg border border-slate-200 overflow-hidden">
+          <div className="px-4 py-3 border-b border-slate-100">
+            <h2 className="text-base font-medium text-slate-900">LLM Co-Citation Leaderboard</h2>
+            <p className="text-xs text-slate-500 mt-0.5">
+              Venues cited instead of us on missed prompts — ranked by total search opportunity displaced.{" "}
+              <span className="px-1.5 py-0.5 rounded bg-orange-100 text-orange-700 text-xs font-medium">Competitor</span>
+              {" "}<span className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 text-xs font-medium">Portfolio</span>
+            </p>
+          </div>
+          <div className="divide-y divide-slate-50">
+            {leaderboard.map((entry, i) => {
+              const isCompetitor = !!COMPETITOR_MAP[entry.slug];
+              const name = COMPETITOR_MAP[entry.slug] ?? PORTFOLIO_MAP[entry.slug] ?? entry.slug;
+              const barPct = Math.round(entry.weighted_monthly / maxWeighted * 100);
+              const daily  = Math.round(entry.weighted_monthly / 30);
+              return (
+                <div key={entry.slug} className="flex items-center gap-4 px-4 py-3">
+                  <span className="text-xs text-slate-400 font-mono w-5 shrink-0">{i + 1}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm font-medium text-slate-800">{name}</span>
+                      <span className={`px-1.5 py-0.5 rounded text-xs font-medium ${
+                        isCompetitor ? "bg-orange-100 text-orange-700" : "bg-blue-100 text-blue-700"
+                      }`}>
+                        {isCompetitor ? "Competitor" : "Portfolio"}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 max-w-[240px] h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full ${isCompetitor ? "bg-orange-400" : "bg-blue-400"}`}
+                          style={{ width: `${barPct}%` }}
+                        />
+                      </div>
+                      <span className="text-xs text-slate-400 shrink-0">
+                        {daily.toLocaleString()}/day displaced · {entry.appearances} prompt{entry.appearances !== 1 ? "s" : ""}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* Combined ranked table */}
       <section>
