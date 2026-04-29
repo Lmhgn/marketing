@@ -18,7 +18,8 @@
             "venue-size"
           ],
           "cited": true,
-          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries.",
+          "response_text": "O2 Academy Brixton has a total capacity of 4,921, making it one of the largest mid-size venues in London. The main floor is standing, with a balcony offering seated and standing options. It's one of the most iconic music venues in the UK, having hosted artists from David Bowie to Radiohead."
         },
         {
           "id": "transport",
@@ -31,7 +32,8 @@
             "directions"
           ],
           "cited": true,
-          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup.",
+          "response_text": "O2 Academy Brixton is located on Stockwell Road in Brixton, SW9. The nearest tube station is Brixton on the Victoria line, approximately a 5-minute walk. Several bus routes also serve the area including the 2, 3, 35, 37, 45, and 59. There is limited parking nearby so public transport is strongly recommended."
         },
         {
           "id": "doors-time",
@@ -43,7 +45,8 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "response_text": "I don't have specific door opening times for O2 Academy Brixton as these vary by event. Generally for concerts at UK venues, doors tend to open around 7pm for evening shows. I'd recommend checking the specific event listing on the venue's website or your ticket for accurate times."
         },
         {
           "id": "standing-seated",
@@ -82,7 +85,8 @@
             "what-to-expect"
           ],
           "cited": true,
-          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance.",
+          "response_text": "O2 Academy Brixton has a legendary atmosphere \u2014 it's one of those venues where the room itself adds to the experience. The low ceiling on the main floor creates an intense, intimate feel even for large shows, and the venue's history (it opened as a cinema in 1929 and became a live music venue in 1983) gives it a real sense of character. The balcony is great for those who want a slightly calmer view."
         },
         {
           "id": "best-spots",
@@ -416,7 +420,8 @@
             "venue-size"
           ],
           "cited": true,
-          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries.",
+          "response_text": "O2 Forum Kentish Town has a capacity of approximately 2,300. It's a mid-size London venue popular for indie, rock, and alternative acts. The venue features a raked standing floor and a balcony, giving most of the audience a good sightline to the stage."
         },
         {
           "id": "transport",
@@ -480,7 +485,8 @@
             "what-to-expect"
           ],
           "cited": true,
-          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance.",
+          "response_text": "The O2 Forum Kentish Town has a great atmosphere for live music \u2014 it's intimate enough that you feel close to the artist even from the back. The tiered layout means sightlines are good throughout. It has a slightly more relaxed vibe than some of the larger London venues, and the area around Kentish Town has a strong independent music culture."
         },
         {
           "id": "best-spots",
@@ -1411,7 +1417,8 @@
             "venue-size"
           ],
           "cited": true,
-          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries.",
+          "response_text": "I don't have precise capacity figures for O2 Academy Oxford readily available. O2 Academy venues typically range from around 800 to 5,000 depending on the location. For accurate capacity information, I'd suggest checking the venue's official website or contacting them directly."
         },
         {
           "id": "transport",
