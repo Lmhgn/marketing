@@ -2,10 +2,14 @@
 """
 citation_runner.py — Real LLM citation measurement for O2/AMG venues.
 
-Sends each test prompt to the Claude or OpenAI API, detects which portfolio
-venues are mentioned in the response, and writes results to
-data/citation_results.json — preserving all metadata (monthly search
-volumes, intent categories, relevant_prompt_ids, gap_analysis).
+For each venue, sends 15 venue-specific prompts to the LLM (e.g.
+"What is the capacity of O2 Academy Brixton?") and checks whether the
+response actually cites that venue. This measures how well LLMs know
+each venue specifically, across three question categories:
+
+  must-answer   — capacity, transport, doors, standing/seated, bag policy
+  demand-driven — atmosphere, best spots, food & drink, arrival, accessibility
+  geo-stress    — reputation, famous acts, history, comparison, music types
 
 Requirements:
     pip install anthropic openai   # install both; only the chosen one is used
@@ -13,26 +17,20 @@ Requirements:
     export OPENAI_API_KEY=sk-...          # for --provider openai
 
 Usage:
-    # Dry run — show prompts and API call plan, no charges
+    # Dry run — show prompts per venue, no API calls
     python citation_runner.py --dry-run
 
-    # Full live run with Claude (default)
-    python citation_runner.py
-
-    # Full live run with ChatGPT
+    # Full live run (20 venues × 15 prompts = 300 API calls)
     python citation_runner.py --provider openai --model gpt-4o
 
-    # Run only specific prompts
-    python citation_runner.py --prompts p01,p07,p12
+    # Run a single venue only
+    python citation_runner.py --venue o2-academy-brixton
 
     # Debug — save raw LLM responses to data/citation_debug.json
     python citation_runner.py --debug
 
     # Verbose — print each LLM response to stdout
     python citation_runner.py --verbose
-
-    # Write to a custom output file
-    python citation_runner.py --output data/citation_test.json
 """
 
 import argparse
@@ -55,7 +53,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# ── Band thresholds ───────────────────────────────────────────────────────────
+SYSTEM_PROMPT = (
+    "You are a knowledgeable UK music industry expert. "
+    "Answer questions about live music venues accurately, helpfully, and concisely. "
+    "Name specific real venues where relevant. Do not invent venues."
+)
+
 
 def citation_band(rate: float) -> str:
     if rate >= 67: return "strong"
@@ -65,330 +68,265 @@ def citation_band(rate: float) -> str:
     return "critical"
 
 
-# ── Per-venue relevance map (which prompts are topically relevant) ────────────
-# A venue should only be measured against prompts that make geographic /
-# topical sense for it.  Prompts outside a venue's region are excluded so
-# citation rates reflect genuine performance, not off-topic misses.
+def venue_is_cited(response: str, venue_name: str, slug: str) -> bool:
+    """Return True if the response mentions this specific venue."""
+    lower = response.lower()
+    name_lower = venue_name.lower()
 
-RELEVANT_PROMPTS: dict[str, list[str]] = {
-    # p01-p05 are UK-wide (relevant to all); p06-p20 are venue/region-specific
-    "o2-academy-brixton":           ["p01","p02","p03","p04","p05","p06","p07","p10","p19","p20"],
-    "o2-academy-islington":         ["p01","p02","p03","p04","p05","p19","p20"],
-    "o2-forum-kentish-town":        ["p01","p02","p03","p04","p05","p08","p19","p20"],
-    "o2-shepherds-bush-empire":     ["p01","p02","p03","p04","p05","p09","p19","p20"],
-    "o2-academy-birmingham":        ["p01","p02","p03","p04","p05","p14","p19","p20"],
-    "o2-institute-birmingham":      ["p01","p02","p03","p04","p05","p14","p19","p20"],
-    "o2-academy-leicester":         ["p01","p02","p03","p04","p05","p19","p20"],
-    "o2-academy-oxford":            ["p01","p02","p03","p04","p05","p19","p20"],
-    "o2-academy-bournemouth":       ["p01","p02","p03","p04","p05","p19","p20"],
-    "o2-academy-bristol":           ["p01","p02","p03","p04","p05","p18","p19","p20"],
-    "o2-guildhall-southampton":     ["p01","p02","p03","p04","p05","p19","p20"],
-    "o2-academy-liverpool":         ["p01","p02","p03","p04","p05","p19","p20"],
-    "o2-ritz-manchester":           ["p01","p02","p03","p04","p05","p19","p20"],
-    "o2-victoria-warehouse-manchester": ["p01","p02","p03","p04","p05","p13","p19","p20"],
-    "o2-apollo-manchester":         ["p01","p02","p03","p04","p05","p11","p12","p19","p20"],
-    "o2-academy-leeds":             ["p01","p02","p03","p04","p05","p17","p19","p20"],
-    "o2-academy-sheffield":         ["p01","p02","p03","p04","p05","p19","p20"],
-    "o2-city-hall-newcastle":       ["p01","p02","p03","p04","p05","p19","p20"],
-    "o2-academy-glasgow":           ["p01","p02","p03","p04","p05","p16","p19","p20"],
-    "edinburgh-corn-exchange":      ["p01","p02","p03","p04","p05","p15","p19","p20"],
-}
+    # Direct name match
+    if name_lower in lower:
+        return True
 
-GAP_ADVICE: dict[str, str] = {
-    "p01": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A.",
-    "p02": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content.",
-    "p03": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door — if you do, state it clearly.",
-    "p04": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries.",
-    "p05": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav.",
-    "p06": "Add a 'Getting Here' page with tube line, nearest stop (Brixton, Victoria line), and walking directions. Add TransportationRoute schema.",
-    "p07": "Add capacity and seating/standing format explicitly to the venue page and MusicVenue schema (maximumAttendeeCapacity field).",
-    "p08": "Add nearest tube/Overground station to the Kentish Town Forum 'Getting Here' page. Include walking time from station.",
-    "p09": "Add capacity and standing/seated info to Shepherd's Bush Empire venue page and MusicVenue structured data.",
-    "p10": "Add a 'When to arrive' FAQ entry for Brixton. Recommend doors time + 30 mins for busy shows. This drives repeat visits.",
-    "p11": "Add parking info and tram directions to the Apollo Manchester 'Getting Here' page. Metrolink stop: Deansgate-Castlefield.",
-    "p12": "Add O2 Apollo Manchester capacity (3,500) to the venue page, FAQ, and MusicVenue schema.",
-    "p13": "Add event type content to Victoria Warehouse page — electronic, dance, and club night heritage content improves topical authority.",
-    "p14": "Add Birmingham New Street / Moor Street walking directions to O2 Academy Birmingham 'Getting Here' page.",
-    "p15": "Add atmosphere, capacity, and format details for Edinburgh Corn Exchange. Include a 'What to expect' section.",
-    "p16": "Add capacity and standing/seated format to O2 Academy Glasgow venue page and MusicVenue schema.",
-    "p17": "Add hotel recommendations or a 'Staying nearby' section to the Leeds venue page. Affiliate links or local partner hotels.",
-    "p18": "Add food and drink information to O2 Academy Bristol venue page. List bars, food stalls, and drink policies.",
-    "p19": "Add a clear refund/exchange policy page linked from ticketing. Include in FAQPage schema.",
-    "p20": "Ensure venue pages link prominently to event listings. Add Event structured data for upcoming shows to improve LLM discoverability.",
-}
+    # Slug-derived short names (e.g. "brixton" for o2-academy-brixton)
+    # Also check known distinctive words per slug
+    SLUG_SIGNALS: dict[str, list[str]] = {
+        "o2-academy-brixton":            ["brixton academy", "o2 brixton"],
+        "o2-academy-islington":          ["islington academy", "o2 islington"],
+        "o2-forum-kentish-town":         ["kentish town forum", "forum kentish town", "o2 forum"],
+        "o2-shepherds-bush-empire":      ["shepherd's bush empire", "shepherds bush empire", "bush empire"],
+        "o2-academy-birmingham":         ["birmingham academy", "o2 birmingham"],
+        "o2-institute-birmingham":       ["institute birmingham", "birmingham institute", "o2 institute"],
+        "o2-academy-leicester":          ["leicester academy", "o2 leicester"],
+        "o2-academy-oxford":             ["oxford academy", "o2 oxford"],
+        "o2-academy-bournemouth":        ["bournemouth academy", "o2 bournemouth"],
+        "o2-academy-bristol":            ["bristol academy", "o2 bristol"],
+        "o2-guildhall-southampton":      ["guildhall southampton", "southampton guildhall"],
+        "o2-academy-liverpool":          ["liverpool academy", "o2 liverpool"],
+        "o2-ritz-manchester":            ["ritz manchester", "manchester ritz", "o2 ritz"],
+        "o2-victoria-warehouse-manchester": ["victoria warehouse"],
+        "o2-apollo-manchester":          ["apollo manchester", "manchester apollo", "o2 apollo"],
+        "o2-academy-leeds":              ["leeds academy", "o2 leeds"],
+        "o2-academy-sheffield":          ["sheffield academy", "o2 sheffield"],
+        "o2-city-hall-newcastle":        ["city hall newcastle", "newcastle city hall", "o2 newcastle"],
+        "o2-academy-glasgow":            ["glasgow academy", "o2 glasgow"],
+        "edinburgh-corn-exchange":       ["corn exchange edinburgh", "edinburgh corn exchange"],
+    }
+    for sig in SLUG_SIGNALS.get(slug, []):
+        if sig in lower:
+            return True
+    return False
 
 
-# ── Result aggregation ────────────────────────────────────────────────────────
-
-def aggregate(
-    slugs: list[str],
-    prompt_results: list[dict],
-    existing_venues: dict,
-) -> dict:
-    """Build the venues dict from fresh citation results + preserved metadata."""
-    all_ids = [p["prompt_id"] for p in prompt_results]
-    total = len(all_ids)
-
-    cited_by: dict[str, list[str]] = {s: [] for s in slugs}
-    for r in prompt_results:
-        for slug in r.get("venues_cited", []):
-            if slug in cited_by:
-                cited_by[slug].append(r["prompt_id"])
-
-    venues_out = {}
-    for slug in slugs:
-        cited = cited_by[slug]
-        missed = [pid for pid in all_ids if pid not in cited]
-        count = len(cited)
-        rate = round(count / total * 100, 1) if total else 0.0
-
-        rel_ids = RELEVANT_PROMPTS.get(slug, [])
-        rel_cited = [pid for pid in rel_ids if pid in cited]
-        rel_missed = [pid for pid in rel_ids if pid not in cited]
-        rel_count = len(rel_cited)
-        rel_total = len(rel_ids)
-        rel_rate = round(rel_count / rel_total * 100, 1) if rel_total else 0.0
-
-        gap = [
-            {"prompt_id": pid, "advice": GAP_ADVICE.get(pid, "Add targeted content for this query type.")}
-            for pid in rel_missed[:5]
-        ]
-
-        venues_out[slug] = {
-            "citation_count": count,
-            "citation_rate": rate,
-            "citation_band": citation_band(rate),
-            "cited_by_prompts": cited,
-            "missed_by_prompts": missed,
-            "relevant_prompt_ids": rel_ids,
-            "relevant_citation_count": rel_count,
-            "relevant_citation_rate": rel_rate,
-            "relevant_citation_band": citation_band(rel_rate),
-            "gap_analysis": gap,
-        }
-
-    return venues_out
+def _call_anthropic(client, model: str, prompt_text: str) -> str:
+    message = client.messages.create(
+        model=model,
+        max_tokens=600,
+        system=SYSTEM_PROMPT,
+        messages=[{"role": "user", "content": prompt_text}],
+    )
+    return message.content[0].text
 
 
-def build_prompts_block(
-    prompt_results: list[dict],
-    prompt_objects,
-) -> list[dict]:
-    """Merge API results with static prompt metadata."""
-    prompt_meta = {p.id: p for p in prompt_objects}
-    out = []
-    for r in prompt_results:
-        pid = r["prompt_id"]
-        p = prompt_meta.get(pid)
-        entry = {
-            "id": pid,
-            "text": r["prompt_text"],
-            "venues_cited": r.get("venues_cited", []),
-        }
-        if p:
-            entry["monthly_searches"] = p.monthly_searches
-            entry["intent_category"] = p.intent_category
-            entry["topic_tags"] = p.topic_tags
-        out.append(entry)
-    return out
+def _call_openai(client, model: str, prompt_text: str) -> str:
+    response = client.chat.completions.create(
+        model=model,
+        max_tokens=600,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt_text},
+        ],
+    )
+    return response.choices[0].message.content
 
-
-# ── Summary printer ───────────────────────────────────────────────────────────
 
 def print_summary(venues_out: dict, venues: list[dict]) -> None:
     name_map = {v["slug"]: v["venue_name"] for v in venues}
-    ranked = sorted(venues_out.items(), key=lambda x: x[1]["relevant_citation_rate"], reverse=True)
+    ranked = sorted(venues_out.items(), key=lambda x: x[1]["citation_rate"], reverse=True)
+    total = next(iter(venues_out.values()), {}).get("citation_count", 0)
+    n_prompts = len(next(iter(venues_out.values()), {}).get("prompts", []))
 
-    print(f"\n{'Venue':<45} {'All':>7} {'Relevant':>10}  Band")
-    print("─" * 80)
+    print(f"\n{'Venue':<45} {'Cited':>6} {'Rate':>7}  Band")
+    print("─" * 72)
     for slug, r in ranked:
         name = name_map.get(slug, slug)
-        all_r = f"{r['citation_count']}/{r['citation_count'] + len(r['missed_by_prompts'])} ({r['citation_rate']}%)"
-        rel_r = f"{r['relevant_citation_count']}/{len(r['relevant_prompt_ids'])} ({r['relevant_citation_rate']}%)"
-        print(f"{name:<45} {all_r:>12}  {rel_r:>13}  {r['relevant_citation_band']}")
+        rate_str = f"{r['citation_rate']}%"
+        cited_str = f"{r['citation_count']}/{n_prompts}"
+        print(f"{name:<45} {cited_str:>6}  {rate_str:>6}  {r['citation_band']}")
 
-
-# ── CLI ───────────────────────────────────────────────────────────────────────
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Run LLM citation test prompts against the Claude API.",
+        description="Run venue-specific LLM citation prompts.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Show what would run — no API calls, no file writes.",
-    )
-    parser.add_argument(
-        "--provider",
-        default="anthropic",
-        choices=["anthropic", "openai"],
-        help="LLM provider: anthropic (default) or openai",
-    )
-    parser.add_argument(
-        "--model",
-        default="",
-        help="Model name (default: claude-opus-4-5 for anthropic, gpt-4o for openai)",
-    )
-    parser.add_argument(
-        "--debug",
-        action="store_true",
-        help="Save raw LLM responses to data/citation_debug.json for inspection.",
-    )
-    parser.add_argument(
-        "--prompts",
-        default="",
-        help="Comma-separated prompt IDs to run (default: all 20). E.g. p01,p07,p12",
-    )
-    parser.add_argument(
-        "--output",
-        default=str(CITATIONS_FILE),
-        help=f"Output JSON path (default: {CITATIONS_FILE})",
-    )
-    parser.add_argument(
-        "--verbose",
-        action="store_true",
-        help="Print each LLM response in full.",
-    )
-    parser.add_argument(
-        "--rate-limit",
-        type=float,
-        default=0.5,
-        metavar="SECONDS",
-        help="Pause between API calls in seconds (default: 0.5)",
-    )
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Show prompts that would run — no API calls.")
+    parser.add_argument("--provider", default="anthropic", choices=["anthropic", "openai"],
+                        help="LLM provider (default: anthropic)")
+    parser.add_argument("--model", default="",
+                        help="Model name (default: claude-opus-4-5 / gpt-4o)")
+    parser.add_argument("--venue", default="",
+                        help="Run for a single venue slug only (default: all 20)")
+    parser.add_argument("--debug", action="store_true",
+                        help="Save raw LLM responses to data/citation_debug.json")
+    parser.add_argument("--verbose", action="store_true",
+                        help="Print each LLM response to stdout")
+    parser.add_argument("--output", default=str(CITATIONS_FILE),
+                        help=f"Output JSON path (default: {CITATIONS_FILE})")
+    parser.add_argument("--rate-limit", type=float, default=0.5, metavar="SECONDS",
+                        help="Pause between API calls in seconds (default: 0.5)")
     args = parser.parse_args()
 
-    # Load data
-    venues = json.loads(VENUES_FILE.read_text())
+    venues_data = json.loads(VENUES_FILE.read_text())
+    if args.venue:
+        venues_data = [v for v in venues_data if v["slug"] == args.venue]
+        if not venues_data:
+            logger.error("No venue found with slug %r", args.venue)
+            sys.exit(1)
+
+    from llm_simulation.prompts import PROMPT_TEMPLATES
+
+    provider = args.provider
+    model = args.model or ("gpt-4o" if provider == "openai" else "claude-opus-4-5")
     output_path = Path(args.output)
 
+    total_calls = len(venues_data) * len(PROMPT_TEMPLATES)
+
+    # ── Dry run ───────────────────────────────────────────────────────────────
+    if args.dry_run:
+        print(f"\nDry run — {total_calls} API calls ({len(venues_data)} venues × {len(PROMPT_TEMPLATES)} prompts)")
+        print(f"Provider: {provider}  Model: {model}\n")
+        for v in venues_data[:3]:
+            print(f"  {v['venue_name']}:")
+            for t in PROMPT_TEMPLATES[:3]:
+                print(f"    [{t.id}] {t.for_venue(v['venue_name'])}")
+            print(f"    … {len(PROMPT_TEMPLATES) - 3} more prompts")
+        if len(venues_data) > 3:
+            print(f"  … {len(venues_data) - 3} more venues")
+        return
+
+    # ── Set up API client ─────────────────────────────────────────────────────
+    if provider == "anthropic":
+        try:
+            import anthropic
+        except ImportError:
+            raise ImportError("pip install anthropic")
+        api_key = __import__("os").environ.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise EnvironmentError("ANTHROPIC_API_KEY is not set.")
+        client = anthropic.Anthropic(api_key=api_key)
+        call_fn = lambda text: _call_anthropic(client, model, text)
+    else:
+        try:
+            import openai as openai_module
+        except ImportError:
+            raise ImportError("pip install openai")
+        api_key = __import__("os").environ.get("OPENAI_API_KEY")
+        if not api_key:
+            raise EnvironmentError("OPENAI_API_KEY is not set.")
+        client = openai_module.OpenAI(api_key=api_key)
+        call_fn = lambda text: _call_openai(client, model, text)
+
+    import time
+
+    logger.info("Starting run: %d venues × %d prompts = %d calls (%s / %s)",
+                len(venues_data), len(PROMPT_TEMPLATES), total_calls, provider, model)
+
+    # ── Per-venue prompt loop ─────────────────────────────────────────────────
+    debug_log: list[dict] = []
+    venues_out: dict[str, dict] = {}
+    call_n = 0
+    error_count = 0
+
+    # Load existing output so we can merge if running a single venue
     try:
         existing = json.loads(output_path.read_text()) if output_path.exists() else {}
     except json.JSONDecodeError:
         existing = {}
 
-    from llm_simulation.prompts import PROMPTS
+    for v in venues_data:
+        slug = v["slug"]
+        name = v["venue_name"]
+        prompt_results = []
 
-    # Filter prompts if requested
-    if args.prompts:
-        ids = {p.strip() for p in args.prompts.split(",")}
-        prompts = [p for p in PROMPTS if p.id in ids]
-        unknown = ids - {p.id for p in PROMPTS}
-        if unknown:
-            logger.warning("Unknown prompt IDs: %s", ", ".join(sorted(unknown)))
-    else:
-        prompts = PROMPTS
+        for t in PROMPT_TEMPLATES:
+            call_n += 1
+            prompt_text = t.for_venue(name)
+            logger.info("[%d/%d] %s — %s", call_n, total_calls, name, t.id)
 
-    # Resolve model default per provider
-    provider = args.provider
-    if args.model:
-        model = args.model
-    elif provider == "openai":
-        model = "gpt-4o"
-    else:
-        model = "claude-opus-4-5"
+            try:
+                response_text = call_fn(prompt_text)
+            except Exception as exc:
+                logger.error("  FAILED: %s", exc)
+                response_text = f"__ERROR__: {exc}"
+                error_count += 1
 
-    # ── Dry run ───────────────────────────────────────────────────────────────
-    if args.dry_run:
-        print(f"\nDry run — {len(prompts)} prompt(s) would be sent to {model} via {provider}\n")
-        total_monthly = sum(p.monthly_searches for p in prompts)
-        for p in prompts:
-            print(f"  [{p.id}] {p.text}")
-            print(f"         intent={p.intent_category}  region={p.region_filter or 'UK-wide'}  "
-                  f"searches={p.monthly_searches:,}/mo")
-        print(f"\nTotal monthly search coverage: {total_monthly:,}/mo ({total_monthly//30:,}/day)\n")
-        return
+            if response_text.startswith("__ERROR__"):
+                cited = False
+            else:
+                cited = venue_is_cited(response_text, name, slug)
 
-    # ── Live run ──────────────────────────────────────────────────────────────
-    logger.info("Starting citation run: %d prompts, provider=%s, model=%s", len(prompts), provider, model)
+            if args.verbose:
+                logger.info("  Response: %s", response_text[:200])
+            logger.info("  Cited: %s", cited)
 
-    from llm_simulation.runner import run_live
+            if args.debug:
+                debug_log.append({
+                    "venue": slug,
+                    "prompt_id": t.id,
+                    "prompt_text": prompt_text,
+                    "cited": cited,
+                    "response_text": response_text,
+                })
 
-    results = run_live(
-        venues=venues,
-        prompts=prompts,
-        model=model,
-        provider=provider,
-        rate_limit_s=args.rate_limit,
-        verbose=args.verbose,
-    )
+            prompt_results.append({
+                "id": t.id,
+                "text": prompt_text,
+                "monthly_searches": t.monthly_searches,
+                "intent_category": t.intent_category,
+                "topic_tags": t.topic_tags,
+                "cited": cited,
+                "advice": t.advice,
+            })
 
-    # Fail loudly if every call errored — surfaces API key / quota problems
-    error_count = sum(1 for r in results if r.response_text.startswith("__ERROR__"))
-    if error_count == len(results):
-        first_err = next(r.response_text for r in results if r.response_text.startswith("__ERROR__"))
-        logger.error("All %d prompts failed. First error: %s", len(results), first_err)
+            if call_n < total_calls:
+                time.sleep(args.rate_limit)
+
+        citation_count = sum(1 for p in prompt_results if p["cited"])
+        total = len(prompt_results)
+        rate = round(citation_count / total * 100, 1) if total else 0.0
+
+        venues_out[slug] = {
+            "citation_count": citation_count,
+            "citation_rate": rate,
+            "citation_band": citation_band(rate),
+            "prompts": prompt_results,
+        }
+
+    if error_count == total_calls:
+        first_err = next(
+            (d["response_text"] for d in debug_log if d["response_text"].startswith("__ERROR__")),
+            "Unknown error"
+        )
+        logger.error("All %d calls failed. First error: %s", total_calls, first_err)
         sys.exit(1)
     elif error_count:
-        logger.warning("%d/%d prompts failed — partial results written.", error_count, len(results))
+        logger.warning("%d/%d calls failed — partial results written.", error_count, total_calls)
 
-    # ── Debug dump ────────────────────────────────────────────────────────────
     if args.debug:
         debug_path = DATA_DIR / "citation_debug.json"
-        debug_data = [
-            {
-                "prompt_id": r.prompt_id,
-                "prompt_text": r.prompt_text,
-                "venues_cited": r.venues_cited,
-                "response_text": r.response_text,
-            }
-            for r in results
-        ]
-        debug_path.write_text(json.dumps(debug_data, indent=2))
-        logger.info("Debug responses written → %s", debug_path)
+        debug_path.write_text(json.dumps(debug_log, indent=2))
+        logger.info("Debug log → %s", debug_path)
 
-    # If we ran only a subset, merge with existing prompt results
-    if args.prompts and existing.get("prompts"):
-        run_ids = {r.prompt_id for r in results}
-        kept = [p for p in existing["prompts"] if p["id"] not in run_ids]
-        raw_results = [
-            {"prompt_id": r.prompt_id, "prompt_text": r.prompt_text, "venues_cited": r.venues_cited}
-            for r in results
-        ]
-        all_results = kept + [
-            {"prompt_id": p["prompt_id"], "prompt_text": p["text"], "venues_cited": p["venues_cited"]}
-            for p in kept
-        ]
-        # Rebuild properly
-        prompt_results_for_agg = [
-            {"prompt_id": r.prompt_id, "prompt_text": r.prompt_text, "venues_cited": r.venues_cited}
-            for r in results
-        ]
-        # Extend with un-run existing prompts
-        existing_by_id = {p["id"]: p for p in existing.get("prompts", [])}
-        for pid, ep in existing_by_id.items():
-            if pid not in {r.prompt_id for r in results}:
-                prompt_results_for_agg.append({
-                    "prompt_id": pid,
-                    "prompt_text": ep["text"],
-                    "venues_cited": ep.get("venues_cited", []),
-                })
-    else:
-        prompt_results_for_agg = [
-            {"prompt_id": r.prompt_id, "prompt_text": r.prompt_text, "venues_cited": r.venues_cited}
-            for r in results
-        ]
-
-    slugs = [v["slug"] for v in venues]
-    venues_out = aggregate(slugs, prompt_results_for_agg, existing.get("venues", {}))
-    prompts_block = build_prompts_block(prompt_results_for_agg, PROMPTS)
+    # Merge with existing when running a single venue
+    if args.venue and existing.get("venues"):
+        merged = dict(existing["venues"])
+        merged.update(venues_out)
+        venues_out = merged
 
     output = {
         "run_date": str(date.today()),
         "model": f"{provider}/{model}",
-        "total_prompts": len(prompt_results_for_agg),
+        "prompts_per_venue": len(PROMPT_TEMPLATES),
         "venues": venues_out,
-        "prompts": prompts_block,
     }
 
     output_path.write_text(json.dumps(output, indent=2))
     logger.info("Written → %s", output_path)
 
-    print_summary(venues_out, venues)
-    print(f"\nRun date: {output['run_date']}  Model: {args.model}")
+    print_summary(venues_out, json.loads(VENUES_FILE.read_text()))
+    print(f"\nRun date: {output['run_date']}  Model: {model}")
     print(f"Output:   {output_path}\n")
 
 
