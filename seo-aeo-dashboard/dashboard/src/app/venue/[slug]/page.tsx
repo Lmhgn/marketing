@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getVenue, venues } from "@/lib/data";
 import { getVenueHistory, getScoreDeltas } from "@/lib/history";
-import { getVenueCitations, getPromptDetails, citationMeta, citationBandBg } from "@/lib/citations";
+import { getVenueCitations, getPromptDetails, citationMeta, citationBandBg, dailySearches } from "@/lib/citations";
 import { generateMusicVenueSchema, generateFaqSchema } from "@/lib/schema-snippets";
 import { ScoreBadge } from "@/components/ScoreBadge";
 import { RadarChart } from "@/components/RadarChart";
@@ -90,49 +90,83 @@ export default function VenueDetail({ params }: { params: { slug: string } }) {
                 Model: {citationMeta.model} · {citationMeta.total_prompts} test prompts · {citationMeta.run_date}
               </p>
             </div>
-            <span className={`px-2 py-1 rounded text-xs font-medium ${citationBandBg(citations.citation_band)}`}>
-              {citations.citation_band}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className={`px-2 py-1 rounded text-xs font-medium ${citationBandBg(citations.relevant_citation_band)}`}>
+                {citations.relevant_citation_band}
+              </span>
+              <Link
+                href={`/venue/${params.slug}/citations`}
+                className="text-xs text-blue-600 hover:underline whitespace-nowrap"
+              >
+                Full report →
+              </Link>
+            </div>
           </div>
-          <div className="mb-4">
+
+          {/* Relevant citation rate (primary) */}
+          <div className="mb-3">
+            <p className="text-xs text-slate-500 mb-1">
+              Relevant citation rate — {citations.relevant_citation_count}/{citations.relevant_prompt_ids.length} applicable queries
+            </p>
             <CitationBar
-              rate={citations.citation_rate}
-              band={citations.citation_band}
-              count={citations.citation_count}
-              total={citationMeta.total_prompts}
+              rate={citations.relevant_citation_rate}
+              band={citations.relevant_citation_band}
+              count={citations.relevant_citation_count}
+              total={citations.relevant_prompt_ids.length}
             />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            {citedPrompts.length > 0 && (
+
+          {/* Top cited + top missed — only relevant prompts */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mt-4">
+            {citedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length > 0 && (
               <div>
                 <p className="font-medium text-emerald-700 mb-2">
-                  Cited in {citedPrompts.length} prompt{citedPrompts.length !== 1 ? "s" : ""}
+                  Cited in {citedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length} relevant prompt{citedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length !== 1 ? "s" : ""}
                 </p>
                 <ul className="space-y-1.5">
-                  {citedPrompts.map(p => (
+                  {citedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).map(p => (
                     <li key={p.id} className="flex gap-2">
-                      <span className="text-emerald-500 mt-0.5">✓</span>
-                      <span className="text-slate-600">{p.text}</span>
+                      <span className="text-emerald-500 mt-0.5 shrink-0">✓</span>
+                      <div>
+                        <span className="text-slate-600">{p.text}</span>
+                        {p.monthly_searches && (
+                          <span className="ml-1.5 text-slate-400">{dailySearches(p.monthly_searches)}</span>
+                        )}
+                      </div>
                     </li>
                   ))}
                 </ul>
               </div>
             )}
-            {missedPrompts.length > 0 && (
+            {missedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length > 0 && (
               <div>
                 <p className="font-medium text-red-600 mb-2">
-                  Missed in {missedPrompts.length} prompt{missedPrompts.length !== 1 ? "s" : ""}
+                  Missed in {missedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length} relevant prompt{missedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).length !== 1 ? "s" : ""}
                 </p>
                 <ul className="space-y-1.5">
-                  {missedPrompts.map(p => (
+                  {missedPrompts.filter(p => citations.relevant_prompt_ids.includes(p.id)).slice(0, 5).map(p => (
                     <li key={p.id} className="flex gap-2">
-                      <span className="text-red-400 mt-0.5">✗</span>
-                      <span className="text-slate-500">{p.text}</span>
+                      <span className="text-red-400 mt-0.5 shrink-0">✗</span>
+                      <div>
+                        <span className="text-slate-500">{p.text}</span>
+                        {p.monthly_searches && (
+                          <span className="ml-1.5 text-slate-400">{dailySearches(p.monthly_searches)}</span>
+                        )}
+                      </div>
                     </li>
                   ))}
                 </ul>
               </div>
             )}
+          </div>
+
+          <div className="mt-3 pt-3 border-t border-slate-100">
+            <Link
+              href={`/venue/${params.slug}/citations`}
+              className="text-xs text-blue-600 hover:underline"
+            >
+              View full citation report — all {citationMeta.total_prompts} prompts, search volumes &amp; gap analysis →
+            </Link>
           </div>
         </section>
       )}
