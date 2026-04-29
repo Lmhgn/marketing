@@ -1,6 +1,6 @@
 {
   "run_date": "2026-04-29",
-  "model": "claude-opus-4-5",
+  "model": "openai/gpt-4o",
   "total_prompts": 20,
   "venues": {
     "o2-academy-brixton": {
