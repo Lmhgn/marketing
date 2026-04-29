@@ -87,22 +87,32 @@ export function citationBandBg(band: string): string {
 
 export function intentLabel(category: string): string {
   const map: Record<string, string> = {
-    location:   "Location",
-    genre:      "Genre / Style",
-    experience: "Experience",
-    touring:    "Tour Planning",
-    discovery:  "Discovery",
+    "venue-info":  "Venue Info",
+    "transport":   "Getting There",
+    "planning":    "Visit Planning",
+    "tickets":     "Tickets & Events",
+    // legacy discovery prompts
+    location:      "Location",
+    genre:         "Genre / Style",
+    experience:    "Experience",
+    touring:       "Tour Planning",
+    discovery:     "Discovery",
   };
   return map[category] ?? category;
 }
 
 export function intentColor(category: string): string {
   const map: Record<string, string> = {
-    location:   "bg-blue-100 text-blue-700",
-    genre:      "bg-purple-100 text-purple-700",
-    experience: "bg-teal-100 text-teal-700",
-    touring:    "bg-amber-100 text-amber-700",
-    discovery:  "bg-emerald-100 text-emerald-700",
+    "venue-info":  "bg-blue-100 text-blue-700",
+    "transport":   "bg-teal-100 text-teal-700",
+    "planning":    "bg-amber-100 text-amber-700",
+    "tickets":     "bg-purple-100 text-purple-700",
+    // legacy
+    location:      "bg-blue-100 text-blue-700",
+    genre:         "bg-purple-100 text-purple-700",
+    experience:    "bg-teal-100 text-teal-700",
+    touring:       "bg-amber-100 text-amber-700",
+    discovery:     "bg-emerald-100 text-emerald-700",
   };
   return map[category] ?? "bg-slate-100 text-slate-600";
 }

@@ -16,7 +16,7 @@ export function generateStaticParams() {
   return venues.map(v => ({ slug: v.slug }));
 }
 
-const INTENT_ORDER = ["location", "experience", "touring", "genre", "discovery"];
+const INTENT_ORDER = ["venue-info", "transport", "planning", "tickets", "location", "experience", "touring", "genre", "discovery"];
 
 export default function CitationsDetail({ params }: { params: { slug: string } }) {
   const venue = venues.find(v => v.slug === params.slug);
