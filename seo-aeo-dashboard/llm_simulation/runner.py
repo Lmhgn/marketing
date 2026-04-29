@@ -1,20 +1,24 @@
 """
 LLM citation runner — sends each prompt to the Claude API and detects
-which venues are mentioned in each response.
+which O2/AMG venues are mentioned in each response.
+
+Detection strategy:
+  Each venue has a list of known name aliases (official name, common
+  shortforms, bare names without the O2 prefix). The runner checks the
+  LLM response against every alias using simple substring matching.
+  This is more reliable than asking the LLM to output JSON because it
+  captures partial name references ("Brixton Academy", "the Apollo", etc.)
 
 Requirements:
     pip install anthropic
     export ANTHROPIC_API_KEY=sk-ant-...
-
-Usage:
-    from llm_simulation.runner import run_simulation
-    results = run_simulation(venues, prompts, model="claude-opus-4-5")
 """
 
 import os
 import re
+import time
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from .prompts import Prompt
 
@@ -22,12 +26,91 @@ logger = logging.getLogger(__name__)
 
 DEFAULT_MODEL = "claude-opus-4-5"
 
-# System prompt that keeps responses grounded and citable
 SYSTEM_PROMPT = (
-    "You are a knowledgeable music industry assistant. Answer questions about "
-    "UK live music venues accurately and concisely. Name specific venues where "
-    "relevant. Do not invent venues that do not exist."
+    "You are a knowledgeable UK music industry expert. "
+    "Answer questions about live music venues accurately, helpfully, and concisely. "
+    "Name specific real venues where relevant. Do not invent venues."
 )
+
+# Known alias forms for each venue slug.
+# Add any common shortform names the public uses.
+VENUE_ALIASES: dict[str, list[str]] = {
+    "o2-academy-brixton": [
+        "o2 academy brixton", "brixton academy", "o2 brixton",
+        "academy brixton", "brixton o2",
+    ],
+    "o2-academy-islington": [
+        "o2 academy islington", "islington academy", "academy islington",
+    ],
+    "o2-forum-kentish-town": [
+        "o2 forum kentish town", "forum kentish town", "kentish town forum",
+        "o2 forum",
+    ],
+    "o2-shepherds-bush-empire": [
+        "o2 shepherd's bush empire", "o2 shepherds bush empire",
+        "shepherd's bush empire", "shepherds bush empire", "bush empire",
+    ],
+    "o2-academy-birmingham": [
+        "o2 academy birmingham", "birmingham academy", "academy birmingham",
+        "o2 birmingham",
+    ],
+    "o2-institute-birmingham": [
+        "o2 institute birmingham", "institute birmingham",
+        "birmingham institute",
+    ],
+    "o2-academy-leicester": [
+        "o2 academy leicester", "leicester academy", "academy leicester",
+    ],
+    "o2-academy-oxford": [
+        "o2 academy oxford", "oxford academy", "academy oxford",
+    ],
+    "o2-academy-bournemouth": [
+        "o2 academy bournemouth", "bournemouth academy", "academy bournemouth",
+    ],
+    "o2-academy-bristol": [
+        "o2 academy bristol", "bristol academy", "academy bristol",
+        "o2 bristol",
+    ],
+    "o2-guildhall-southampton": [
+        "o2 guildhall southampton", "guildhall southampton",
+        "southampton guildhall",
+    ],
+    "o2-academy-liverpool": [
+        "o2 academy liverpool", "liverpool academy", "academy liverpool",
+        "o2 liverpool",
+    ],
+    "o2-ritz-manchester": [
+        "o2 ritz manchester", "ritz manchester", "the ritz manchester",
+        "manchester ritz",
+    ],
+    "o2-victoria-warehouse-manchester": [
+        "o2 victoria warehouse manchester", "victoria warehouse manchester",
+        "victoria warehouse", "o2 victoria warehouse",
+    ],
+    "o2-apollo-manchester": [
+        "o2 apollo manchester", "apollo manchester", "manchester apollo",
+        "the apollo manchester", "o2 apollo",
+    ],
+    "o2-academy-leeds": [
+        "o2 academy leeds", "leeds academy", "academy leeds", "o2 leeds",
+    ],
+    "o2-academy-sheffield": [
+        "o2 academy sheffield", "sheffield academy", "academy sheffield",
+        "o2 sheffield",
+    ],
+    "o2-city-hall-newcastle": [
+        "o2 city hall newcastle", "city hall newcastle", "newcastle city hall",
+        "o2 newcastle",
+    ],
+    "o2-academy-glasgow": [
+        "o2 academy glasgow", "glasgow academy", "academy glasgow",
+        "o2 glasgow",
+    ],
+    "edinburgh-corn-exchange": [
+        "edinburgh corn exchange", "corn exchange edinburgh",
+        "corn exchange",
+    ],
+}
 
 
 @dataclass
@@ -35,57 +118,59 @@ class PromptResult:
     prompt_id: str
     prompt_text: str
     response_text: str
-    venues_cited: list[str]   # slugs
+    venues_cited: list[str] = field(default_factory=list)
 
 
-def _detect_citations(response: str, venues: list[dict]) -> list[str]:
-    """Return slugs of venues whose name appears in the response."""
-    cited = []
+def detect_citations(response: str, venue_slugs: list[str]) -> list[str]:
+    """Return slugs of venues whose name (or alias) appears in the response."""
     lower = response.lower()
-    for v in venues:
-        # Try full name and common short forms
-        name = v["name"].lower()
-        slug_words = v["slug"].replace("-", " ")
-        if name in lower or slug_words in lower:
-            cited.append(v["slug"])
-            continue
-        # Also match bare venue name without brand prefix (e.g. "Brixton Academy")
-        bare = re.sub(r"^o2\s+", "", name).strip()
-        if bare and bare in lower:
-            cited.append(v["slug"])
-    return list(set(cited))
+    cited = []
+    for slug in venue_slugs:
+        aliases = VENUE_ALIASES.get(slug, [slug.replace("-", " ")])
+        for alias in aliases:
+            if alias in lower:
+                cited.append(slug)
+                break
+    return cited
 
 
-def run_simulation(
+def run_live(
     venues: list[dict],
     prompts: list[Prompt],
     model: str = DEFAULT_MODEL,
+    rate_limit_s: float = 0.5,
+    verbose: bool = False,
 ) -> list[PromptResult]:
     """
-    Run every prompt against the Claude API and return citation results.
+    Run prompts against the Claude API. Returns PromptResult for each prompt.
     Raises EnvironmentError if ANTHROPIC_API_KEY is not set.
     """
     try:
         import anthropic
     except ImportError:
-        raise ImportError("anthropic package required: pip install anthropic")
+        raise ImportError(
+            "anthropic package required: pip install anthropic"
+        )
 
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         raise EnvironmentError(
-            "ANTHROPIC_API_KEY environment variable is not set. "
-            "Run generate_citation_sample.py to produce sample data without an API key."
+            "ANTHROPIC_API_KEY environment variable is not set.\n"
+            "  Export it with: export ANTHROPIC_API_KEY=sk-ant-...\n"
+            "  Or run generate_citation_sample.py for offline simulation."
         )
 
     client = anthropic.Anthropic(api_key=api_key)
+    slugs = [v["slug"] for v in venues]
     results: list[PromptResult] = []
 
-    for prompt in prompts:
-        logger.info("Running prompt %s: %s", prompt.id, prompt.text[:60])
+    for i, prompt in enumerate(prompts):
+        logger.info("[%d/%d] %s: %s", i + 1, len(prompts), prompt.id, prompt.text[:70])
+
         try:
             message = client.messages.create(
                 model=model,
-                max_tokens=800,
+                max_tokens=600,
                 system=SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": prompt.text}],
             )
@@ -94,17 +179,20 @@ def run_simulation(
             logger.warning("Prompt %s failed: %s", prompt.id, exc)
             response_text = ""
 
-        cited = _detect_citations(response_text, venues)
-        logger.info(
-            "  → %d venue(s) cited: %s",
-            len(cited),
-            ", ".join(cited) if cited else "none",
-        )
+        cited = detect_citations(response_text, slugs)
+
+        if verbose:
+            logger.info("  Response: %s", response_text[:200].replace("\n", " "))
+        logger.info("  Cited: %s", ", ".join(cited) if cited else "none")
+
         results.append(PromptResult(
             prompt_id=prompt.id,
             prompt_text=prompt.text,
             response_text=response_text,
             venues_cited=cited,
         ))
+
+        if i < len(prompts) - 1:
+            time.sleep(rate_limit_s)
 
     return results
