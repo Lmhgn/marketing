@@ -4,58 +4,68 @@
   "total_prompts": 20,
   "venues": {
     "o2-academy-brixton": {
-      "citation_count": 6,
-      "citation_rate": 30.0,
-      "citation_band": "moderate",
+      "citation_count": 4,
+      "citation_rate": 20.0,
+      "citation_band": "weak",
       "cited_by_prompts": [
-        "p01",
-        "p03",
+        "p06",
         "p07",
-        "p08",
-        "p13",
-        "p18"
+        "p10",
+        "p20"
       ],
       "missed_by_prompts": [
+        "p01",
         "p02",
+        "p03",
         "p04",
         "p05",
-        "p06",
+        "p08",
         "p09",
-        "p10",
         "p11",
         "p12",
+        "p13",
         "p14",
         "p15",
         "p16",
         "p17",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p04",
-        "p07",
-        "p08",
-        "p12",
-        "p13",
         "p18",
         "p19"
       ],
-      "relevant_citation_count": 5,
-      "relevant_citation_rate": 62.5,
-      "relevant_citation_band": "good",
+      "relevant_prompt_ids": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p06",
+        "p07",
+        "p10",
+        "p19",
+        "p20"
+      ],
+      "relevant_citation_count": 4,
+      "relevant_citation_rate": 40.0,
+      "relevant_citation_band": "moderate",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
+          "prompt_id": "p03",
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+        },
+        {
           "prompt_id": "p04",
-          "advice": "Add explicit capacity figures to structured data (MusicVenue schema) and headline copy. Tour promoters search by capacity range."
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p19",
-          "advice": "Add content on audio engineering, PA system specs, or 'sound quality' testimonials."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
@@ -88,12 +98,12 @@
       ],
       "relevant_prompt_ids": [
         "p01",
-        "p07",
-        "p08",
-        "p11",
-        "p12",
-        "p13",
-        "p19"
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p19",
+        "p20"
       ],
       "relevant_citation_count": 0,
       "relevant_citation_rate": 0.0,
@@ -101,31 +111,33 @@
       "gap_analysis": [
         {
           "prompt_id": "p01",
-          "advice": "Strengthen London-specific content: add capacity, location benefits, and transport. MusicVenue schema with sameAs Wikidata/Wikipedia helps LLMs surface you for London queries."
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
         },
         {
-          "prompt_id": "p07",
-          "advice": "Create a 'major UK tour stops' landing page. Ensure the venue appears in venue databases used by tour routing tools."
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
         },
         {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
+          "prompt_id": "p03",
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p11",
-          "advice": "Add standing capacity, GA floor details, and 'intimate standing experience' copy to the venue page."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
     "o2-forum-kentish-town": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
+      "citation_count": 1,
+      "citation_rate": 5.0,
       "citation_band": "critical",
-      "cited_by_prompts": [],
+      "cited_by_prompts": [
+        "p08"
+      ],
       "missed_by_prompts": [
         "p01",
         "p02",
@@ -134,7 +146,6 @@
         "p05",
         "p06",
         "p07",
-        "p08",
         "p09",
         "p10",
         "p11",
@@ -150,35 +161,37 @@
       ],
       "relevant_prompt_ids": [
         "p01",
-        "p07",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
         "p08",
-        "p12",
-        "p13",
-        "p19"
+        "p19",
+        "p20"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 12.5,
+      "relevant_citation_band": "weak",
       "gap_analysis": [
         {
           "prompt_id": "p01",
-          "advice": "Strengthen London-specific content: add capacity, location benefits, and transport. MusicVenue schema with sameAs Wikidata/Wikipedia helps LLMs surface you for London queries."
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
         },
         {
-          "prompt_id": "p07",
-          "advice": "Create a 'major UK tour stops' landing page. Ensure the venue appears in venue databases used by tour routing tools."
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
         },
         {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
+          "prompt_id": "p03",
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
@@ -187,9 +200,10 @@
       "citation_rate": 5.0,
       "citation_band": "critical",
       "cited_by_prompts": [
-        "p01"
+        "p09"
       ],
       "missed_by_prompts": [
+        "p01",
         "p02",
         "p03",
         "p04",
@@ -197,7 +211,6 @@
         "p06",
         "p07",
         "p08",
-        "p09",
         "p10",
         "p11",
         "p12",
@@ -212,52 +225,54 @@
       ],
       "relevant_prompt_ids": [
         "p01",
-        "p07",
-        "p08",
-        "p12",
-        "p13",
-        "p19"
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p09",
+        "p19",
+        "p20"
       ],
       "relevant_citation_count": 1,
-      "relevant_citation_rate": 16.7,
+      "relevant_citation_rate": 12.5,
       "relevant_citation_band": "weak",
       "gap_analysis": [
         {
-          "prompt_id": "p07",
-          "advice": "Create a 'major UK tour stops' landing page. Ensure the venue appears in venue databases used by tour routing tools."
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
         },
         {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
         },
         {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
+          "prompt_id": "p03",
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p19",
-          "advice": "Add content on audio engineering, PA system specs, or 'sound quality' testimonials."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
     "o2-academy-birmingham": {
-      "citation_count": 3,
-      "citation_rate": 15.0,
-      "citation_band": "weak",
+      "citation_count": 1,
+      "citation_rate": 5.0,
+      "citation_band": "critical",
       "cited_by_prompts": [
-        "p04",
-        "p06",
-        "p15"
+        "p14"
       ],
       "missed_by_prompts": [
         "p01",
         "p02",
         "p03",
+        "p04",
         "p05",
+        "p06",
         "p07",
         "p08",
         "p09",
@@ -265,7 +280,7 @@
         "p11",
         "p12",
         "p13",
-        "p14",
+        "p15",
         "p16",
         "p17",
         "p18",
@@ -273,37 +288,38 @@
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
+        "p02",
         "p03",
-        "p06",
-        "p08",
-        "p12",
-        "p13",
-        "p15",
-        "p18"
+        "p04",
+        "p05",
+        "p14",
+        "p19",
+        "p20"
       ],
-      "relevant_citation_count": 2,
-      "relevant_citation_rate": 28.6,
-      "relevant_citation_band": "moderate",
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 12.5,
+      "relevant_citation_band": "weak",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
           "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
-        },
-        {
-          "prompt_id": "p18",
-          "advice": "Add capacity figures prominently in title tags, meta descriptions, and structured data."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
@@ -335,12 +351,13 @@
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
+        "p02",
         "p03",
-        "p06",
-        "p08",
-        "p11",
-        "p12",
-        "p15",
+        "p04",
+        "p05",
+        "p14",
+        "p19",
         "p20"
       ],
       "relevant_citation_count": 0,
@@ -348,24 +365,24 @@
       "relevant_citation_band": "critical",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
           "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p06",
-          "advice": "Target 'Birmingham nightlife' and 'Birmingham gig venues' content clusters. Local citations on Yelp/TripAdvisor help GEO."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p11",
-          "advice": "Add standing capacity, GA floor details, and 'intimate standing experience' copy to the venue page."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
@@ -397,10 +414,12 @@
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
+        "p02",
         "p03",
-        "p11",
-        "p12",
-        "p13",
+        "p04",
+        "p05",
+        "p19",
         "p20"
       ],
       "relevant_citation_count": 0,
@@ -408,24 +427,24 @@
       "relevant_citation_band": "critical",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
           "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p11",
-          "advice": "Add standing capacity, GA floor details, and 'intimate standing experience' copy to the venue page."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
-        },
-        {
-          "prompt_id": "p20",
-          "advice": "Partner with emerging artist blogs and publish 'ones to watch' content to signal discovery intent."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
@@ -457,35 +476,37 @@
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
+        "p02",
         "p03",
-        "p08",
-        "p11",
-        "p12",
-        "p13"
+        "p04",
+        "p05",
+        "p19",
+        "p20"
       ],
       "relevant_citation_count": 0,
       "relevant_citation_rate": 0.0,
       "relevant_citation_band": "critical",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
           "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p11",
-          "advice": "Add standing capacity, GA floor details, and 'intimate standing experience' copy to the venue page."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
@@ -517,11 +538,12 @@
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
+        "p02",
         "p03",
-        "p09",
-        "p11",
-        "p12",
-        "p18",
+        "p04",
+        "p05",
+        "p19",
         "p20"
       ],
       "relevant_citation_count": 0,
@@ -529,24 +551,24 @@
       "relevant_citation_band": "critical",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
           "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p09",
-          "advice": "Add Bristol-focused content; link from Visit Bristol tourism sites; create a 'how to get here from Bristol' page."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p11",
-          "advice": "Add standing capacity, GA floor details, and 'intimate standing experience' copy to the venue page."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p18",
-          "advice": "Add capacity figures prominently in title tags, meta descriptions, and structured data."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
@@ -555,12 +577,13 @@
       "citation_rate": 5.0,
       "citation_band": "critical",
       "cited_by_prompts": [
-        "p04"
+        "p18"
       ],
       "missed_by_prompts": [
         "p01",
         "p02",
         "p03",
+        "p04",
         "p05",
         "p06",
         "p07",
@@ -574,42 +597,42 @@
         "p15",
         "p16",
         "p17",
-        "p18",
         "p19",
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
+        "p02",
         "p03",
-        "p09",
-        "p11",
-        "p12",
-        "p13",
+        "p04",
+        "p05",
         "p18",
+        "p19",
         "p20"
       ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 12.5,
+      "relevant_citation_band": "weak",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
           "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p09",
-          "advice": "Add Bristol-focused content; link from Visit Bristol tourism sites; create a 'how to get here from Bristol' page."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p11",
-          "advice": "Add standing capacity, GA floor details, and 'intimate standing experience' copy to the venue page."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
@@ -641,40 +664,294 @@
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
+        "p02",
         "p03",
-        "p08",
-        "p09",
-        "p12",
-        "p13",
-        "p18"
+        "p04",
+        "p05",
+        "p19",
+        "p20"
       ],
       "relevant_citation_count": 0,
       "relevant_citation_rate": 0.0,
       "relevant_citation_band": "critical",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
           "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p09",
-          "advice": "Add Bristol-focused content; link from Visit Bristol tourism sites; create a 'how to get here from Bristol' page."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
     "o2-academy-liverpool": {
+      "citation_count": 0,
+      "citation_rate": 0.0,
+      "citation_band": "critical",
+      "cited_by_prompts": [],
+      "missed_by_prompts": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p06",
+        "p07",
+        "p08",
+        "p09",
+        "p10",
+        "p11",
+        "p12",
+        "p13",
+        "p14",
+        "p15",
+        "p16",
+        "p17",
+        "p18",
+        "p19",
+        "p20"
+      ],
+      "relevant_prompt_ids": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p19",
+        "p20"
+      ],
+      "relevant_citation_count": 0,
+      "relevant_citation_rate": 0.0,
+      "relevant_citation_band": "critical",
+      "gap_analysis": [
+        {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
+          "prompt_id": "p03",
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+        },
+        {
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+        },
+        {
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+        }
+      ]
+    },
+    "o2-ritz-manchester": {
+      "citation_count": 0,
+      "citation_rate": 0.0,
+      "citation_band": "critical",
+      "cited_by_prompts": [],
+      "missed_by_prompts": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p06",
+        "p07",
+        "p08",
+        "p09",
+        "p10",
+        "p11",
+        "p12",
+        "p13",
+        "p14",
+        "p15",
+        "p16",
+        "p17",
+        "p18",
+        "p19",
+        "p20"
+      ],
+      "relevant_prompt_ids": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p19",
+        "p20"
+      ],
+      "relevant_citation_count": 0,
+      "relevant_citation_rate": 0.0,
+      "relevant_citation_band": "critical",
+      "gap_analysis": [
+        {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
+          "prompt_id": "p03",
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+        },
+        {
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+        },
+        {
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+        }
+      ]
+    },
+    "o2-victoria-warehouse-manchester": {
+      "citation_count": 1,
+      "citation_rate": 5.0,
+      "citation_band": "critical",
+      "cited_by_prompts": [
+        "p13"
+      ],
+      "missed_by_prompts": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p06",
+        "p07",
+        "p08",
+        "p09",
+        "p10",
+        "p11",
+        "p12",
+        "p14",
+        "p15",
+        "p16",
+        "p17",
+        "p18",
+        "p19",
+        "p20"
+      ],
+      "relevant_prompt_ids": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p13",
+        "p19",
+        "p20"
+      ],
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 12.5,
+      "relevant_citation_band": "weak",
+      "gap_analysis": [
+        {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
+          "prompt_id": "p03",
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+        },
+        {
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+        },
+        {
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+        }
+      ]
+    },
+    "o2-apollo-manchester": {
+      "citation_count": 2,
+      "citation_rate": 10.0,
+      "citation_band": "weak",
+      "cited_by_prompts": [
+        "p11",
+        "p12"
+      ],
+      "missed_by_prompts": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p06",
+        "p07",
+        "p08",
+        "p09",
+        "p10",
+        "p13",
+        "p14",
+        "p15",
+        "p16",
+        "p17",
+        "p18",
+        "p19",
+        "p20"
+      ],
+      "relevant_prompt_ids": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p11",
+        "p12",
+        "p19",
+        "p20"
+      ],
+      "relevant_citation_count": 2,
+      "relevant_citation_rate": 22.2,
+      "relevant_citation_band": "weak",
+      "gap_analysis": [
+        {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
+          "prompt_id": "p03",
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+        },
+        {
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+        },
+        {
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+        }
+      ]
+    },
+    "o2-academy-leeds": {
       "citation_count": 1,
       "citation_rate": 5.0,
       "citation_band": "critical",
@@ -703,105 +980,42 @@
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
+        "p02",
         "p03",
         "p04",
-        "p08",
-        "p12",
-        "p13",
-        "p17",
-        "p18"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 14.3,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
-        {
-          "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
-        },
-        {
-          "prompt_id": "p04",
-          "advice": "Add explicit capacity figures to structured data (MusicVenue schema) and headline copy. Tour promoters search by capacity range."
-        },
-        {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
-        }
-      ]
-    },
-    "o2-ritz-manchester": {
-      "citation_count": 2,
-      "citation_rate": 10.0,
-      "citation_band": "weak",
-      "cited_by_prompts": [
-        "p02",
-        "p03"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p04",
         "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
         "p17",
-        "p18",
         "p19",
         "p20"
       ],
-      "relevant_prompt_ids": [
-        "p02",
-        "p03",
-        "p04",
-        "p08",
-        "p12",
-        "p13",
-        "p14",
-        "p18"
-      ],
-      "relevant_citation_count": 2,
-      "relevant_citation_rate": 25.0,
-      "relevant_citation_band": "moderate",
+      "relevant_citation_count": 1,
+      "relevant_citation_rate": 12.5,
+      "relevant_citation_band": "weak",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
+          "prompt_id": "p03",
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+        },
+        {
           "prompt_id": "p04",
-          "advice": "Add explicit capacity figures to structured data (MusicVenue schema) and headline copy. Tour promoters search by capacity range."
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
-        },
-        {
-          "prompt_id": "p14",
-          "advice": "Publish content around electronic/dance events, DJ residencies, and club nights at the venue."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
-    "o2-victoria-warehouse-manchester": {
+    "o2-academy-sheffield": {
       "citation_count": 0,
       "citation_rate": 0.0,
       "citation_band": "critical",
@@ -829,242 +1043,50 @@
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
         "p02",
         "p03",
         "p04",
-        "p08",
-        "p11",
-        "p12",
-        "p13",
-        "p14"
+        "p05",
+        "p19",
+        "p20"
       ],
       "relevant_citation_count": 0,
       "relevant_citation_rate": 0.0,
       "relevant_citation_band": "critical",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
           "prompt_id": "p02",
-          "advice": "Add Manchester-specific content covering the venue's role in the city's music scene, transport links, and event history."
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
         },
         {
           "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
           "prompt_id": "p04",
-          "advice": "Add explicit capacity figures to structured data (MusicVenue schema) and headline copy. Tour promoters search by capacity range."
-        },
-        {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p11",
-          "advice": "Add standing capacity, GA floor details, and 'intimate standing experience' copy to the venue page."
-        }
-      ]
-    },
-    "o2-apollo-manchester": {
-      "citation_count": 1,
-      "citation_rate": 5.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [
-        "p04"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p08",
-        "p12",
-        "p13",
-        "p14",
-        "p18"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 11.1,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
-        {
-          "prompt_id": "p02",
-          "advice": "Add Manchester-specific content covering the venue's role in the city's music scene, transport links, and event history."
-        },
-        {
-          "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
           "prompt_id": "p05",
-          "advice": "Add Scotland-specific landing page content; link from VisitScotland and local tourism directories."
-        },
-        {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        }
-      ]
-    },
-    "o2-academy-leeds": {
-      "citation_count": 2,
-      "citation_rate": 10.0,
-      "citation_band": "weak",
-      "cited_by_prompts": [
-        "p04",
-        "p10"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p03",
-        "p04",
-        "p08",
-        "p10",
-        "p12",
-        "p13",
-        "p18"
-      ],
-      "relevant_citation_count": 2,
-      "relevant_citation_rate": 28.6,
-      "relevant_citation_band": "moderate",
-      "gap_analysis": [
-        {
-          "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
-        },
-        {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
-        },
-        {
-          "prompt_id": "p18",
-          "advice": "Add capacity figures prominently in title tags, meta descriptions, and structured data."
-        }
-      ]
-    },
-    "o2-academy-sheffield": {
-      "citation_count": 1,
-      "citation_rate": 5.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [
-        "p10"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p03",
-        "p08",
-        "p10",
-        "p12",
-        "p13",
-        "p18"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 16.7,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
-        {
-          "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
-        },
-        {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
-        },
-        {
-          "prompt_id": "p18",
-          "advice": "Add capacity figures prominently in title tags, meta descriptions, and structured data."
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
     "o2-city-hall-newcastle": {
-      "citation_count": 1,
-      "citation_rate": 5.0,
+      "citation_count": 0,
+      "citation_rate": 0.0,
       "citation_band": "critical",
-      "cited_by_prompts": [
-        "p04"
-      ],
+      "cited_by_prompts": [],
       "missed_by_prompts": [
         "p01",
         "p02",
         "p03",
+        "p04",
         "p05",
         "p06",
         "p07",
@@ -1083,35 +1105,37 @@
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
+        "p02",
         "p03",
-        "p08",
-        "p12",
-        "p13",
-        "p18"
+        "p04",
+        "p05",
+        "p19",
+        "p20"
       ],
       "relevant_citation_count": 0,
       "relevant_citation_rate": 0.0,
       "relevant_citation_band": "critical",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
           "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
         },
         {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
-        },
-        {
-          "prompt_id": "p18",
-          "advice": "Add capacity figures prominently in title tags, meta descriptions, and structured data."
+          "prompt_id": "p05",
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
@@ -1120,13 +1144,14 @@
       "citation_rate": 10.0,
       "citation_band": "weak",
       "cited_by_prompts": [
-        "p04",
-        "p16"
+        "p16",
+        "p20"
       ],
       "missed_by_prompts": [
         "p01",
         "p02",
         "p03",
+        "p04",
         "p05",
         "p06",
         "p07",
@@ -1140,40 +1165,41 @@
         "p15",
         "p17",
         "p18",
+        "p19"
+      ],
+      "relevant_prompt_ids": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
+        "p05",
+        "p16",
         "p19",
         "p20"
       ],
-      "relevant_prompt_ids": [
-        "p03",
-        "p05",
-        "p08",
-        "p12",
-        "p13",
-        "p16"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 16.7,
-      "relevant_citation_band": "weak",
+      "relevant_citation_count": 2,
+      "relevant_citation_rate": 25.0,
+      "relevant_citation_band": "moderate",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
           "prompt_id": "p03",
-          "advice": "Publish editorial content on the indie/alternative acts the venue has hosted. Blog posts and artist Q&As improve topical authority."
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+        },
+        {
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
         },
         {
           "prompt_id": "p05",
-          "advice": "Add Scotland-specific landing page content; link from VisitScotland and local tourism directories."
-        },
-        {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     },
@@ -1182,7 +1208,7 @@
       "citation_rate": 5.0,
       "citation_band": "critical",
       "cited_by_prompts": [
-        "p18"
+        "p15"
       ],
       "missed_by_prompts": [
         "p01",
@@ -1199,38 +1225,45 @@
         "p12",
         "p13",
         "p14",
-        "p15",
         "p16",
         "p17",
+        "p18",
         "p19",
         "p20"
       ],
       "relevant_prompt_ids": [
+        "p01",
+        "p02",
+        "p03",
+        "p04",
         "p05",
-        "p08",
-        "p12",
-        "p13",
-        "p18"
+        "p15",
+        "p19",
+        "p20"
       ],
       "relevant_citation_count": 1,
-      "relevant_citation_rate": 20.0,
+      "relevant_citation_rate": 12.5,
       "relevant_citation_band": "weak",
       "gap_analysis": [
         {
+          "prompt_id": "p01",
+          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+        },
+        {
+          "prompt_id": "p02",
+          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+        },
+        {
+          "prompt_id": "p03",
+          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+        },
+        {
+          "prompt_id": "p04",
+          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+        },
+        {
           "prompt_id": "p05",
-          "advice": "Add Scotland-specific landing page content; link from VisitScotland and local tourism directories."
-        },
-        {
-          "prompt_id": "p08",
-          "advice": "Publish venue history content (founding year, iconic shows, notable milestones). These signals power 'iconic venue' citations."
-        },
-        {
-          "prompt_id": "p12",
-          "advice": "Add capacity and 'stadium alternative' framing to structured data and hero copy. Target 'non-arena venues' keyword cluster."
-        },
-        {
-          "prompt_id": "p13",
-          "advice": "Create genre-specific landing content: list notable rock/metal acts who have performed at the venue."
+          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
         }
       ]
     }
@@ -1238,269 +1271,281 @@
   "prompts": [
     {
       "id": "p01",
-      "text": "What are the best music venues in London for mid-size concerts?",
-      "venues_cited": [
-        "o2-academy-brixton",
-        "o2-shepherds-bush-empire"
-      ],
-      "monthly_searches": 22000,
-      "intent_category": "location",
+      "text": "What is the bag policy at O2 Academy venues \u2014 what can I bring to a concert?",
+      "venues_cited": [],
+      "monthly_searches": 3200,
+      "intent_category": "venue-info",
       "topic_tags": [
-        "london",
-        "mid-size",
-        "concerts"
+        "bag-policy",
+        "o2-academy",
+        "uk-wide"
       ]
     },
     {
       "id": "p02",
-      "text": "Where can I see live music in Manchester? Looking for a great atmosphere.",
-      "venues_cited": [
-        "o2-ritz-manchester"
-      ],
-      "monthly_searches": 9400,
-      "intent_category": "location",
+      "text": "What are the age restrictions at O2 Academy venues in the UK?",
+      "venues_cited": [],
+      "monthly_searches": 2800,
+      "intent_category": "venue-info",
       "topic_tags": [
-        "manchester",
-        "atmosphere"
+        "age-restrictions",
+        "o2-academy",
+        "uk-wide"
       ]
     },
     {
       "id": "p03",
-      "text": "Which UK music venues are best known for indie and alternative gigs?",
-      "venues_cited": [
-        "o2-academy-brixton",
-        "o2-ritz-manchester"
-      ],
-      "monthly_searches": 5200,
-      "intent_category": "genre",
+      "text": "Can I buy tickets on the door at O2 venues, or do I need to book in advance?",
+      "venues_cited": [],
+      "monthly_searches": 4100,
+      "intent_category": "tickets",
       "topic_tags": [
-        "indie",
-        "alternative",
+        "on-door",
+        "tickets",
+        "o2-venues",
         "uk-wide"
       ]
     },
     {
       "id": "p04",
-      "text": "I'm planning a UK tour. Which cities and venues should I consider for 3,000\u20135,000 capacity shows?",
-      "venues_cited": [
-        "o2-academy-birmingham",
-        "o2-academy-bristol",
-        "o2-apollo-manchester",
-        "o2-academy-leeds",
-        "o2-city-hall-newcastle",
-        "o2-academy-glasgow"
-      ],
-      "monthly_searches": 2800,
-      "intent_category": "touring",
+      "text": "What time do concerts usually finish at O2 Academy venues?",
+      "venues_cited": [],
+      "monthly_searches": 5400,
+      "intent_category": "planning",
       "topic_tags": [
-        "uk-tour",
-        "capacity",
-        "3k-5k"
+        "finish-time",
+        "curfew",
+        "o2-academy",
+        "uk-wide"
       ]
     },
     {
       "id": "p05",
-      "text": "What are the top live music venues in Scotland?",
+      "text": "Are O2 Academy venues accessible and wheelchair friendly?",
       "venues_cited": [],
-      "monthly_searches": 3100,
-      "intent_category": "location",
+      "monthly_searches": 1900,
+      "intent_category": "venue-info",
       "topic_tags": [
-        "scotland",
-        "edinburgh",
-        "glasgow"
+        "accessibility",
+        "wheelchair",
+        "o2-academy",
+        "uk-wide"
       ]
     },
     {
       "id": "p06",
-      "text": "Best music venues in Birmingham for a night out?",
+      "text": "How do I get to O2 Academy Brixton by public transport \u2014 what tube stop?",
       "venues_cited": [
-        "o2-academy-birmingham"
+        "o2-academy-brixton"
       ],
-      "monthly_searches": 5400,
-      "intent_category": "location",
+      "monthly_searches": 6200,
+      "intent_category": "transport",
       "topic_tags": [
-        "birmingham",
-        "nightout"
+        "transport",
+        "tube",
+        "brixton",
+        "london"
       ]
     },
     {
       "id": "p07",
-      "text": "Where do major UK tours usually play in London?",
+      "text": "What is the capacity of O2 Academy Brixton and is it standing or seated?",
       "venues_cited": [
         "o2-academy-brixton"
       ],
-      "monthly_searches": 7600,
-      "intent_category": "location",
+      "monthly_searches": 4800,
+      "intent_category": "venue-info",
       "topic_tags": [
-        "london",
-        "major-tours"
+        "capacity",
+        "seating",
+        "brixton",
+        "london"
       ]
     },
     {
       "id": "p08",
-      "text": "What are the most iconic live music venues in the UK?",
+      "text": "What is the nearest tube station to O2 Forum Kentish Town?",
       "venues_cited": [
-        "o2-academy-brixton"
+        "o2-forum-kentish-town"
       ],
-      "monthly_searches": 8100,
-      "intent_category": "discovery",
+      "monthly_searches": 2100,
+      "intent_category": "transport",
       "topic_tags": [
-        "uk-wide",
-        "iconic",
-        "legendary"
+        "transport",
+        "tube",
+        "kentish-town",
+        "london"
       ]
     },
     {
       "id": "p09",
-      "text": "I'm visiting Bristol \u2014 where should I go to see live music?",
-      "venues_cited": [],
-      "monthly_searches": 4200,
-      "intent_category": "location",
+      "text": "Is Shepherd's Bush Empire standing or seated, and what is the capacity?",
+      "venues_cited": [
+        "o2-shepherds-bush-empire"
+      ],
+      "monthly_searches": 3300,
+      "intent_category": "venue-info",
       "topic_tags": [
-        "bristol",
-        "visiting"
+        "capacity",
+        "seating",
+        "shepherds-bush",
+        "london"
       ]
     },
     {
       "id": "p10",
-      "text": "Which venues in Leeds and Sheffield have the best live music scenes?",
+      "text": "How early should I arrive at O2 Academy Brixton before a show?",
       "venues_cited": [
-        "o2-academy-leeds",
-        "o2-academy-sheffield"
+        "o2-academy-brixton"
       ],
-      "monthly_searches": 2600,
-      "intent_category": "location",
+      "monthly_searches": 3900,
+      "intent_category": "planning",
       "topic_tags": [
-        "leeds",
-        "sheffield"
+        "arrival-time",
+        "brixton",
+        "london"
       ]
     },
     {
       "id": "p11",
-      "text": "What are the best standing-only music venues in the UK for an intimate gig experience?",
-      "venues_cited": [],
-      "monthly_searches": 3800,
-      "intent_category": "experience",
-      "topic_tags": [
-        "standing-only",
-        "intimate",
-        "uk-wide"
-      ]
-    },
-    {
-      "id": "p12",
-      "text": "I want to see a big-name artist live in the UK without going to a stadium. What venues should I consider?",
-      "venues_cited": [],
-      "monthly_searches": 12000,
-      "intent_category": "experience",
-      "topic_tags": [
-        "big-name",
-        "non-stadium",
-        "uk-wide"
-      ]
-    },
-    {
-      "id": "p13",
-      "text": "Best UK venues for rock and metal concerts?",
+      "text": "Is there parking near O2 Apollo Manchester, and how do I get there by tram?",
       "venues_cited": [
-        "o2-academy-brixton"
+        "o2-apollo-manchester"
       ],
-      "monthly_searches": 4700,
-      "intent_category": "genre",
+      "monthly_searches": 2700,
+      "intent_category": "transport",
       "topic_tags": [
-        "rock",
-        "metal",
-        "uk-wide"
-      ]
-    },
-    {
-      "id": "p14",
-      "text": "Where can I find the best electronic and dance music events in Manchester?",
-      "venues_cited": [],
-      "monthly_searches": 3900,
-      "intent_category": "genre",
-      "topic_tags": [
-        "electronic",
-        "dance",
+        "transport",
+        "parking",
+        "apollo",
         "manchester"
       ]
     },
     {
-      "id": "p15",
-      "text": "Concert venues near Birmingham city centre \u2014 what are my options?",
+      "id": "p12",
+      "text": "What is the capacity of O2 Apollo Manchester \u2014 is it a big venue?",
+      "venues_cited": [
+        "o2-apollo-manchester"
+      ],
+      "monthly_searches": 3100,
+      "intent_category": "venue-info",
+      "topic_tags": [
+        "capacity",
+        "apollo",
+        "manchester"
+      ]
+    },
+    {
+      "id": "p13",
+      "text": "What kind of music events does Victoria Warehouse Manchester host?",
+      "venues_cited": [
+        "o2-victoria-warehouse-manchester"
+      ],
+      "monthly_searches": 2400,
+      "intent_category": "tickets",
+      "topic_tags": [
+        "events",
+        "victoria-warehouse",
+        "manchester"
+      ]
+    },
+    {
+      "id": "p14",
+      "text": "How do I get to O2 Academy Birmingham by train \u2014 what is the nearest station?",
       "venues_cited": [
         "o2-academy-birmingham"
       ],
-      "monthly_searches": 5400,
-      "intent_category": "location",
+      "monthly_searches": 2900,
+      "intent_category": "transport",
       "topic_tags": [
-        "birmingham",
-        "city-centre"
+        "transport",
+        "train",
+        "birmingham"
+      ]
+    },
+    {
+      "id": "p15",
+      "text": "What is Edinburgh Corn Exchange like as a concert venue \u2014 capacity and atmosphere?",
+      "venues_cited": [
+        "edinburgh-corn-exchange"
+      ],
+      "monthly_searches": 2200,
+      "intent_category": "venue-info",
+      "topic_tags": [
+        "capacity",
+        "atmosphere",
+        "corn-exchange",
+        "edinburgh"
       ]
     },
     {
       "id": "p16",
-      "text": "Best places to see live music in Glasgow?",
+      "text": "Is O2 Academy Glasgow standing or seated, and how big is it?",
       "venues_cited": [
         "o2-academy-glasgow"
       ],
-      "monthly_searches": 4100,
-      "intent_category": "location",
+      "monthly_searches": 2600,
+      "intent_category": "venue-info",
       "topic_tags": [
-        "glasgow",
-        "live-music"
+        "capacity",
+        "seating",
+        "glasgow"
       ]
     },
     {
       "id": "p17",
-      "text": "Top concert venues in Liverpool \u2014 where do big acts play?",
+      "text": "Are there hotels near O2 Academy Leeds for a concert night?",
       "venues_cited": [
-        "o2-academy-liverpool"
+        "o2-academy-leeds"
       ],
-      "monthly_searches": 3300,
-      "intent_category": "location",
+      "monthly_searches": 1800,
+      "intent_category": "planning",
       "topic_tags": [
-        "liverpool",
-        "big-acts"
+        "hotels",
+        "accommodation",
+        "leeds"
       ]
     },
     {
       "id": "p18",
-      "text": "Large music venues that aren\u2019t arenas \u2014 capacity 3,000 to 10,000 in the UK?",
+      "text": "What food and drink is available at O2 Academy Bristol?",
       "venues_cited": [
-        "o2-academy-brixton",
-        "edinburgh-corn-exchange"
+        "o2-academy-bristol"
       ],
-      "monthly_searches": 2100,
-      "intent_category": "experience",
+      "monthly_searches": 1600,
+      "intent_category": "planning",
       "topic_tags": [
-        "large",
-        "non-arena",
-        "uk-wide",
-        "capacity"
+        "food",
+        "drink",
+        "bristol"
       ]
     },
     {
       "id": "p19",
-      "text": "Which London music venues are known for having great acoustics and sound?",
+      "text": "How do I get a refund or exchange for an O2 venue ticket?",
       "venues_cited": [],
-      "monthly_searches": 3600,
-      "intent_category": "experience",
+      "monthly_searches": 4700,
+      "intent_category": "tickets",
       "topic_tags": [
-        "london",
-        "acoustics",
-        "sound-quality"
+        "refund",
+        "exchange",
+        "tickets",
+        "uk-wide"
       ]
     },
     {
       "id": "p20",
-      "text": "Smaller UK venues to discover emerging and up-and-coming artists?",
-      "venues_cited": [],
-      "monthly_searches": 2900,
-      "intent_category": "discovery",
+      "text": "How do I find upcoming gigs and events at O2 Academy venues near me?",
+      "venues_cited": [
+        "o2-academy-brixton",
+        "o2-academy-glasgow"
+      ],
+      "monthly_searches": 6800,
+      "intent_category": "tickets",
       "topic_tags": [
-        "emerging-artists",
-        "small-venue",
+        "upcoming-events",
+        "gigs",
+        "o2-academy",
         "uk-wide"
       ]
     }

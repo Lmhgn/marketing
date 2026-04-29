@@ -1,157 +1,151 @@
 [
   {
     "prompt_id": "p01",
-    "prompt_text": "What are the best music venues in London for mid-size concerts?",
-    "venues_cited": [
-      "o2-academy-brixton",
-      "o2-shepherds-bush-empire"
-    ],
-    "response_text": "London has several excellent mid-size music venues that cater to a wide range of genres. Some of the best ones include:\n\n1. **O2 Shepherd's Bush Empire** - Known for its excellent acoustics and historic charm, it hosts a variety of artists across genres.\n\n2. **Roundhouse** - Located in Camden, this iconic venue is renowned for its unique circular architecture and diverse lineup.\n\n3. **KOKO** - Recently refurbished, this venue in Camden is famous for its vibrant atmosphere and eclectic performances.\n\n4. **Electric Brixton** - Situated in Brixton, it offers an impressive space and sound system, hosting various international and local acts.\n\n5. **O2 Academy Brixton** - While on the larger end for a mid-size venue, its fantastic stage and strong line-up make it a favorite.\n\nThese venues are known for their excellent facilities, sound quality, and vibrant atmospheres, making them ideal for mid-size concerts."
+    "prompt_text": "What is the bag policy at O2 Academy venues \u2014 what can I bring to a concert?",
+    "venues_cited": [],
+    "response_text": "At O2 Academy venues, there is generally a restrictive bag policy to ensure safety and streamline the entry process. Bags larger than A4 size (approximately 8.3 x 11.7 inches or 21 x 30 cm) are typically not allowed inside the venues. Smaller bags may be permitted but are subject to searches upon entry. It is advisable to bring only essential items to expedite the security process. For specific events, there may be additional restrictions, so it\u2019s always a good idea to check the venue\u2019s website or contact them directly for any event-specific guidelines."
   },
   {
     "prompt_id": "p02",
-    "prompt_text": "Where can I see live music in Manchester? Looking for a great atmosphere.",
-    "venues_cited": [
-      "o2-ritz-manchester"
-    ],
-    "response_text": "Manchester boasts a vibrant live music scene with venues that cater to a variety of tastes. Here are a few options known for their great atmosphere:\n\n1. **Albert Hall** - This stunning, multi-purpose venue offers a unique experience with its beautiful architecture and acoustics, hosting a range of acts from indie to electronic.\n\n2. **O2 Ritz Manchester** - Known for its lively atmosphere, this venue hosts a diverse lineup of artists and genres, providing an energetic experience for concert-goers.\n\n3. **Band on the Wall** - A much-loved venue with a rich history, Band on the Wall offers an intimate setting for a broad spectrum of music, from jazz to world music.\n\n4. **Gorilla** - A smaller venue that combines excellent sound quality with a vibrant atmosphere, ideal for discovering emerging artists across various genres.\n\n5. **The Deaf Institute** - Known for its quirky decor and dynamic programming, this venue provides a cozy atmosphere for indie and alternative music.\n\nThese venues are popular choices for experiencing live music in Manchester with lively crowds and memorable performances."
+    "prompt_text": "What are the age restrictions at O2 Academy venues in the UK?",
+    "venues_cited": [],
+    "response_text": "The age restrictions at O2 Academy venues in the UK can vary depending on the specific event. Generally, most events are open to ages 8 and over, but under-14s must be accompanied by an adult. Some events may have an 18+ restriction, especially club nights or certain concerts. It's always best to check the specific event details on the venue's website or contact them directly to confirm age requirements for a particular show."
   },
   {
     "prompt_id": "p03",
-    "prompt_text": "Which UK music venues are best known for indie and alternative gigs?",
-    "venues_cited": [
-      "o2-academy-brixton",
-      "o2-ritz-manchester"
-    ],
-    "response_text": "Several UK venues are renowned for indie and alternative gigs. Here are some of the most notable ones:\n\n1. **King Tut's Wah Wah Hut** in Glasgow is famous for its intimate setting and history of hosting early gigs of bands like Oasis and Biffy Clyro.\n\n2. **The Leadmill** in Sheffield is a legendary venue known for showcasing up-and-coming indie bands as well as established artists.\n\n3. **Brixton Academy** in London is a larger venue that frequently hosts major indie and alternative acts.\n\n4. **Thekla** in Bristol is a unique venue on a boat that offers a vibrant setting for indie and alternative performances.\n\n5. **O2 Ritz** in Manchester regularly features indie bands and has a rich musical heritage linked to the city's history.\n\n6. **The Garage** in London is a popular spot for indie acts, particularly emerging artists.\n\nThese venues are celebrated for their contributions to the indie and alternative music scenes, making them essential stops for fans of the genres."
+    "prompt_text": "Can I buy tickets on the door at O2 venues, or do I need to book in advance?",
+    "venues_cited": [],
+    "response_text": "At O2 venues, it is generally recommended to book tickets in advance, as many popular events can sell out quickly. However, if an event is not sold out, some tickets may be available at the door. It is always best to check the event's availability on the O2 venue's official website or contact the venue directly for the most accurate information regarding ticket availability at the door."
   },
   {
     "prompt_id": "p04",
-    "prompt_text": "I'm planning a UK tour. Which cities and venues should I consider for 3,000\u20135,000 capacity shows?",
-    "venues_cited": [
-      "o2-academy-birmingham",
-      "o2-academy-bristol",
-      "o2-apollo-manchester",
-      "o2-academy-leeds",
-      "o2-city-hall-newcastle",
-      "o2-academy-glasgow"
-    ],
-    "response_text": "For a UK tour with venues that accommodate 3,000 to 5,000 people, consider the following cities and venues:\n\n1. **London**: The Eventim Apollo in Hammersmith is an iconic venue with a capacity around 5,000.\n\n2. **Manchester**: O2 Apollo Manchester offers a capacity of about 3,500, making it ideal for your needs.\n\n3. **Birmingham**: The O2 Academy Birmingham can hold up to 3,009 attendees.\n\n4. **Glasgow**: The O2 Academy Glasgow has a capacity of approximately 2,550, slightly under your range, but can often suit similar touring requirements.\n\n5. **Bristol**: The O2 Academy Bristol can host up to 2,500, and while it's slightly smaller, it is a popular choice in the area.\n\n6. **Leeds**: The O2 Academy Leeds has a capacity of around 2,300, again just under your range, but a key venue in Leeds\u2019 live music scene.\n\n7. **Newcastle**: The O2 City Hall Newcastle has a capacity near 2,000, smaller than your target but a prominent venue.\n\nConsider the balance between location popularity and your specific fanbase distribution across these cities when planning."
+    "prompt_text": "What time do concerts usually finish at O2 Academy venues?",
+    "venues_cited": [],
+    "response_text": "Concerts at O2 Academy venues typically finish around 11:00 PM. However, this can vary depending on the event, the day of the week, and local licensing agreements. It's always best to check with the specific venue for the most accurate information regarding your event."
   },
   {
     "prompt_id": "p05",
-    "prompt_text": "What are the top live music venues in Scotland?",
+    "prompt_text": "Are O2 Academy venues accessible and wheelchair friendly?",
     "venues_cited": [],
-    "response_text": "Scotland boasts several renowned live music venues across various cities. Here are some of the top venues:\n\n1. **The SSE Hydro** (now officially named the OVO Hydro) in Glasgow: This is a premier venue for large concerts and events, hosting some of the biggest names in music.\n\n2. **Barrowland Ballroom** in Glasgow: Known for its fantastic acoustics and atmosphere, the \"Barrowlands\" is a favorite among both artists and fans.\n\n3. **King Tut's Wah Wah Hut** in Glasgow: A legendary venue that has been a stepping stone for many famous bands, including Oasis.\n\n4. **Usher Hall** in Edinburgh: This is a versatile venue that hosts a wide range of performances, from rock gigs to classical concerts.\n\n5. **The Queen's Hall** in Edinburgh: Known for its diverse program, The Queen's Hall offers everything from indie and rock to jazz and classical music.\n\n6. **The Lemon Tree** in Aberdeen: A key venue in the north of Scotland, offering a mix of live music, comedy, and more.\n\n7. **Ironworks** in Inverness: Known for supporting regional talent as well as hosting touring acts, though it\u2019s set to close in early 2024.\n\nThese venues cater to various musical tastes and offer a dynamic selection of live performances throughout the year."
+    "response_text": "Yes, O2 Academy venues are generally designed to be accessible and wheelchair-friendly. They offer facilities for guests with disabilities, including step-free access and accessible viewing areas. However, accessibility can vary slightly by location, so it's always a good idea to contact the specific venue in advance to confirm details or arrange any necessary accommodations."
   },
   {
     "prompt_id": "p06",
-    "prompt_text": "Best music venues in Birmingham for a night out?",
+    "prompt_text": "How do I get to O2 Academy Brixton by public transport \u2014 what tube stop?",
     "venues_cited": [
-      "o2-academy-birmingham"
+      "o2-academy-brixton"
     ],
-    "response_text": "Birmingham has a vibrant live music scene with several excellent venues. Here are some of the best:\n\n1. **O2 Academy Birmingham**: Located on Bristol Street, it's a popular venue for both big-name acts and rising stars, hosting a wide range of music genres.\n\n2. **Symphony Hall**: Known for its outstanding acoustics, it's perfect for classical, jazz, and world music performances.\n\n3. **The Night Owl**: Situated in Digbeth, this venue is great for fans of soul, funk, retro, and disco, with regular club nights and live music events.\n\n4. **The Hare & Hounds**: Located in Kings Heath, this historic pub venue has two performance spaces and hosts a diverse array of gigs from indie to reggae.\n\n5. **The Mill**: Also in Digbeth, it offers an industrial atmosphere with a rooftop garden, featuring everything from indie bands to electronic acts.\n\n6. **Sunflower Lounge**: A more intimate setting in the city center, perfect for catching up-and-coming indie and alternative acts.\n\nThese venues collectively offer a wide range of music styles and experiences for a great night out in Birmingham."
+    "response_text": "To get to the O2 Academy Brixton by public transport, take the London Underground and head to Brixton Station, which is on the Victoria Line. The venue is a short walk from the station, approximately 5 minutes. Alternatively, you can also use Brixton's mainline train station, which is also nearby."
   },
   {
     "prompt_id": "p07",
-    "prompt_text": "Where do major UK tours usually play in London?",
+    "prompt_text": "What is the capacity of O2 Academy Brixton and is it standing or seated?",
     "venues_cited": [
       "o2-academy-brixton"
     ],
-    "response_text": "Major UK tours in London typically play at large venues such as The O2 Arena, Wembley Arena, and Alexandra Palace. For slightly smaller but still significant acts, venues like the O2 Academy Brixton and the Royal Albert Hall are common choices. These venues accommodate a wide range of music events and are equipped to handle large crowds and complex stage productions."
+    "response_text": "The O2 Academy Brixton has a capacity of approximately 4,921. It primarily operates as a standing venue, especially for concerts, but it does have a seated balcony area for those who prefer or require seating."
   },
   {
     "prompt_id": "p08",
-    "prompt_text": "What are the most iconic live music venues in the UK?",
+    "prompt_text": "What is the nearest tube station to O2 Forum Kentish Town?",
     "venues_cited": [
-      "o2-academy-brixton"
+      "o2-forum-kentish-town"
     ],
-    "response_text": "The UK is home to a plethora of iconic live music venues known for their rich history and contributions to music culture. Here are some of the most renowned:\n\n1. **Royal Albert Hall** (London) - Famous for hosting the Proms and a wide array of concerts across genres.\n\n2. **O2 Arena** (London) - One of the largest indoor arenas in Europe, hosting major international acts.\n\n3. **The Roundhouse** (London) - Known for its unique architecture and history of legendary performances.\n\n4. **Brixton Academy** (London) - A key venue for major rock and alternative acts.\n\n5. **Barrowland Ballroom** (Glasgow) - A beloved venue known for its incredible atmosphere and acoustics.\n\n6. **Cavern Club** (Liverpool) - Famously associated with The Beatles and a staple of Liverpool\u2019s music scene.\n\n7. **Hammersmith Apollo** (London) - A historic venue for both music and comedy.\n\n8. **The Leadmill** (Sheffield) - An important venue for emerging bands and established acts alike.\n\n9. **King Tut\u2019s Wah Wah Hut** (Glasgow) - Known for discovering new talent, including Oasis.\n\n10. **Rock City** (Nottingham) - A cornerstone of the UK rock music scene.\n\nEach of these venues has played a significant role in the careers of countless artists and continues to be a key part of the UK\u2019s live music landscape."
+    "response_text": "The nearest tube station to the O2 Forum Kentish Town is Kentish Town station. It's on the Northern line and is just a short walk from the venue."
   },
   {
     "prompt_id": "p09",
-    "prompt_text": "I'm visiting Bristol \u2014 where should I go to see live music?",
-    "venues_cited": [],
-    "response_text": "Bristol has a vibrant live music scene with a variety of venues catering to different tastes. Some popular options include:\n\n1. **The Fleece** - Known for hosting both emerging and established bands across various genres. It's one of Bristol's most iconic venues.\n\n2. **Bristol Beacon** (formerly Colston Hall) - Offers a diverse range of acts, including big-name artists and classical performances.\n\n3. **Thekla** - A unique venue located on a converted cargo ship, featuring indie, alternative, and electronic music.\n\n4. **The Louisiana** - A smaller venue famous for showcasing up-and-coming bands in an intimate setting.\n\n5. **Exchange** - Known for its punk, hardcore, and DIY scene, but also hosts a wide range of genres.\n\nThese venues are well-regarded for their contribution to Bristol's music scene and offer something for nearly every musical taste."
+    "prompt_text": "Is Shepherd's Bush Empire standing or seated, and what is the capacity?",
+    "venues_cited": [
+      "o2-shepherds-bush-empire"
+    ],
+    "response_text": "Shepherd's Bush Empire in London offers both standing and seated options, depending on the event configuration. For fully standing events, the capacity is approximately 2,000. For seated events, particularly those with a seated format on the main floor, the capacity is reduced to around 1,300."
   },
   {
     "prompt_id": "p10",
-    "prompt_text": "Which venues in Leeds and Sheffield have the best live music scenes?",
-    "venues_cited": [
-      "o2-academy-leeds",
-      "o2-academy-sheffield"
-    ],
-    "response_text": "In Leeds, some of the best venues for live music include:\n\n1. **O2 Academy Leeds**: A popular venue that hosts a wide range of artists and genres, from rock to electronic music.\n2. **Brudenell Social Club**: Known for its eclectic mix of live performances, this venue is cherished by locals for its intimate atmosphere.\n3. **Belgrave Music Hall & Canteen**: Offers live music alongside food and drink, with a focus on emerging talent and diverse genres.\n4. **The Wardrobe**: Hosts various live music events, from local bands to well-known musicians, across different genres.\n\nIn Sheffield, notable live music venues are:\n\n1. **O2 Academy Sheffield**: Like its counterpart in Leeds, this venue features a wide array of big-name acts and diverse music events.\n2. **Sheffield City Hall**: Historic venue offering a range of performances from classical concerts to modern gigs.\n3. **Leadmill**: One of the most iconic music venues in Sheffield, known for hosting both established artists and up-and-coming bands.\n4. **The Greystones**: Offers a more intimate setting, with live music focusing on acoustic, folk, and indie acts.\n\nThese venues are key players in the vibrant music scenes of Leeds and Sheffield, offering a variety of experiences to suit different musical tastes."
-  },
-  {
-    "prompt_id": "p11",
-    "prompt_text": "What are the best standing-only music venues in the UK for an intimate gig experience?",
-    "venues_cited": [],
-    "response_text": "For an intimate standing-only gig experience in the UK, several venues stand out:\n\n1. **Thekla, Bristol** - A former cargo ship turned music venue, Thekla offers a unique and intimate atmosphere for live performances.\n\n2. **Oslo, London** - Located in Hackney, Oslo is known for its cozy environment and eclectic mix of emerging artists.\n\n3. **Brudenell Social Club, Leeds** - A beloved spot for both artists and fans, it offers an intimate setting with a standing-only audience.\n\n4. **King Tut's Wah Wah Hut, Glasgow** - Renowned for its legendary gigs and intimate vibe, this is where many bands have been discovered.\n\n5. **The Deaf Institute, Manchester** - Known for its quirky interiors and intimate feel, perfect for standing audiences.\n\nThese venues are celebrated for their atmosphere and closeness to the performers."
-  },
-  {
-    "prompt_id": "p12",
-    "prompt_text": "I want to see a big-name artist live in the UK without going to a stadium. What venues should I consider?",
-    "venues_cited": [],
-    "response_text": "For big-name artists performing in the UK without the massive stadium setting, you might consider the following venues:\n\n1. **The O2 Arena, London** - With a capacity of around 20,000, it regularly hosts top international acts.\n2. **Manchester Arena** - Known for its excellent acoustics and a capacity of around 21,000, it is one of the largest indoor arenas in Europe.\n3. **SSE Hydro, Glasgow** - This venue seats around 13,000 and frequently features major artists.\n4. **Utilita Arena Birmingham** - Offers a capacity of about 15,800 and attracts popular artists.\n5. **First Direct Arena, Leeds** - Known for its unique fan-shaped layout, it has a capacity of approximately 13,780.\n\nThese venues offer a large scale but more intimate experience compared to massive outdoor stadiums. Be sure to check their upcoming event schedules for performances you're interested in."
-  },
-  {
-    "prompt_id": "p13",
-    "prompt_text": "Best UK venues for rock and metal concerts?",
+    "prompt_text": "How early should I arrive at O2 Academy Brixton before a show?",
     "venues_cited": [
       "o2-academy-brixton"
     ],
-    "response_text": "The UK boasts several renowned venues for rock and metal concerts. Here are some of the best:\n\n1. **O2 Academy Brixton, London** - Known for its excellent acoustics and capacity of nearly 5,000, it's a favorite for both bands and fans.\n\n2. **The SSE Arena, Wembley, London** - This iconic venue hosts major rock and metal acts due to its large capacity and excellent facilities.\n\n3. **O2 Academy, Birmingham** - Located in the heart of the UK, it's a popular stop for touring rock and metal bands.\n\n4. **Motorpoint Arena, Nottingham** - With a large capacity and good sound quality, it's ideal for bigger metal and rock shows.\n\n5. **Barrowland Ballroom, Glasgow** - This legendary venue is known for its character and superb atmosphere, frequently hosting rock and metal gigs.\n\n6. **Rock City, Nottingham** - Famous in the rock and metal community for its intimate feel and lively crowd.\n\n7. **The Roundhouse, London** - Offers a unique setting with great acoustics, often hosting big names in rock and metal.\n\n8. **Manchester Academy, Manchester** - This venue has a variety of room sizes and regularly hosts renowned rock and metal acts.\n\nThese venues are well-regarded for their atmosphere, acoustics, and the quality of acts they attract."
+    "response_text": "It is generally recommended to arrive at O2 Academy Brixton about 1 to 2 hours before the doors open, especially for popular shows or if you want a good spot close to the stage. This allows time for queuing, security checks, and finding your place inside. Always check your ticket for the exact door time and plan accordingly, as these can vary depending on the event. Additionally, consider transport and any potential delays when planning your arrival."
+  },
+  {
+    "prompt_id": "p11",
+    "prompt_text": "Is there parking near O2 Apollo Manchester, and how do I get there by tram?",
+    "venues_cited": [
+      "o2-apollo-manchester"
+    ],
+    "response_text": "Yes, there is parking near the O2 Apollo Manchester. The venue has its own car park with limited spaces, and there are additional parking options nearby, such as on-street parking and several nearby car parks.\n\nTo get to the O2 Apollo Manchester by tram, take a Metrolink tram to the Piccadilly Station. From there, it's about a 15-minute walk to the venue. Alternatively, you can take a short taxi ride or catch a bus from the station to the venue."
+  },
+  {
+    "prompt_id": "p12",
+    "prompt_text": "What is the capacity of O2 Apollo Manchester \u2014 is it a big venue?",
+    "venues_cited": [
+      "o2-apollo-manchester"
+    ],
+    "response_text": "The O2 Apollo Manchester has a capacity of approximately 3,500. It is considered a mid-sized venue, offering both seated and standing options, and frequently hosts a wide range of concerts and events."
+  },
+  {
+    "prompt_id": "p13",
+    "prompt_text": "What kind of music events does Victoria Warehouse Manchester host?",
+    "venues_cited": [
+      "o2-victoria-warehouse-manchester"
+    ],
+    "response_text": "Victoria Warehouse in Manchester hosts a diverse range of music events, including live concerts and music festivals, often featuring genres like indie, rock, electronic, and pop. The venue attracts both well-known artists and emerging acts. Additionally, it serves as a popular location for club nights and DJ performances, hosting events that cater to fans of house, techno, and other electronic music genres."
   },
   {
     "prompt_id": "p14",
-    "prompt_text": "Where can I find the best electronic and dance music events in Manchester?",
-    "venues_cited": [],
-    "response_text": "Manchester has a vibrant electronic and dance music scene. Some of the top venues known for hosting these events include:\n\n1. **The Warehouse Project**: Known for large-scale events featuring top international DJs, they host parties in various locations around the city, especially at Depot Mayfield.\n\n2. **Albert Hall**: A stunning venue that hosts a variety of music events, including electronic and dance nights.\n\n3. **Hidden**: Known for its underground vibe, Hidden frequently hosts cutting-edge electronic and techno nights.\n\n4. **Gorilla**: A bar, kitchen, and club, Gorilla is renowned for its intimate electronic music events.\n\n5. **Joshua Brooks**: A club that has been a staple for electronic music lovers in Manchester, featuring local and international DJs.\n\nCheck each venue's schedule to find the latest events and specific DJs or acts performing."
-  },
-  {
-    "prompt_id": "p15",
-    "prompt_text": "Concert venues near Birmingham city centre \u2014 what are my options?",
+    "prompt_text": "How do I get to O2 Academy Birmingham by train \u2014 what is the nearest station?",
     "venues_cited": [
       "o2-academy-birmingham"
     ],
-    "response_text": "Birmingham city centre has several great options for concert venues:\n\n1. **Utilita Arena Birmingham** - This large venue hosts a variety of major concerts and events. It's located near the city centre along King Edwards Road.\n\n2. **O2 Academy Birmingham** - Situated on Horsefair, this venue is a popular choice for a wide range of performances, from rock bands to pop artists.\n\n3. **Symphony Hall** - Part of the International Convention Centre on Broad Street, this venue is renowned for its acoustics and hosts classical concerts as well as contemporary music events.\n\n4. **The Rainbow Venues** - Located in Digbeth, this collection of venues offers a more intimate setting with a variety of live music events and club nights.\n\n5. **The Night Owl** - Also in Digbeth, known for hosting soul and retro music nights, it's a smaller venue with a great atmosphere.\n\nThese venues cater to a wide range of musical tastes, so you're likely to find something that interests you."
+    "response_text": "To get to O2 Academy Birmingham by train, the nearest station is Birmingham New Street. From the station, it's a short walk of approximately 10 minutes. Exit the station on the Southside and head southwest on Hill St toward Station St, then turn right onto Bristol St/A38, and you will find the venue on your left."
+  },
+  {
+    "prompt_id": "p15",
+    "prompt_text": "What is Edinburgh Corn Exchange like as a concert venue \u2014 capacity and atmosphere?",
+    "venues_cited": [
+      "edinburgh-corn-exchange"
+    ],
+    "response_text": "The Edinburgh Corn Exchange, now known as the O2 Academy Edinburgh, is a versatile venue for concerts and other events. It boasts a capacity of approximately 3,000 people, providing an intimate yet energetic atmosphere. The venue often hosts a diverse range of performances, from rock and pop to electronic music, making it popular with both locals and tourists. The standing room allows fans to get close to the stage, contributing to an immersive concert experience. With good acoustics and a vibrant atmosphere, it is well-regarded as a reliable spot for live entertainment in Edinburgh."
   },
   {
     "prompt_id": "p16",
-    "prompt_text": "Best places to see live music in Glasgow?",
+    "prompt_text": "Is O2 Academy Glasgow standing or seated, and how big is it?",
     "venues_cited": [
       "o2-academy-glasgow"
     ],
-    "response_text": "Glasgow has a vibrant live music scene with several iconic venues. Here are some of the best places to catch live performances:\n\n1. **King Tut's Wah Wah Hut**: A legendary venue known for hosting early gigs of bands that later became famous. It's an intimate space with a great atmosphere.\n\n2. **Barrowland Ballroom**: One of Glasgow's most famous venues, known for its great acoustics and unique character. It hosts a wide range of bands and artists.\n\n3. **O2 Academy Glasgow**: A larger venue that welcomes bigger acts. It's a go-to spot for both local and international artists.\n\n4. **The SSE Hydro**: For large-scale concerts, this is the place to go. It hosts major touring acts and offers a state-of-the-art experience.\n\n5. **The Garage**: A versatile venue that hosts live performances across different genres as well as club nights.\n\n6. **SWG3**: A dynamic arts and event space that regularly hosts concerts, club nights, and exhibitions.\n\nThese venues reflect the diversity and richness of Glasgow's music scene, catering to different tastes and preferences."
+    "response_text": "O2 Academy Glasgow is a versatile venue that primarily offers a standing area on the ground floor, but it also has a balcony area with seating. The venue has a capacity of approximately 2,500 people."
   },
   {
     "prompt_id": "p17",
-    "prompt_text": "Top concert venues in Liverpool \u2014 where do big acts play?",
+    "prompt_text": "Are there hotels near O2 Academy Leeds for a concert night?",
     "venues_cited": [
-      "o2-academy-liverpool"
+      "o2-academy-leeds"
     ],
-    "response_text": "In Liverpool, big acts often perform at the following venues:\n\n1. **M&S Bank Arena**: This is the largest concert venue in the city, hosting major international artists and a variety of events.\n\n2. **Mountford Hall** (at the Liverpool Guild of Students): While primarily a student venue, it hosts well-known acts and popular music events.\n\n3. **The Philharmonic Hall**: Though traditionally associated with classical music, it also hosts contemporary artists and events.\n\n4. **O2 Academy Liverpool**: A popular venue for mid-sized gigs, featuring well-known bands and up-and-coming artists. \n\nThese venues cater to a range of genres and offer different capacities to suit various types of events."
+    "response_text": "Yes, there are several hotels near the O2 Academy Leeds that you can consider for a concert night stay. Some popular options include:\n\n1. **Radisson Blu Hotel, Leeds City Centre** - Located within the Light Complex, it's just a short walk from the venue.\n2. **The Merrion Hotel** - Situated on Merrion Street, it's very close to the O2 Academy.\n3. **Ibis Styles Leeds City Centre Arena** - Located on Wade Lane, offering convenient access to both the O2 Academy and other city attractions.\n4. **Clayton Hotel Leeds** - A bit farther than some other options but still within reasonable distance from the venue.\n\nThese hotels offer a range of prices and amenities, catering to different preferences and budgets."
   },
   {
     "prompt_id": "p18",
-    "prompt_text": "Large music venues that aren\u2019t arenas \u2014 capacity 3,000 to 10,000 in the UK?",
+    "prompt_text": "What food and drink is available at O2 Academy Bristol?",
     "venues_cited": [
-      "o2-academy-brixton",
-      "edinburgh-corn-exchange"
+      "o2-academy-bristol"
     ],
-    "response_text": "Certainly! Here are some notable large music venues in the UK with a capacity between 3,000 and 10,000 that aren't arenas:\n\n1. **Alexandra Palace, London** - Known as \"Ally Pally,\" it has a capacity of around 10,400 for standing events in the Great Hall.\n\n2. **Royal Albert Hall, London** - While traditionally known for classical performances, this iconic venue hosts a range of events and has a capacity of about 5,272.\n\n3. **Hammersmith Apollo, London** - Now known as the Eventim Apollo, it accommodates up to 5,039 people.\n\n4. **The SSE Hydro, Glasgow** - Although primarily an arena, its flexible staging configurations can allow for smaller capacities within the 10,000 range.\n\n5. **O2 Academy Brixton, London** - With a capacity of about 4,921, it's a historically significant venue for contemporary music.\n\n6. **Cambridge Corn Exchange** - This venue can hold up to 1,800 but is notable for its versatility and significant events in popular music, theatre, and comedy.\n\nThese venues are known for hosting a diverse range of music concerts and are popular stops for tours in the UK."
+    "response_text": "O2 Academy Bristol offers a selection of alcoholic and non-alcoholic beverages, including beer, cider, wine, spirits, and soft drinks. While specific food offerings can vary depending on the event, the venue typically provides snacks such as crisps and confectionery. It's worth noting that the focus is more on drinks than extensive dining options. For more substantial meals, consider dining at nearby restaurants before or after an event."
   },
   {
     "prompt_id": "p19",
-    "prompt_text": "Which London music venues are known for having great acoustics and sound?",
+    "prompt_text": "How do I get a refund or exchange for an O2 venue ticket?",
     "venues_cited": [],
-    "response_text": "London has several music venues renowned for their excellent acoustics and sound quality:\n\n1. **Royal Albert Hall**: A historic venue with a legendary reputation for its acoustics. It's particularly known for classical music concerts but hosts a variety of performances.\n\n2. **Barbican Hall**: Located within the Barbican Centre, this venue is acclaimed for its superb acoustics, making it ideal for classical and contemporary music.\n\n3. **Wigmore Hall**: Famous for its acoustic purity, Wigmore Hall is a top choice for chamber music and solo recitals.\n\n4. **Ronnie Scott's Jazz Club**: Known for its intimate setting and great sound, this club is iconic for jazz enthusiasts.\n\n5. **Union Chapel**: A working church that's also a venue, Union Chapel offers warm acoustics that suit acoustic and choral performances particularly well.\n\nThese venues are highly regarded in the industry and provide exceptional listening experiences."
+    "response_text": "To get a refund or exchange for a ticket to an O2 venue, you'll need to refer to the terms and conditions outlined by your ticket provider, such as Ticketmaster or AXS. Generally, refunds or exchanges are only offered if the event is cancelled, rescheduled, or significantly changed. Here's what you typically need to do:\n\n1. **Check the Ticket Provider's Policy:** Review the terms on the website where you purchased the ticket.\n\n2. **Contact Customer Service:** Reach out to the customer service team of your ticket provider. This is usually via their help section on their website where you can find contact details.\n\n3. **Provide Necessary Information:** Be ready to provide your order number, event details, and any other relevant information.\n\n4. **Follow Instructions:** If eligible for a refund or exchange, follow the instructions given by the service representative.\n\nRemember, each provider has different policies, so it's crucial to look for specific guidance on their website."
   },
   {
     "prompt_id": "p20",
-    "prompt_text": "Smaller UK venues to discover emerging and up-and-coming artists?",
-    "venues_cited": [],
-    "response_text": "There are several smaller UK venues renowned for showcasing emerging and up-and-coming artists:\n\n1. **The Lexington, London** - Known for hosting indie bands and emerging talent, this Islington venue is a key spot for discovering new artists.\n\n2. **King Tut's Wah Wah Hut, Glasgow** - Famous for being the venue where Oasis was discovered, it continues to spotlight rising music stars.\n\n3. **The Louisiana, Bristol** - A popular, intimate space that frequently hosts bands on the verge of breaking out.\n\n4. **Brudenell Social Club, Leeds** - This community-driven venue is beloved for its eclectic line-ups and support for new artists.\n\n5. **The Bodega, Nottingham** - Offering a springboard for local and touring acts, it's a prime spot for catching future stars.\n\n6. **Clwb Ifor Bach, Cardiff** - A key player in the Welsh music scene, known for its support of emerging talent across genres.\n\n7. **The Leadmill, Sheffield** - Although it has a larger capacity, it frequently promotes up-and-coming artists from various styles.\n\nThese venues are great stops for discovering fresh sounds and the next big thing in music."
+    "prompt_text": "How do I find upcoming gigs and events at O2 Academy venues near me?",
+    "venues_cited": [
+      "o2-academy-brixton",
+      "o2-academy-glasgow"
+    ],
+    "response_text": "To find upcoming gigs and events at O2 Academy venues near you, you can start by visiting the official O2 Academy website (academymusicgroup.com). This site allows you to select your desired venue, such as O2 Academy Brixton or O2 Academy Glasgow, and view the schedule of upcoming events. You can also search for events by artist or date.\n\nAdditionally, you can download the O2 Academy app, which provides listings and ticket purchasing options. Following the venues on social media platforms like Facebook, Twitter, and Instagram can also keep you updated with announcements and news. Finally, you might want to sign up for the O2 Priority service if you are an O2 customer for early access to tickets and exclusive offers."
   }
 ]
