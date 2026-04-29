@@ -39,7 +39,7 @@ function SortHeader({
       </span>
 
       {tooltip && (
-        <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 z-30 w-64 p-3 bg-slate-900 text-white text-xs rounded-lg shadow-xl opacity-0 group-hover/hdr:opacity-100 pointer-events-none transition-opacity normal-case font-normal text-left leading-relaxed whitespace-normal">
+        <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 z-30 w-72 p-3 bg-slate-900 text-white text-xs rounded-lg shadow-xl opacity-0 group-hover/hdr:opacity-100 pointer-events-none transition-opacity normal-case font-normal text-left leading-relaxed whitespace-normal">
           <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-slate-900 rotate-45 rounded-sm" />
           {tooltip}
         </div>
@@ -119,13 +119,13 @@ export function VenueTable({ venues }: { venues: VenueReport[] }) {
               <th className="text-left px-4 py-3 font-medium">Venue</th>
               <th className="text-left px-4 py-3 font-medium">Region</th>
               <SortHeader label="AI Readiness" col="readiness" active={sortCol} dir={sortDir} onClick={handleSort}
-                tooltip="A combined score: AEO (40%) + GEO (35%) + LLM Citation rate (25%). Shows how ready each venue is to appear in AI-generated answers across search, chatbots, and voice assistants." />
+                tooltip="The overall score combining AEO (40%), GEO (35%), and LLM Citation (25%). A venue scoring 'strong' is well-placed to appear when someone asks an AI assistant like ChatGPT or Siri 'Where should I see a gig in Manchester?'" />
               <SortHeader label="AEO" col="aeo" active={sortCol} dir={sortDir} onClick={handleSort}
-                tooltip="Answer Engine Optimisation — how well the venue's website is structured for AI to extract facts. Scores schema markup, FAQ content, heading quality, and content volume. Rated 0–100." />
+                tooltip="Answer Engine Optimisation — does the website make facts easy for AI to extract? E.g. if someone asks Alexa 'What is the capacity of O2 Academy Brixton?' the answer needs to be clearly structured on the page. Scored on schema markup, FAQ sections, headings, and content." />
               <SortHeader label="GEO" col="geo" active={sortCol} dir={sortDir} onClick={handleSort}
-                tooltip="Generative Engine Optimisation — how completely the venue exists as a named entity inside AI systems. Scores topical coverage, external references (Wikipedia / Wikidata), entity clarity, and schema richness. Rated 0–100." />
+                tooltip="Generative Engine Optimisation — how well-known is the venue inside AI systems? E.g. when someone asks ChatGPT 'What are the best live music venues in London?' does it know enough about this venue to include it? Scored on Wikipedia presence, external references, and factual coverage." />
               <SortHeader label="LLM citation" col="citation" active={sortCol} dir={sortDir} onClick={handleSort} align="left"
-                tooltip="The % of venue-specific test prompts where an AI model actually named this venue in its response. Based on 15 prompts per venue sent to Claude. Click the bar to see the full breakdown." />
+                tooltip="We sent 15 real questions to Claude — e.g. 'What's the atmosphere like at O2 Forum Kentish Town?' — and checked how often it actually named the venue. A 73% rate means it was cited in 11 out of 15 prompts. Click the bar to see each question." />
               <th className="px-4 py-3" />
             </tr>
           </thead>
