@@ -46,7 +46,10 @@
           ],
           "cited": false,
           "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
-          "response_text": "I don't have specific door opening times for O2 Academy Brixton as these vary by event. Generally for concerts at UK venues, doors tend to open around 7pm for evening shows. I'd recommend checking the specific event listing on the venue's website or your ticket for accurate times."
+          "response_text": "I don't have specific door opening times for O2 Academy Brixton as these vary by event. Generally for concerts at UK venues, doors tend to open around 7pm for evening shows. I'd recommend checking the specific event listing on the venue's website or your ticket for accurate times.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "standing-seated",
@@ -72,7 +75,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "atmosphere",
@@ -99,7 +105,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "koko-london"
+          ]
         },
         {
           "id": "food-drink",
@@ -138,7 +147,11 @@
             "disabled"
           ],
           "cited": false,
-          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation.",
+          "also_cited": [
+            "roundhouse",
+            "koko-london"
+          ]
         },
         {
           "id": "reputation",
@@ -234,7 +247,10 @@
             "directions"
           ],
           "cited": false,
-          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "doors-time",
@@ -246,7 +262,11 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "roundhouse",
+            "electric-ballroom"
+          ]
         },
         {
           "id": "standing-seated",
@@ -259,7 +279,10 @@
             "format"
           ],
           "cited": false,
-          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details.",
+          "also_cited": [
+            "koko-london"
+          ]
         },
         {
           "id": "bag-policy",
@@ -272,7 +295,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "atmosphere",
@@ -285,7 +311,11 @@
             "what-to-expect"
           ],
           "cited": false,
-          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance.",
+          "also_cited": [
+            "koko-london",
+            "electric-ballroom"
+          ]
         },
         {
           "id": "best-spots",
@@ -298,7 +328,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "koko-london"
+          ]
         },
         {
           "id": "food-drink",
@@ -311,7 +344,10 @@
             "bars"
           ],
           "cited": false,
-          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "arrive-time",
@@ -324,7 +360,10 @@
             "planning"
           ],
           "cited": false,
-          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "accessibility",
@@ -337,7 +376,10 @@
             "disabled"
           ],
           "cited": false,
-          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "reputation",
@@ -349,7 +391,11 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "roundhouse",
+            "koko-london"
+          ]
         },
         {
           "id": "famous-acts",
@@ -375,7 +421,11 @@
             "background"
           ],
           "cited": false,
-          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history.",
+          "also_cited": [
+            "roundhouse",
+            "koko-london"
+          ]
         },
         {
           "id": "comparison",
@@ -388,7 +438,12 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "roundhouse",
+            "koko-london",
+            "electric-ballroom"
+          ]
         },
         {
           "id": "music-types",
@@ -446,7 +501,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "standing-seated",
@@ -472,7 +530,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "atmosphere",
@@ -499,7 +560,11 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "roundhouse",
+            "koko-london"
+          ]
         },
         {
           "id": "food-drink",
@@ -512,7 +577,10 @@
             "bars"
           ],
           "cited": false,
-          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "arrive-time",
@@ -538,7 +606,10 @@
             "disabled"
           ],
           "cited": false,
-          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "reputation",
@@ -550,7 +621,11 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "roundhouse",
+            "koko-london"
+          ]
         },
         {
           "id": "famous-acts",
@@ -589,7 +664,11 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "roundhouse",
+            "koko-london"
+          ]
         },
         {
           "id": "music-types",
@@ -646,7 +725,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "standing-seated",
@@ -672,7 +754,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "electric-ballroom"
+          ]
         },
         {
           "id": "atmosphere",
@@ -698,7 +783,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "food-drink",
@@ -737,7 +825,10 @@
             "disabled"
           ],
           "cited": false,
-          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation.",
+          "also_cited": [
+            "koko-london"
+          ]
         },
         {
           "id": "reputation",
@@ -845,7 +936,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "standing-seated",
@@ -897,7 +991,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "food-drink",
@@ -910,7 +1007,10 @@
             "bars"
           ],
           "cited": false,
-          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "arrive-time",
@@ -948,7 +1048,10 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "famous-acts",
@@ -987,7 +1090,10 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "music-types",
@@ -1032,7 +1138,10 @@
             "directions"
           ],
           "cited": false,
-          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "doors-time",
@@ -1044,7 +1153,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "standing-seated",
@@ -1083,7 +1195,10 @@
             "what-to-expect"
           ],
           "cited": false,
-          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "best-spots",
@@ -1096,7 +1211,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "food-drink",
@@ -1109,7 +1227,10 @@
             "bars"
           ],
           "cited": false,
-          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "arrive-time",
@@ -1147,7 +1268,10 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "famous-acts",
@@ -1173,7 +1297,10 @@
             "background"
           ],
           "cited": false,
-          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "comparison",
@@ -1186,7 +1313,10 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "music-types",
@@ -1841,7 +1971,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "swx-bristol"
+          ]
         },
         {
           "id": "standing-seated",
@@ -1867,7 +2000,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "swx-bristol"
+          ]
         },
         {
           "id": "atmosphere",
@@ -1893,7 +2029,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "swx-bristol"
+          ]
         },
         {
           "id": "food-drink",
@@ -1906,7 +2045,10 @@
             "bars"
           ],
           "cited": false,
-          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section.",
+          "also_cited": [
+            "swx-bristol"
+          ]
         },
         {
           "id": "arrive-time",
@@ -1932,7 +2074,10 @@
             "disabled"
           ],
           "cited": false,
-          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation.",
+          "also_cited": [
+            "swx-bristol"
+          ]
         },
         {
           "id": "reputation",
@@ -1944,7 +2089,10 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "swx-bristol"
+          ]
         },
         {
           "id": "famous-acts",
@@ -1983,7 +2131,10 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "swx-bristol"
+          ]
         },
         {
           "id": "music-types",
@@ -2438,7 +2589,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "standing-seated",
@@ -2451,7 +2605,10 @@
             "format"
           ],
           "cited": false,
-          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "bag-policy",
@@ -2464,7 +2621,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "atmosphere",
@@ -2490,7 +2650,11 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "manchester-academy",
+            "band-on-the-wall"
+          ]
         },
         {
           "id": "food-drink",
@@ -2503,7 +2667,10 @@
             "bars"
           ],
           "cited": false,
-          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section.",
+          "also_cited": [
+            "band-on-the-wall"
+          ]
         },
         {
           "id": "arrive-time",
@@ -2529,7 +2696,10 @@
             "disabled"
           ],
           "cited": false,
-          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "reputation",
@@ -2541,7 +2711,10 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "famous-acts",
@@ -2567,7 +2740,10 @@
             "background"
           ],
           "cited": false,
-          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "comparison",
@@ -2580,7 +2756,11 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "manchester-academy",
+            "band-on-the-wall"
+          ]
         },
         {
           "id": "music-types",
@@ -2625,7 +2805,10 @@
             "directions"
           ],
           "cited": false,
-          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "doors-time",
@@ -2637,7 +2820,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "standing-seated",
@@ -2650,7 +2836,10 @@
             "format"
           ],
           "cited": false,
-          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "bag-policy",
@@ -2663,7 +2852,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "atmosphere",
@@ -2676,7 +2868,11 @@
             "what-to-expect"
           ],
           "cited": false,
-          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance.",
+          "also_cited": [
+            "manchester-academy",
+            "band-on-the-wall"
+          ]
         },
         {
           "id": "best-spots",
@@ -2689,7 +2885,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "food-drink",
@@ -2702,7 +2901,10 @@
             "bars"
           ],
           "cited": false,
-          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section.",
+          "also_cited": [
+            "band-on-the-wall"
+          ]
         },
         {
           "id": "arrive-time",
@@ -2715,7 +2917,10 @@
             "planning"
           ],
           "cited": false,
-          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "accessibility",
@@ -2728,7 +2933,10 @@
             "disabled"
           ],
           "cited": false,
-          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "reputation",
@@ -2740,7 +2948,11 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "manchester-academy",
+            "band-on-the-wall"
+          ]
         },
         {
           "id": "famous-acts",
@@ -2766,7 +2978,10 @@
             "background"
           ],
           "cited": false,
-          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history.",
+          "also_cited": [
+            "band-on-the-wall"
+          ]
         },
         {
           "id": "comparison",
@@ -2779,7 +2994,11 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "manchester-academy",
+            "band-on-the-wall"
+          ]
         },
         {
           "id": "music-types",
@@ -2836,7 +3055,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "standing-seated",
@@ -2862,7 +3084,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "atmosphere",
@@ -2888,7 +3113,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "food-drink",
@@ -2927,7 +3155,10 @@
             "disabled"
           ],
           "cited": false,
-          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation.",
+          "also_cited": [
+            "manchester-academy"
+          ]
         },
         {
           "id": "reputation",
@@ -3035,7 +3266,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "brudenell-social-club"
+          ]
         },
         {
           "id": "standing-seated",
@@ -3048,7 +3282,10 @@
             "format"
           ],
           "cited": false,
-          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details.",
+          "also_cited": [
+            "brudenell-social-club"
+          ]
         },
         {
           "id": "bag-policy",
@@ -3061,7 +3298,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "brudenell-social-club"
+          ]
         },
         {
           "id": "atmosphere",
@@ -3087,7 +3327,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "brudenell-social-club"
+          ]
         },
         {
           "id": "food-drink",
@@ -3100,7 +3343,10 @@
             "bars"
           ],
           "cited": false,
-          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section.",
+          "also_cited": [
+            "brudenell-social-club"
+          ]
         },
         {
           "id": "arrive-time",
@@ -3138,7 +3384,10 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "brudenell-social-club"
+          ]
         },
         {
           "id": "famous-acts",
@@ -3164,7 +3413,10 @@
             "background"
           ],
           "cited": false,
-          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history.",
+          "also_cited": [
+            "brudenell-social-club"
+          ]
         },
         {
           "id": "comparison",
@@ -3177,7 +3429,11 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "brudenell-social-club",
+            "leadmill-sheffield"
+          ]
         },
         {
           "id": "music-types",
@@ -3234,7 +3490,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "leadmill-sheffield"
+          ]
         },
         {
           "id": "standing-seated",
@@ -3247,7 +3506,10 @@
             "format"
           ],
           "cited": false,
-          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details.",
+          "also_cited": [
+            "leadmill-sheffield"
+          ]
         },
         {
           "id": "bag-policy",
@@ -3260,7 +3522,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "leadmill-sheffield"
+          ]
         },
         {
           "id": "atmosphere",
@@ -3286,7 +3551,11 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "leadmill-sheffield",
+            "brudenell-social-club"
+          ]
         },
         {
           "id": "food-drink",
@@ -3299,7 +3568,10 @@
             "bars"
           ],
           "cited": false,
-          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section.",
+          "also_cited": [
+            "brudenell-social-club"
+          ]
         },
         {
           "id": "arrive-time",
@@ -3325,7 +3597,10 @@
             "disabled"
           ],
           "cited": false,
-          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation.",
+          "also_cited": [
+            "leadmill-sheffield"
+          ]
         },
         {
           "id": "reputation",
@@ -3337,7 +3612,10 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "leadmill-sheffield"
+          ]
         },
         {
           "id": "famous-acts",
@@ -3363,7 +3641,10 @@
             "background"
           ],
           "cited": false,
-          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history.",
+          "also_cited": [
+            "leadmill-sheffield"
+          ]
         },
         {
           "id": "comparison",
@@ -3376,7 +3657,11 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "leadmill-sheffield",
+            "brudenell-social-club"
+          ]
         },
         {
           "id": "music-types",
@@ -3433,7 +3718,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "standing-seated",
@@ -3485,7 +3773,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "food-drink",
@@ -3536,7 +3827,10 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "famous-acts",
@@ -3575,7 +3869,10 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "roundhouse"
+          ]
         },
         {
           "id": "music-types",
@@ -3632,7 +3929,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "usher-hall-edinburgh"
+          ]
         },
         {
           "id": "standing-seated",
@@ -3684,7 +3984,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "usher-hall-edinburgh"
+          ]
         },
         {
           "id": "food-drink",
@@ -3697,7 +4000,10 @@
             "bars"
           ],
           "cited": false,
-          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section.",
+          "also_cited": [
+            "usher-hall-edinburgh"
+          ]
         },
         {
           "id": "arrive-time",
@@ -3735,7 +4041,10 @@
             "why-great"
           ],
           "cited": false,
-          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique.",
+          "also_cited": [
+            "usher-hall-edinburgh"
+          ]
         },
         {
           "id": "famous-acts",
@@ -3774,7 +4083,10 @@
             "alternatives"
           ],
           "cited": false,
-          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene.",
+          "also_cited": [
+            "usher-hall-edinburgh"
+          ]
         },
         {
           "id": "music-types",
@@ -3831,7 +4143,10 @@
             "opening-times"
           ],
           "cited": false,
-          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically.",
+          "also_cited": [
+            "usher-hall-edinburgh"
+          ]
         },
         {
           "id": "standing-seated",
@@ -3857,7 +4172,10 @@
             "what-to-bring"
           ],
           "cited": false,
-          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A.",
+          "also_cited": [
+            "usher-hall-edinburgh"
+          ]
         },
         {
           "id": "atmosphere",
@@ -3883,7 +4201,10 @@
             "best-spots"
           ],
           "cited": false,
-          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space.",
+          "also_cited": [
+            "usher-hall-edinburgh"
+          ]
         },
         {
           "id": "food-drink",
@@ -3922,7 +4243,10 @@
             "disabled"
           ],
           "cited": false,
-          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation.",
+          "also_cited": [
+            "usher-hall-edinburgh"
+          ]
         },
         {
           "id": "reputation",
