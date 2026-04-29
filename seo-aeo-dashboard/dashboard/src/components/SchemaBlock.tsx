@@ -17,12 +17,22 @@ export default function SchemaBlock({ code }: { code: string }) {
     <div className="relative rounded-lg border border-slate-200 bg-slate-950 overflow-hidden">
       <div className="flex items-center justify-between px-4 py-2 border-b border-slate-800">
         <span className="text-xs text-slate-400 font-mono">JSON-LD · paste into &lt;head&gt;</span>
-        <button
-          onClick={copy}
-          className="text-xs px-2.5 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 transition-colors font-medium"
-        >
-          {copied ? "✓ Copied" : "Copy"}
-        </button>
+        <div className="flex items-center gap-2">
+          <a
+            href="https://search.google.com/test/rich-results"
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs px-2.5 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 transition-colors font-medium"
+          >
+            Validate →
+          </a>
+          <button
+            onClick={copy}
+            className="text-xs px-2.5 py-1 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 transition-colors font-medium"
+          >
+            {copied ? "✓ Copied" : "Copy"}
+          </button>
+        </div>
       </div>
       <pre className="p-4 text-xs text-slate-300 overflow-x-auto leading-relaxed">
         <code>{`<script type="application/ld+json">\n${code}\n</script>`}</code>

@@ -9,6 +9,7 @@ export interface VenuePrompt {
   cited: boolean;
   advice: string;
   also_cited?: string[];
+  response_text?: string;
 }
 
 export interface CitationResult {
@@ -143,6 +144,45 @@ export function getCompetitorCitationLeaderboard(): AlsoCitedEntry[] {
     }
   }
   return Object.values(acc).sort((a, b) => b.weighted_monthly - a.weighted_monthly);
+}
+
+export interface CompetitorCitationMatch {
+  venueSlug: string;
+  prompts: { id: string; text: string; monthly_searches: number }[];
+}
+
+export interface CompetitorCitationSummary {
+  appearances: number;
+  weighted_monthly: number;
+  byVenue: CompetitorCitationMatch[];
+}
+
+export function getCompetitorCitationData(competitorSlug: string): CompetitorCitationSummary | null {
+  let appearances = 0;
+  let weighted_monthly = 0;
+  const acc: Record<string, { id: string; text: string; monthly_searches: number }[]> = {};
+
+  for (const [venueSlug, result] of Object.entries(data.venues)) {
+    for (const p of result.prompts) {
+      if (!p.cited && p.also_cited?.includes(competitorSlug)) {
+        appearances++;
+        weighted_monthly += p.monthly_searches;
+        if (!acc[venueSlug]) acc[venueSlug] = [];
+        acc[venueSlug].push({ id: p.id, text: p.text, monthly_searches: p.monthly_searches });
+      }
+    }
+  }
+
+  if (appearances === 0) return null;
+
+  const byVenue = Object.entries(acc)
+    .map(([venueSlug, prompts]) => ({
+      venueSlug,
+      prompts: prompts.sort((a, b) => b.monthly_searches - a.monthly_searches),
+    }))
+    .sort((a, b) => b.prompts.length - a.prompts.length);
+
+  return { appearances, weighted_monthly, byVenue };
 }
 
 export function computePortfolioStats(allCitations: Record<string, CitationResult>) {

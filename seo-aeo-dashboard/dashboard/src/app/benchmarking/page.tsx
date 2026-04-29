@@ -98,6 +98,7 @@ export default function Benchmarking() {
             {leaderboard.map((entry, i) => {
               const isCompetitor = !!COMPETITOR_MAP[entry.slug];
               const name = COMPETITOR_MAP[entry.slug] ?? PORTFOLIO_MAP[entry.slug] ?? entry.slug;
+              const href = isCompetitor ? `/competitor/${entry.slug}` : `/venue/${entry.slug}`;
               const barPct = Math.round(entry.weighted_monthly / maxWeighted * 100);
               const daily  = Math.round(entry.weighted_monthly / 30);
               return (
@@ -105,7 +106,9 @@ export default function Benchmarking() {
                   <span className="text-xs text-slate-400 font-mono w-5 shrink-0">{i + 1}</span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm font-medium text-slate-800">{name}</span>
+                      <Link href={href} className="text-sm font-medium text-slate-800 hover:text-blue-600 hover:underline">
+                        {name}
+                      </Link>
                       <span className={`px-1.5 py-0.5 rounded text-xs font-medium ${
                         isCompetitor ? "bg-orange-100 text-orange-700" : "bg-blue-100 text-blue-700"
                       }`}>

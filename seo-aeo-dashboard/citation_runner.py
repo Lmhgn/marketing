@@ -309,6 +309,8 @@ def main() -> None:
             }
             if also_cited:
                 entry["also_cited"] = also_cited
+            if not response_text.startswith("__ERROR__"):
+                entry["response_text"] = response_text[:800]
             prompt_results.append(entry)
 
             if call_n < total_calls:

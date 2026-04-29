@@ -23,16 +23,26 @@ export default function SchemaSnippet({ title, code, note }: Props) {
     <div className="rounded-lg border border-slate-200 overflow-hidden">
       <div className="flex items-center justify-between px-4 py-2.5 bg-slate-50 border-b border-slate-200">
         <span className="text-xs font-medium text-slate-700">{title}</span>
-        <button
-          onClick={copy}
-          className={`text-xs px-3 py-1 rounded font-medium transition-colors ${
-            copied
-              ? "bg-emerald-100 text-emerald-700"
-              : "bg-white border border-slate-300 text-slate-600 hover:border-blue-400 hover:text-blue-600"
-          }`}
-        >
-          {copied ? "✓ Copied!" : "Copy <script> tag"}
-        </button>
+        <div className="flex items-center gap-2">
+          <a
+            href="https://search.google.com/test/rich-results"
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs px-3 py-1 rounded font-medium bg-white border border-slate-300 text-slate-600 hover:border-violet-400 hover:text-violet-600 transition-colors"
+          >
+            Validate →
+          </a>
+          <button
+            onClick={copy}
+            className={`text-xs px-3 py-1 rounded font-medium transition-colors ${
+              copied
+                ? "bg-emerald-100 text-emerald-700"
+                : "bg-white border border-slate-300 text-slate-600 hover:border-blue-400 hover:text-blue-600"
+            }`}
+          >
+            {copied ? "✓ Copied!" : "Copy <script> tag"}
+          </button>
+        </div>
       </div>
       {note && (
         <div className="px-4 py-2 bg-amber-50 border-b border-amber-100 text-xs text-amber-700">
