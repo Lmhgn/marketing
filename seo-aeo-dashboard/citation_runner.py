@@ -180,6 +180,8 @@ def main() -> None:
                         help="Model name (default: claude-opus-4-5 / gpt-4o)")
     parser.add_argument("--venue", default="",
                         help="Run for a single venue slug only (default: all 20)")
+    parser.add_argument("--resume", action="store_true",
+                        help="Skip venues already present in the output file and continue from where a previous run left off.")
     parser.add_argument("--debug", action="store_true",
                         help="Save raw LLM responses to data/citation_debug.json")
     parser.add_argument("--verbose", action="store_true",
@@ -254,15 +256,29 @@ def main() -> None:
     call_n = 0
     error_count = 0
 
-    # Load existing output so we can merge if running a single venue
+    # Load existing output — used for --venue merge and --resume skip logic
     try:
         existing = json.loads(output_path.read_text()) if output_path.exists() else {}
     except json.JSONDecodeError:
         existing = {}
 
+    already_done: set[str] = set()
+    if args.resume and existing.get("venues"):
+        already_done = set(existing["venues"].keys())
+        # Seed venues_out with already-completed data so incremental saves are complete
+        venues_out.update(existing["venues"])
+        if already_done:
+            logger.info("Resuming — skipping %d already-completed venue(s): %s",
+                        len(already_done), ", ".join(sorted(already_done)))
+
     for v in venues_data:
         slug = v["slug"]
         name = v["venue_name"]
+
+        if slug in already_done:
+            call_n += len(PROMPT_TEMPLATES)
+            continue
+
         prompt_results = []
 
         for t in PROMPT_TEMPLATES:
@@ -326,6 +342,16 @@ def main() -> None:
             "citation_band": citation_band(rate),
             "prompts": prompt_results,
         }
+
+        # Incremental save after every venue so a cancellation doesn't lose progress
+        _incremental = {
+            "run_date": str(date.today()),
+            "model": f"{provider}/{model}",
+            "prompts_per_venue": len(PROMPT_TEMPLATES),
+            "venues": venues_out,
+        }
+        output_path.write_text(json.dumps(_incremental, indent=2))
+        logger.info("  Saved %d/%d venues → %s", len(venues_out), len(venues_data), output_path)
 
     if error_count == total_calls:
         first_err = next(
