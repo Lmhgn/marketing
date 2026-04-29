@@ -23,7 +23,7 @@ export interface CitationMeta {
   total_prompts: number;
 }
 
-const data = citationData as {
+const data = citationData as unknown as {
   run_date: string;
   model: string;
   prompts_per_venue: number;

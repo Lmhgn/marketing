@@ -1,1553 +1,3987 @@
 {
   "run_date": "2026-04-29",
   "model": "openai/gpt-4o",
-  "total_prompts": 20,
+  "prompts_per_venue": 15,
   "venues": {
     "o2-academy-brixton": {
-      "citation_count": 4,
-      "citation_rate": 20.0,
-      "citation_band": "weak",
-      "cited_by_prompts": [
-        "p06",
-        "p07",
-        "p10",
-        "p20"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p08",
-        "p09",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p10",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 4,
-      "relevant_citation_rate": 40.0,
-      "relevant_citation_band": "moderate",
-      "gap_analysis": [
+      "citation_count": 11,
+      "citation_rate": 73.3,
+      "citation_band": "strong",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Brixton?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Brixton located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Brixton?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Brixton standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": true,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Brixton?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Brixton?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Brixton?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Brixton?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": true,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Brixton and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Brixton accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Brixton considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": true,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Brixton?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Brixton?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": true,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Brixton compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": true,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Brixton known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-academy-islington": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
+      "citation_count": 3,
+      "citation_rate": 20.0,
+      "citation_band": "weak",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Islington?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Islington located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": false,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Islington?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Islington standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Islington?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Islington?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": false,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Islington?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Islington?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Islington and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": false,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Islington accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Islington considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Islington?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Islington?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Islington compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Islington known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-forum-kentish-town": {
-      "citation_count": 1,
-      "citation_rate": 5.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [
-        "p08"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p08",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 12.5,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
+      "citation_count": 8,
+      "citation_rate": 53.3,
+      "citation_band": "good",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Forum Kentish Town?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Forum Kentish Town located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Forum Kentish Town?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Forum Kentish Town standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": true,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Forum Kentish Town?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Forum Kentish Town?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Forum Kentish Town?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Forum Kentish Town?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Forum Kentish Town and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Forum Kentish Town accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Forum Kentish Town considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Forum Kentish Town?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Forum Kentish Town?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": true,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Forum Kentish Town compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Forum Kentish Town known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-shepherds-bush-empire": {
-      "citation_count": 1,
-      "citation_rate": 5.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [
-        "p09"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p09",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 12.5,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
+      "citation_count": 11,
+      "citation_rate": 73.3,
+      "citation_band": "strong",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Shepherd's Bush Empire?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Shepherd's Bush Empire located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Shepherd's Bush Empire?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Shepherd's Bush Empire standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": true,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Shepherd's Bush Empire?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Shepherd's Bush Empire?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Shepherd's Bush Empire?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Shepherd's Bush Empire?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": true,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Shepherd's Bush Empire and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Shepherd's Bush Empire accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Shepherd's Bush Empire considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": true,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Shepherd's Bush Empire?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Shepherd's Bush Empire?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": true,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Shepherd's Bush Empire compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": true,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Shepherd's Bush Empire known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-academy-birmingham": {
-      "citation_count": 1,
-      "citation_rate": 5.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [
-        "p14"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p14",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 12.5,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
+      "citation_count": 8,
+      "citation_rate": 53.3,
+      "citation_band": "good",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Birmingham?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Birmingham located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Birmingham?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Birmingham standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": true,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Birmingham?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Birmingham?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Birmingham?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Birmingham?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Birmingham and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Birmingham accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Birmingham considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Birmingham?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Birmingham?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": true,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Birmingham compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Birmingham known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-institute-birmingham": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p14",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
+      "citation_count": 3,
+      "citation_rate": 20.0,
+      "citation_band": "weak",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Institute Birmingham?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Institute Birmingham located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": false,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Institute Birmingham?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Institute Birmingham standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Institute Birmingham?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Institute Birmingham?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": false,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Institute Birmingham?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Institute Birmingham?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Institute Birmingham and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": false,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Institute Birmingham accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Institute Birmingham considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Institute Birmingham?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Institute Birmingham?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Institute Birmingham compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Institute Birmingham known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-academy-leicester": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
+      "citation_count": 3,
+      "citation_rate": 20.0,
+      "citation_band": "weak",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Leicester?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Leicester located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": false,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Leicester?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Leicester standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Leicester?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Leicester?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": false,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Leicester?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Leicester?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Leicester and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": false,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Leicester accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Leicester considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Leicester?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Leicester?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Leicester compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Leicester known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-academy-oxford": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
+      "citation_count": 3,
+      "citation_rate": 20.0,
+      "citation_band": "weak",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Oxford?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Oxford located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": false,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Oxford?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Oxford standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Oxford?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Oxford?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": false,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Oxford?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Oxford?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Oxford and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": false,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Oxford accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Oxford considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Oxford?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Oxford?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Oxford compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Oxford known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-academy-bournemouth": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
+      "citation_count": 3,
+      "citation_rate": 20.0,
+      "citation_band": "weak",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Bournemouth?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Bournemouth located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": false,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Bournemouth?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Bournemouth standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Bournemouth?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Bournemouth?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": false,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Bournemouth?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Bournemouth?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Bournemouth and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": false,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Bournemouth accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Bournemouth considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Bournemouth?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Bournemouth?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Bournemouth compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Bournemouth known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-academy-bristol": {
-      "citation_count": 1,
-      "citation_rate": 5.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [
-        "p18"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 12.5,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
+      "citation_count": 8,
+      "citation_rate": 53.3,
+      "citation_band": "good",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Bristol?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Bristol located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Bristol?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Bristol standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": true,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Bristol?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Bristol?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Bristol?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Bristol?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Bristol and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Bristol accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Bristol considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Bristol?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Bristol?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": true,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Bristol compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Bristol known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-guildhall-southampton": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
+      "citation_count": 6,
+      "citation_rate": 40.0,
+      "citation_band": "moderate",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Guildhall Southampton?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Guildhall Southampton located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Guildhall Southampton?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Guildhall Southampton standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Guildhall Southampton?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Guildhall Southampton?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Guildhall Southampton?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Guildhall Southampton?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Guildhall Southampton and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Guildhall Southampton accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Guildhall Southampton considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Guildhall Southampton?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Guildhall Southampton?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Guildhall Southampton compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Guildhall Southampton known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-academy-liverpool": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
+      "citation_count": 8,
+      "citation_rate": 53.3,
+      "citation_band": "good",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Liverpool?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Liverpool located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Liverpool?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Liverpool standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": true,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Liverpool?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Liverpool?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Liverpool?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Liverpool?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Liverpool and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Liverpool accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Liverpool considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Liverpool?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Liverpool?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": true,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Liverpool compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Liverpool known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-ritz-manchester": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
+      "citation_count": 6,
+      "citation_rate": 40.0,
+      "citation_band": "moderate",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Ritz Manchester?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Ritz Manchester located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Ritz Manchester?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Ritz Manchester standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Ritz Manchester?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Ritz Manchester?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Ritz Manchester?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Ritz Manchester?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Ritz Manchester and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Ritz Manchester accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Ritz Manchester considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Ritz Manchester?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Ritz Manchester?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Ritz Manchester compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Ritz Manchester known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-victoria-warehouse-manchester": {
-      "citation_count": 1,
-      "citation_rate": 5.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [
-        "p13"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p13",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 12.5,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
+      "citation_count": 3,
+      "citation_rate": 20.0,
+      "citation_band": "weak",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Victoria Warehouse Manchester?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Victoria Warehouse Manchester located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": false,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Victoria Warehouse Manchester?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Victoria Warehouse Manchester standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Victoria Warehouse Manchester?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Victoria Warehouse Manchester?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": false,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Victoria Warehouse Manchester?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Victoria Warehouse Manchester?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Victoria Warehouse Manchester and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": false,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Victoria Warehouse Manchester accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Victoria Warehouse Manchester considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Victoria Warehouse Manchester?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Victoria Warehouse Manchester?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Victoria Warehouse Manchester compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Victoria Warehouse Manchester known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-apollo-manchester": {
-      "citation_count": 2,
-      "citation_rate": 10.0,
-      "citation_band": "weak",
-      "cited_by_prompts": [
-        "p11",
-        "p12"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p11",
-        "p12",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 2,
-      "relevant_citation_rate": 22.2,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
+      "citation_count": 11,
+      "citation_rate": 73.3,
+      "citation_band": "strong",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Apollo Manchester?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Apollo Manchester located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Apollo Manchester?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Apollo Manchester standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": true,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Apollo Manchester?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Apollo Manchester?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Apollo Manchester?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Apollo Manchester?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": true,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Apollo Manchester and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Apollo Manchester accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Apollo Manchester considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": true,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Apollo Manchester?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Apollo Manchester?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": true,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Apollo Manchester compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": true,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Apollo Manchester known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-academy-leeds": {
-      "citation_count": 1,
-      "citation_rate": 5.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [
-        "p17"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p17",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 12.5,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
+      "citation_count": 6,
+      "citation_rate": 40.0,
+      "citation_band": "moderate",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Leeds?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Leeds located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Leeds?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Leeds standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Leeds?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Leeds?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Leeds?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Leeds?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Leeds and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Leeds accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Leeds considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Leeds?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Leeds?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Leeds compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Leeds known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-academy-sheffield": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
+      "citation_count": 6,
+      "citation_rate": 40.0,
+      "citation_band": "moderate",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Sheffield?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Sheffield located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Sheffield?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Sheffield standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Sheffield?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Sheffield?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Sheffield?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Sheffield?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Sheffield and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Sheffield accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Sheffield considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Sheffield?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Sheffield?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Sheffield compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Sheffield known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-city-hall-newcastle": {
-      "citation_count": 0,
-      "citation_rate": 0.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 0,
-      "relevant_citation_rate": 0.0,
-      "relevant_citation_band": "critical",
-      "gap_analysis": [
+      "citation_count": 6,
+      "citation_rate": 40.0,
+      "citation_band": "moderate",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 City Hall Newcastle?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 City Hall Newcastle located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 City Hall Newcastle?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 City Hall Newcastle standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": false,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 City Hall Newcastle?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 City Hall Newcastle?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 City Hall Newcastle?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 City Hall Newcastle?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 City Hall Newcastle and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 City Hall Newcastle accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 City Hall Newcastle considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 City Hall Newcastle?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 City Hall Newcastle?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": false,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 City Hall Newcastle compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 City Hall Newcastle known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "o2-academy-glasgow": {
-      "citation_count": 2,
-      "citation_rate": 10.0,
-      "citation_band": "weak",
-      "cited_by_prompts": [
-        "p16",
-        "p20"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p15",
-        "p17",
-        "p18",
-        "p19"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p16",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 2,
-      "relevant_citation_rate": 25.0,
-      "relevant_citation_band": "moderate",
-      "gap_analysis": [
+      "citation_count": 8,
+      "citation_rate": 53.3,
+      "citation_band": "good",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of O2 Academy Glasgow?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is O2 Academy Glasgow located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at O2 Academy Glasgow?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is O2 Academy Glasgow standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": true,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at O2 Academy Glasgow?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at O2 Academy Glasgow?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside O2 Academy Glasgow?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at O2 Academy Glasgow?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": false,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at O2 Academy Glasgow and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is O2 Academy Glasgow accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is O2 Academy Glasgow considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": false,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at O2 Academy Glasgow?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of O2 Academy Glasgow?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": true,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does O2 Academy Glasgow compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": false,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is O2 Academy Glasgow known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     },
     "edinburgh-corn-exchange": {
-      "citation_count": 1,
-      "citation_rate": 5.0,
-      "citation_band": "critical",
-      "cited_by_prompts": [
-        "p15"
-      ],
-      "missed_by_prompts": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p06",
-        "p07",
-        "p08",
-        "p09",
-        "p10",
-        "p11",
-        "p12",
-        "p13",
-        "p14",
-        "p16",
-        "p17",
-        "p18",
-        "p19",
-        "p20"
-      ],
-      "relevant_prompt_ids": [
-        "p01",
-        "p02",
-        "p03",
-        "p04",
-        "p05",
-        "p15",
-        "p19",
-        "p20"
-      ],
-      "relevant_citation_count": 1,
-      "relevant_citation_rate": 12.5,
-      "relevant_citation_band": "weak",
-      "gap_analysis": [
+      "citation_count": 11,
+      "citation_rate": 73.3,
+      "citation_band": "strong",
+      "prompts": [
         {
-          "prompt_id": "p01",
-          "advice": "Add a clear bag policy page and FAQ entry. Ensure FAQPage schema is implemented on the /faqs page with a bag policy Q&A."
+          "id": "capacity",
+          "text": "What is the capacity of Edinburgh Corn Exchange?",
+          "monthly_searches": 3100,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "capacity",
+            "venue-size"
+          ],
+          "cited": true,
+          "advice": "Publish the exact capacity on the venue page and in MusicVenue schema (maximumAttendeeCapacity). LLMs use this for venue comparison queries."
         },
         {
-          "prompt_id": "p02",
-          "advice": "Publish explicit age restriction information on the venue page and in FAQPage schema. LLMs pull from structured FAQ content."
+          "id": "transport",
+          "text": "Where is Edinburgh Corn Exchange located and what is the nearest public transport?",
+          "monthly_searches": 2800,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "transport",
+            "location",
+            "directions"
+          ],
+          "cited": true,
+          "advice": "Add a dedicated 'Getting Here' page with nearest tube/train/bus stops, walking times, and directions. Add TransportationRoute schema markup."
         },
         {
-          "prompt_id": "p03",
-          "advice": "Add a FAQ entry clarifying on-door ticket policy. Many venues sell remaining tickets on the door \u2014 if you do, state it clearly."
+          "id": "doors-time",
+          "text": "What time do doors usually open for events at Edinburgh Corn Exchange?",
+          "monthly_searches": 2200,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "doors-time",
+            "opening-times"
+          ],
+          "cited": false,
+          "advice": "Add doors/opening times to the FAQ and venue page with FAQPage schema. This is a standard pre-visit query that LLMs should answer venue-specifically."
         },
         {
-          "prompt_id": "p04",
-          "advice": "Add finish/curfew time information to the venue FAQ. This is one of the highest-volume pre-visit queries."
+          "id": "standing-seated",
+          "text": "Is Edinburgh Corn Exchange standing only or does it have seating options?",
+          "monthly_searches": 2400,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "standing",
+            "seated",
+            "format"
+          ],
+          "cited": true,
+          "advice": "Clearly state standing/seated format on the venue page, FAQ, and in MusicVenue schema. Include general admission and balcony/tier details."
         },
         {
-          "prompt_id": "p05",
-          "advice": "Publish a dedicated accessibility page with specific details (step-free access, hearing loops, companion tickets). Link from nav."
+          "id": "bag-policy",
+          "text": "What is the bag and security policy at Edinburgh Corn Exchange?",
+          "monthly_searches": 2600,
+          "intent_category": "must-answer",
+          "topic_tags": [
+            "bag-policy",
+            "security",
+            "what-to-bring"
+          ],
+          "cited": false,
+          "advice": "Publish a clear bag policy FAQ entry with size limits. Implement FAQPage schema with a venue-specific bag policy Q&A."
+        },
+        {
+          "id": "atmosphere",
+          "text": "What is the atmosphere and experience like at a gig at Edinburgh Corn Exchange?",
+          "monthly_searches": 3500,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "atmosphere",
+            "experience",
+            "what-to-expect"
+          ],
+          "cited": true,
+          "advice": "Add a 'What to expect' or 'About the venue' section covering atmosphere, sound quality, and first-time visitor guidance."
+        },
+        {
+          "id": "best-spots",
+          "text": "Where are the best spots to stand or sit inside Edinburgh Corn Exchange?",
+          "monthly_searches": 1800,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "viewing",
+            "layout",
+            "best-spots"
+          ],
+          "cited": false,
+          "advice": "Add a venue map or layout description. A 'First time visiting?' page with viewing recommendations improves LLM knowledge of the space."
+        },
+        {
+          "id": "food-drink",
+          "text": "What food and drink options are available at Edinburgh Corn Exchange?",
+          "monthly_searches": 2100,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "food",
+            "drink",
+            "bars"
+          ],
+          "cited": true,
+          "advice": "List all bars, food options, and drink policies on the venue page or a dedicated 'Food & Drink' section."
+        },
+        {
+          "id": "arrive-time",
+          "text": "How early should I arrive at Edinburgh Corn Exchange and how long are the queues?",
+          "monthly_searches": 2900,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "arrival-time",
+            "queues",
+            "planning"
+          ],
+          "cited": true,
+          "advice": "Add a 'When to arrive' FAQ entry. Recommend arriving at doors time or 30 minutes before popular shows."
+        },
+        {
+          "id": "accessibility",
+          "text": "Is Edinburgh Corn Exchange accessible and wheelchair friendly?",
+          "monthly_searches": 1700,
+          "intent_category": "demand-driven",
+          "topic_tags": [
+            "accessibility",
+            "wheelchair",
+            "disabled"
+          ],
+          "cited": false,
+          "advice": "Publish a dedicated accessibility page with step-free access, hearing loops, and companion ticket information. Link from main navigation."
+        },
+        {
+          "id": "reputation",
+          "text": "Why is Edinburgh Corn Exchange considered one of the UK's great live music venues?",
+          "monthly_searches": 1200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "reputation",
+            "why-great"
+          ],
+          "cited": true,
+          "advice": "Add a strong editorial 'About the venue' section covering cultural significance, awards, and what makes it unique."
+        },
+        {
+          "id": "famous-acts",
+          "text": "What famous artists have performed at Edinburgh Corn Exchange?",
+          "monthly_searches": 4500,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "famous-artists",
+            "heritage",
+            "performances"
+          ],
+          "cited": true,
+          "advice": "Add a 'Famous performances' or 'Artists who have played here' section. This directly improves LLM citation for heritage queries."
+        },
+        {
+          "id": "history",
+          "text": "What is the history of Edinburgh Corn Exchange?",
+          "monthly_searches": 2800,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "history",
+            "heritage",
+            "background"
+          ],
+          "cited": true,
+          "advice": "Add a venue history section covering when it opened, notable moments, and its place in UK music history."
+        },
+        {
+          "id": "comparison",
+          "text": "How does Edinburgh Corn Exchange compare to other music venues in the same city?",
+          "monthly_searches": 2200,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "comparison",
+            "vs",
+            "alternatives"
+          ],
+          "cited": true,
+          "advice": "Improve topical authority by publishing content that positions the venue within the local and national music scene."
+        },
+        {
+          "id": "music-types",
+          "text": "What types of music and events is Edinburgh Corn Exchange known for?",
+          "monthly_searches": 3300,
+          "intent_category": "geo-stress",
+          "topic_tags": [
+            "genres",
+            "events",
+            "programming"
+          ],
+          "cited": true,
+          "advice": "Add genre and programming content to the venue page. Specify the types of acts you programme to help LLMs categorise the venue accurately."
         }
       ]
     }
-  },
-  "prompts": [
-    {
-      "id": "p01",
-      "text": "What is the bag policy at O2 Academy venues \u2014 what can I bring to a concert?",
-      "venues_cited": [],
-      "monthly_searches": 3200,
-      "intent_category": "venue-info",
-      "topic_tags": [
-        "bag-policy",
-        "o2-academy",
-        "uk-wide"
-      ]
-    },
-    {
-      "id": "p02",
-      "text": "What are the age restrictions at O2 Academy venues in the UK?",
-      "venues_cited": [],
-      "monthly_searches": 2800,
-      "intent_category": "venue-info",
-      "topic_tags": [
-        "age-restrictions",
-        "o2-academy",
-        "uk-wide"
-      ]
-    },
-    {
-      "id": "p03",
-      "text": "Can I buy tickets on the door at O2 venues, or do I need to book in advance?",
-      "venues_cited": [],
-      "monthly_searches": 4100,
-      "intent_category": "tickets",
-      "topic_tags": [
-        "on-door",
-        "tickets",
-        "o2-venues",
-        "uk-wide"
-      ]
-    },
-    {
-      "id": "p04",
-      "text": "What time do concerts usually finish at O2 Academy venues?",
-      "venues_cited": [],
-      "monthly_searches": 5400,
-      "intent_category": "planning",
-      "topic_tags": [
-        "finish-time",
-        "curfew",
-        "o2-academy",
-        "uk-wide"
-      ]
-    },
-    {
-      "id": "p05",
-      "text": "Are O2 Academy venues accessible and wheelchair friendly?",
-      "venues_cited": [],
-      "monthly_searches": 1900,
-      "intent_category": "venue-info",
-      "topic_tags": [
-        "accessibility",
-        "wheelchair",
-        "o2-academy",
-        "uk-wide"
-      ]
-    },
-    {
-      "id": "p06",
-      "text": "How do I get to O2 Academy Brixton by public transport \u2014 what tube stop?",
-      "venues_cited": [
-        "o2-academy-brixton"
-      ],
-      "monthly_searches": 6200,
-      "intent_category": "transport",
-      "topic_tags": [
-        "transport",
-        "tube",
-        "brixton",
-        "london"
-      ]
-    },
-    {
-      "id": "p07",
-      "text": "What is the capacity of O2 Academy Brixton and is it standing or seated?",
-      "venues_cited": [
-        "o2-academy-brixton"
-      ],
-      "monthly_searches": 4800,
-      "intent_category": "venue-info",
-      "topic_tags": [
-        "capacity",
-        "seating",
-        "brixton",
-        "london"
-      ]
-    },
-    {
-      "id": "p08",
-      "text": "What is the nearest tube station to O2 Forum Kentish Town?",
-      "venues_cited": [
-        "o2-forum-kentish-town"
-      ],
-      "monthly_searches": 2100,
-      "intent_category": "transport",
-      "topic_tags": [
-        "transport",
-        "tube",
-        "kentish-town",
-        "london"
-      ]
-    },
-    {
-      "id": "p09",
-      "text": "Is Shepherd's Bush Empire standing or seated, and what is the capacity?",
-      "venues_cited": [
-        "o2-shepherds-bush-empire"
-      ],
-      "monthly_searches": 3300,
-      "intent_category": "venue-info",
-      "topic_tags": [
-        "capacity",
-        "seating",
-        "shepherds-bush",
-        "london"
-      ]
-    },
-    {
-      "id": "p10",
-      "text": "How early should I arrive at O2 Academy Brixton before a show?",
-      "venues_cited": [
-        "o2-academy-brixton"
-      ],
-      "monthly_searches": 3900,
-      "intent_category": "planning",
-      "topic_tags": [
-        "arrival-time",
-        "brixton",
-        "london"
-      ]
-    },
-    {
-      "id": "p11",
-      "text": "Is there parking near O2 Apollo Manchester, and how do I get there by tram?",
-      "venues_cited": [
-        "o2-apollo-manchester"
-      ],
-      "monthly_searches": 2700,
-      "intent_category": "transport",
-      "topic_tags": [
-        "transport",
-        "parking",
-        "apollo",
-        "manchester"
-      ]
-    },
-    {
-      "id": "p12",
-      "text": "What is the capacity of O2 Apollo Manchester \u2014 is it a big venue?",
-      "venues_cited": [
-        "o2-apollo-manchester"
-      ],
-      "monthly_searches": 3100,
-      "intent_category": "venue-info",
-      "topic_tags": [
-        "capacity",
-        "apollo",
-        "manchester"
-      ]
-    },
-    {
-      "id": "p13",
-      "text": "What kind of music events does Victoria Warehouse Manchester host?",
-      "venues_cited": [
-        "o2-victoria-warehouse-manchester"
-      ],
-      "monthly_searches": 2400,
-      "intent_category": "tickets",
-      "topic_tags": [
-        "events",
-        "victoria-warehouse",
-        "manchester"
-      ]
-    },
-    {
-      "id": "p14",
-      "text": "How do I get to O2 Academy Birmingham by train \u2014 what is the nearest station?",
-      "venues_cited": [
-        "o2-academy-birmingham"
-      ],
-      "monthly_searches": 2900,
-      "intent_category": "transport",
-      "topic_tags": [
-        "transport",
-        "train",
-        "birmingham"
-      ]
-    },
-    {
-      "id": "p15",
-      "text": "What is Edinburgh Corn Exchange like as a concert venue \u2014 capacity and atmosphere?",
-      "venues_cited": [
-        "edinburgh-corn-exchange"
-      ],
-      "monthly_searches": 2200,
-      "intent_category": "venue-info",
-      "topic_tags": [
-        "capacity",
-        "atmosphere",
-        "corn-exchange",
-        "edinburgh"
-      ]
-    },
-    {
-      "id": "p16",
-      "text": "Is O2 Academy Glasgow standing or seated, and how big is it?",
-      "venues_cited": [
-        "o2-academy-glasgow"
-      ],
-      "monthly_searches": 2600,
-      "intent_category": "venue-info",
-      "topic_tags": [
-        "capacity",
-        "seating",
-        "glasgow"
-      ]
-    },
-    {
-      "id": "p17",
-      "text": "Are there hotels near O2 Academy Leeds for a concert night?",
-      "venues_cited": [
-        "o2-academy-leeds"
-      ],
-      "monthly_searches": 1800,
-      "intent_category": "planning",
-      "topic_tags": [
-        "hotels",
-        "accommodation",
-        "leeds"
-      ]
-    },
-    {
-      "id": "p18",
-      "text": "What food and drink is available at O2 Academy Bristol?",
-      "venues_cited": [
-        "o2-academy-bristol"
-      ],
-      "monthly_searches": 1600,
-      "intent_category": "planning",
-      "topic_tags": [
-        "food",
-        "drink",
-        "bristol"
-      ]
-    },
-    {
-      "id": "p19",
-      "text": "How do I get a refund or exchange for an O2 venue ticket?",
-      "venues_cited": [],
-      "monthly_searches": 4700,
-      "intent_category": "tickets",
-      "topic_tags": [
-        "refund",
-        "exchange",
-        "tickets",
-        "uk-wide"
-      ]
-    },
-    {
-      "id": "p20",
-      "text": "How do I find upcoming gigs and events at O2 Academy venues near me?",
-      "venues_cited": [
-        "o2-academy-brixton",
-        "o2-academy-glasgow"
-      ],
-      "monthly_searches": 6800,
-      "intent_category": "tickets",
-      "topic_tags": [
-        "upcoming-events",
-        "gigs",
-        "o2-academy",
-        "uk-wide"
-      ]
-    }
-  ]
+  }
 }
