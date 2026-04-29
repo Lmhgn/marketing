@@ -1,17 +1,21 @@
 """
-LLM citation runner — sends each prompt to the Claude API and detects
-which O2/AMG venues are mentioned in each response.
+LLM citation runner — sends each prompt to the Claude or OpenAI API and
+detects which O2/AMG venues are mentioned in each response.
 
 Detection strategy:
-  Each venue has a list of known name aliases (official name, common
-  shortforms, bare names without the O2 prefix). The runner checks the
-  LLM response against every alias using simple substring matching.
-  This is more reliable than asking the LLM to output JSON because it
-  captures partial name references ("Brixton Academy", "the Apollo", etc.)
+  Two-tier matching per venue:
+  1. Alias list  — multi-word phrases that unambiguously identify the venue
+  2. Signature words — single distinctive terms used only for that venue
+     (e.g. "brixton", "kentish town", "corn exchange") that are highly
+     unlikely to appear in a UK music venue context for any other reason.
 
-Requirements:
-    pip install anthropic
-    export ANTHROPIC_API_KEY=sk-ant-...
+  Both checks are case-insensitive substring matches against the full
+  lowercased response text.
+
+Requirements (install both so either provider works):
+    pip install anthropic openai
+    export ANTHROPIC_API_KEY=sk-ant-...   # for Claude
+    export OPENAI_API_KEY=sk-...          # for ChatGPT
 """
 
 import os
@@ -24,7 +28,8 @@ from .prompts import Prompt
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_MODEL = "claude-opus-4-5"
+DEFAULT_ANTHROPIC_MODEL = "claude-opus-4-5"
+DEFAULT_OPENAI_MODEL    = "gpt-4o"
 
 SYSTEM_PROMPT = (
     "You are a knowledgeable UK music industry expert. "
@@ -32,15 +37,15 @@ SYSTEM_PROMPT = (
     "Name specific real venues where relevant. Do not invent venues."
 )
 
-# Known alias forms for each venue slug.
-# Add any common shortform names the public uses.
+# ── Multi-word aliases (all must be substrings of the lowercased response) ────
 VENUE_ALIASES: dict[str, list[str]] = {
     "o2-academy-brixton": [
         "o2 academy brixton", "brixton academy", "o2 brixton",
-        "academy brixton", "brixton o2",
+        "academy brixton",
     ],
     "o2-academy-islington": [
         "o2 academy islington", "islington academy", "academy islington",
+        "o2 islington",
     ],
     "o2-forum-kentish-town": [
         "o2 forum kentish town", "forum kentish town", "kentish town forum",
@@ -49,6 +54,7 @@ VENUE_ALIASES: dict[str, list[str]] = {
     "o2-shepherds-bush-empire": [
         "o2 shepherd's bush empire", "o2 shepherds bush empire",
         "shepherd's bush empire", "shepherds bush empire", "bush empire",
+        "shepherd's bush", "shepherds bush",
     ],
     "o2-academy-birmingham": [
         "o2 academy birmingham", "birmingham academy", "academy birmingham",
@@ -56,16 +62,19 @@ VENUE_ALIASES: dict[str, list[str]] = {
     ],
     "o2-institute-birmingham": [
         "o2 institute birmingham", "institute birmingham",
-        "birmingham institute",
+        "birmingham institute", "o2 institute",
     ],
     "o2-academy-leicester": [
         "o2 academy leicester", "leicester academy", "academy leicester",
+        "o2 leicester",
     ],
     "o2-academy-oxford": [
         "o2 academy oxford", "oxford academy", "academy oxford",
+        "o2 oxford",
     ],
     "o2-academy-bournemouth": [
         "o2 academy bournemouth", "bournemouth academy", "academy bournemouth",
+        "o2 bournemouth",
     ],
     "o2-academy-bristol": [
         "o2 academy bristol", "bristol academy", "academy bristol",
@@ -73,7 +82,7 @@ VENUE_ALIASES: dict[str, list[str]] = {
     ],
     "o2-guildhall-southampton": [
         "o2 guildhall southampton", "guildhall southampton",
-        "southampton guildhall",
+        "southampton guildhall", "o2 guildhall",
     ],
     "o2-academy-liverpool": [
         "o2 academy liverpool", "liverpool academy", "academy liverpool",
@@ -81,7 +90,7 @@ VENUE_ALIASES: dict[str, list[str]] = {
     ],
     "o2-ritz-manchester": [
         "o2 ritz manchester", "ritz manchester", "the ritz manchester",
-        "manchester ritz",
+        "manchester ritz", "o2 ritz",
     ],
     "o2-victoria-warehouse-manchester": [
         "o2 victoria warehouse manchester", "victoria warehouse manchester",
@@ -112,6 +121,17 @@ VENUE_ALIASES: dict[str, list[str]] = {
     ],
 }
 
+# ── Single-word / short signatures that unambiguously identify one venue ──────
+# Only include terms that would NOT naturally appear for any other UK venue.
+VENUE_SIGNATURES: dict[str, list[str]] = {
+    "o2-academy-brixton":            ["brixton"],
+    "o2-forum-kentish-town":         ["kentish town"],
+    "o2-victoria-warehouse-manchester": ["victoria warehouse"],
+    "o2-guildhall-southampton":      ["guildhall southampton", "southampton guildhall"],
+    "o2-city-hall-newcastle":        ["newcastle city hall"],
+    "edinburgh-corn-exchange":       ["corn exchange"],
+}
+
 
 @dataclass
 class PromptResult:
@@ -122,45 +142,89 @@ class PromptResult:
 
 
 def detect_citations(response: str, venue_slugs: list[str]) -> list[str]:
-    """Return slugs of venues whose name (or alias) appears in the response."""
+    """Return slugs of venues whose name (or signature) appears in the response."""
     lower = response.lower()
     cited = []
     for slug in venue_slugs:
-        aliases = VENUE_ALIASES.get(slug, [slug.replace("-", " ")])
-        for alias in aliases:
+        matched = False
+        # Tier 1: multi-word alias match
+        for alias in VENUE_ALIASES.get(slug, []):
             if alias in lower:
-                cited.append(slug)
+                matched = True
                 break
+        # Tier 2: signature word match
+        if not matched:
+            for sig in VENUE_SIGNATURES.get(slug, []):
+                if sig in lower:
+                    matched = True
+                    break
+        if matched:
+            cited.append(slug)
     return cited
+
+
+def _call_anthropic(client, model: str, prompt_text: str) -> str:
+    message = client.messages.create(
+        model=model,
+        max_tokens=600,
+        system=SYSTEM_PROMPT,
+        messages=[{"role": "user", "content": prompt_text}],
+    )
+    return message.content[0].text
+
+
+def _call_openai(client, model: str, prompt_text: str) -> str:
+    response = client.chat.completions.create(
+        model=model,
+        max_tokens=600,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt_text},
+        ],
+    )
+    return response.choices[0].message.content
 
 
 def run_live(
     venues: list[dict],
     prompts: list[Prompt],
-    model: str = DEFAULT_MODEL,
+    model: str = DEFAULT_ANTHROPIC_MODEL,
+    provider: str = "anthropic",
     rate_limit_s: float = 0.5,
     verbose: bool = False,
 ) -> list[PromptResult]:
     """
-    Run prompts against the Claude API. Returns PromptResult for each prompt.
-    Raises EnvironmentError if ANTHROPIC_API_KEY is not set.
+    Run prompts against the chosen LLM API. Returns PromptResult for each prompt.
+
+    provider: "anthropic" (default) or "openai"
     """
-    try:
-        import anthropic
-    except ImportError:
-        raise ImportError(
-            "anthropic package required: pip install anthropic"
-        )
+    provider = provider.lower()
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        raise EnvironmentError(
-            "ANTHROPIC_API_KEY environment variable is not set.\n"
-            "  Export it with: export ANTHROPIC_API_KEY=sk-ant-...\n"
-            "  Or run generate_citation_sample.py for offline simulation."
-        )
+    if provider == "anthropic":
+        try:
+            import anthropic
+        except ImportError:
+            raise ImportError("pip install anthropic")
+        api_key = os.environ.get("ANTHROPIC_API_KEY")
+        if not api_key:
+            raise EnvironmentError("ANTHROPIC_API_KEY is not set.")
+        client = anthropic.Anthropic(api_key=api_key)
+        call_fn = lambda text: _call_anthropic(client, model, text)
 
-    client = anthropic.Anthropic(api_key=api_key)
+    elif provider == "openai":
+        try:
+            import openai as openai_module
+        except ImportError:
+            raise ImportError("pip install openai")
+        api_key = os.environ.get("OPENAI_API_KEY")
+        if not api_key:
+            raise EnvironmentError("OPENAI_API_KEY is not set.")
+        client = openai_module.OpenAI(api_key=api_key)
+        call_fn = lambda text: _call_openai(client, model, text)
+
+    else:
+        raise ValueError(f"Unknown provider '{provider}'. Use 'anthropic' or 'openai'.")
+
     slugs = [v["slug"] for v in venues]
     results: list[PromptResult] = []
 
@@ -168,13 +232,7 @@ def run_live(
         logger.info("[%d/%d] %s: %s", i + 1, len(prompts), prompt.id, prompt.text[:70])
 
         try:
-            message = client.messages.create(
-                model=model,
-                max_tokens=600,
-                system=SYSTEM_PROMPT,
-                messages=[{"role": "user", "content": prompt.text}],
-            )
-            response_text = message.content[0].text
+            response_text = call_fn(prompt.text)
         except Exception as exc:
             logger.warning("Prompt %s failed: %s", prompt.id, exc)
             response_text = ""
@@ -182,8 +240,8 @@ def run_live(
         cited = detect_citations(response_text, slugs)
 
         if verbose:
-            logger.info("  Response: %s", response_text[:200].replace("\n", " "))
-        logger.info("  Cited: %s", ", ".join(cited) if cited else "none")
+            logger.info("  Response:\n%s", response_text)
+        logger.info("  Cited (%d): %s", len(cited), ", ".join(cited) if cited else "none")
 
         results.append(PromptResult(
             prompt_id=prompt.id,

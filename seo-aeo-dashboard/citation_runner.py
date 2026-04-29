@@ -2,30 +2,33 @@
 """
 citation_runner.py — Real LLM citation measurement for O2/AMG venues.
 
-Sends each test prompt to the Claude API, detects which portfolio venues
-are mentioned in the response, and writes the results to
+Sends each test prompt to the Claude or OpenAI API, detects which portfolio
+venues are mentioned in the response, and writes results to
 data/citation_results.json — preserving all metadata (monthly search
-volumes, intent categories, relevant_prompt_ids, gap_analysis) that was
-calculated offline.
+volumes, intent categories, relevant_prompt_ids, gap_analysis).
 
 Requirements:
-    pip install anthropic
-    export ANTHROPIC_API_KEY=sk-ant-...
+    pip install anthropic openai   # install both; only the chosen one is used
+    export ANTHROPIC_API_KEY=sk-ant-...   # for --provider anthropic (default)
+    export OPENAI_API_KEY=sk-...          # for --provider openai
 
 Usage:
     # Dry run — show prompts and API call plan, no charges
     python citation_runner.py --dry-run
 
-    # Full live run (all 20 prompts, default model)
+    # Full live run with Claude (default)
     python citation_runner.py
+
+    # Full live run with ChatGPT
+    python citation_runner.py --provider openai --model gpt-4o
 
     # Run only specific prompts
     python citation_runner.py --prompts p01,p07,p12
 
-    # Use a different model
-    python citation_runner.py --model claude-opus-4-7
+    # Debug — save raw LLM responses to data/citation_debug.json
+    python citation_runner.py --debug
 
-    # Verbose — print each LLM response in full
+    # Verbose — print each LLM response to stdout
     python citation_runner.py --verbose
 
     # Write to a custom output file
@@ -218,9 +221,20 @@ def main() -> None:
         help="Show what would run — no API calls, no file writes.",
     )
     parser.add_argument(
+        "--provider",
+        default="anthropic",
+        choices=["anthropic", "openai"],
+        help="LLM provider: anthropic (default) or openai",
+    )
+    parser.add_argument(
         "--model",
-        default="claude-opus-4-5",
-        help="Claude model to use (default: claude-opus-4-5)",
+        default="",
+        help="Model name (default: claude-opus-4-5 for anthropic, gpt-4o for openai)",
+    )
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="Save raw LLM responses to data/citation_debug.json for inspection.",
     )
     parser.add_argument(
         "--prompts",
@@ -267,30 +281,54 @@ def main() -> None:
     else:
         prompts = PROMPTS
 
+    # Resolve model default per provider
+    provider = args.provider
+    if args.model:
+        model = args.model
+    elif provider == "openai":
+        model = "gpt-4o"
+    else:
+        model = "claude-opus-4-5"
+
     # ── Dry run ───────────────────────────────────────────────────────────────
     if args.dry_run:
-        print(f"\nDry run — {len(prompts)} prompt(s) would be sent to {args.model}\n")
+        print(f"\nDry run — {len(prompts)} prompt(s) would be sent to {model} via {provider}\n")
         total_monthly = sum(p.monthly_searches for p in prompts)
         for p in prompts:
             print(f"  [{p.id}] {p.text}")
             print(f"         intent={p.intent_category}  region={p.region_filter or 'UK-wide'}  "
                   f"searches={p.monthly_searches:,}/mo")
-        print(f"\nEstimated cost: ~{len(prompts) * 600} output tokens @ claude-opus-4-5 rates")
-        print(f"Total monthly search coverage: {total_monthly:,}/mo ({total_monthly//30:,}/day)\n")
+        print(f"\nTotal monthly search coverage: {total_monthly:,}/mo ({total_monthly//30:,}/day)\n")
         return
 
     # ── Live run ──────────────────────────────────────────────────────────────
-    logger.info("Starting citation run: %d prompts, model=%s", len(prompts), args.model)
+    logger.info("Starting citation run: %d prompts, provider=%s, model=%s", len(prompts), provider, model)
 
     from llm_simulation.runner import run_live
 
     results = run_live(
         venues=venues,
         prompts=prompts,
-        model=args.model,
+        model=model,
+        provider=provider,
         rate_limit_s=args.rate_limit,
         verbose=args.verbose,
     )
+
+    # ── Debug dump ────────────────────────────────────────────────────────────
+    if args.debug:
+        debug_path = DATA_DIR / "citation_debug.json"
+        debug_data = [
+            {
+                "prompt_id": r.prompt_id,
+                "prompt_text": r.prompt_text,
+                "venues_cited": r.venues_cited,
+                "response_text": r.response_text,
+            }
+            for r in results
+        ]
+        debug_path.write_text(json.dumps(debug_data, indent=2))
+        logger.info("Debug responses written → %s", debug_path)
 
     # If we ran only a subset, merge with existing prompt results
     if args.prompts and existing.get("prompts"):
@@ -330,7 +368,7 @@ def main() -> None:
 
     output = {
         "run_date": str(date.today()),
-        "model": args.model,
+        "model": f"{provider}/{model}",
         "total_prompts": len(prompt_results_for_agg),
         "venues": venues_out,
         "prompts": prompts_block,

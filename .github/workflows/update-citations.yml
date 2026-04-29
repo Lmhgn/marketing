@@ -8,14 +8,30 @@ on:
   # Allow manual runs from the Actions tab with optional overrides
   workflow_dispatch:
     inputs:
-      model:
-        description: "Claude model to use"
+      provider:
+        description: "LLM provider"
         required: false
-        default: "claude-opus-4-5"
+        default: "anthropic"
+        type: choice
+        options:
+          - anthropic
+          - openai
+      model:
+        description: "Model name (blank = provider default: claude-opus-4-5 / gpt-4o)"
+        required: false
+        default: ""
       prompts:
         description: "Comma-separated prompt IDs to run (blank = all 20)"
         required: false
         default: ""
+      debug:
+        description: "Save raw LLM responses to citation_debug.json"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
 
 concurrency:
   group: update-citations
@@ -48,26 +64,33 @@ jobs:
         id: runner
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           cd seo-aeo-dashboard
 
-          MODEL="${{ inputs.model || 'claude-opus-4-5' }}"
-          ARGS="--model $MODEL"
+          PROVIDER="${{ inputs.provider || 'anthropic' }}"
+          ARGS="--provider $PROVIDER"
 
+          if [ -n "${{ inputs.model }}" ]; then
+            ARGS="$ARGS --model ${{ inputs.model }}"
+          fi
           if [ -n "${{ inputs.prompts }}" ]; then
             ARGS="$ARGS --prompts ${{ inputs.prompts }}"
+          fi
+          if [ "${{ inputs.debug }}" = "true" ]; then
+            ARGS="$ARGS --debug --verbose"
           fi
 
           echo "Running: python citation_runner.py $ARGS"
           python citation_runner.py $ARGS
 
-          echo "model=$MODEL" >> $GITHUB_OUTPUT
+          echo "provider=$PROVIDER" >> $GITHUB_OUTPUT
 
       - name: Commit updated citation data
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_user_name: Coreybot
           commit_user_email: coreybot+github-actions[bot]@users.noreply.github.com
-          commit_message: "data: refresh LLM citation results (${{ steps.runner.outputs.model }}, ${{ github.run_id }})"
+          commit_message: "data: refresh LLM citation results (${{ steps.runner.outputs.provider }}, run ${{ github.run_id }})"
           file_pattern: seo-aeo-dashboard/data/citation_results.json
           skip_dirty_check: false
