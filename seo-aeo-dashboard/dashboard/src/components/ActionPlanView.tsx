@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import type { ActionItem, ActionCategory, ActionPriority } from "@/lib/actions";
 
@@ -36,6 +36,29 @@ const EFFORT_COLORS: Record<string, string> = {
   substantial: "text-orange-600",
 };
 
+type DeployStatus = "recommended" | "in-progress" | "deployed";
+
+const STATUS_CONFIG: Record<DeployStatus, { label: string; dot: string; text: string; next: DeployStatus }> = {
+  "recommended": { label: "To do",       dot: "bg-slate-300",   text: "text-slate-500",   next: "in-progress" },
+  "in-progress": { label: "In progress", dot: "bg-amber-400",   text: "text-amber-700",   next: "deployed"    },
+  "deployed":    { label: "Deployed",    dot: "bg-emerald-500", text: "text-emerald-700", next: "recommended" },
+};
+
+const LS_KEY = "action-deploy-status";
+
+function loadStatus(): Record<string, DeployStatus> {
+  if (typeof window === "undefined") return {};
+  try {
+    return JSON.parse(localStorage.getItem(LS_KEY) ?? "{}");
+  } catch {
+    return {};
+  }
+}
+
+function saveStatus(s: Record<string, DeployStatus>) {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(s)); } catch { /* noop */ }
+}
+
 const ALL = "all" as const;
 type Filter = ActionCategory | typeof ALL;
 
@@ -50,8 +73,30 @@ const TABS: { key: Filter; label: string }[] = [
 const MAX_VENUE_CHIPS = 5;
 
 export default function ActionPlanView({ items }: { items: ActionItem[] }) {
-  const [filter, setFilter]     = useState<Filter>(ALL);
+  const [filter,   setFilter]   = useState<Filter>(ALL);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [status,   setStatus]   = useState<Record<string, DeployStatus>>({});
+
+  useEffect(() => { setStatus(loadStatus()); }, []);
+
+  const getStatus = useCallback(
+    (actionId: string, venueSlug: string): DeployStatus =>
+      status[`${actionId}:${venueSlug}`] ?? "recommended",
+    [status],
+  );
+
+  const cycleStatus = useCallback((actionId: string, venueSlug: string) => {
+    const key     = `${actionId}:${venueSlug}`;
+    const current = status[key] ?? "recommended";
+    const next    = STATUS_CONFIG[current].next;
+    const updated = { ...status, [key]: next };
+    setStatus(updated);
+    saveStatus(updated);
+  }, [status]);
+
+  function deployedCount(item: ActionItem): number {
+    return item.affectedVenues.filter(v => getStatus(item.id, v.slug) === "deployed").length;
+  }
 
   const visible = filter === ALL ? items : items.filter(i => i.category === filter);
 
@@ -79,10 +124,7 @@ export default function ActionPlanView({ items }: { items: ActionItem[] }) {
           >
             {t.label}
             <span className="ml-1.5 text-xs text-slate-400">
-              ({(filter === t.key || t.key === ALL
-                ? (t.key === ALL ? items : items.filter(i => i.category === t.key))
-                : items.filter(i => i.category === t.key)
-              ).length})
+              ({(t.key === ALL ? items : items.filter(i => i.category === t.key)).length})
             </span>
           </button>
         ))}
@@ -91,9 +133,12 @@ export default function ActionPlanView({ items }: { items: ActionItem[] }) {
       {/* Action cards */}
       <ol className="space-y-4">
         {visible.map((item, idx) => {
-          const isOpen = expanded.has(item.id);
-          const shown  = item.affectedVenues.slice(0, MAX_VENUE_CHIPS);
-          const extra  = item.affectedVenues.length - MAX_VENUE_CHIPS;
+          const isOpen   = expanded.has(item.id);
+          const shown    = item.affectedVenues.slice(0, MAX_VENUE_CHIPS);
+          const extra    = item.affectedVenues.length - MAX_VENUE_CHIPS;
+          const deployed = deployedCount(item);
+          const total    = item.affectedVenues.length;
+          const pct      = Math.round(deployed / total * 100);
 
           return (
             <li key={item.id} className="bg-white rounded-lg border border-slate-200 overflow-hidden">
@@ -120,10 +165,9 @@ export default function ActionPlanView({ items }: { items: ActionItem[] }) {
                   <h3 className="text-sm font-semibold text-slate-900 mb-1">{item.title}</h3>
                   <p className="text-xs text-slate-500 leading-relaxed">{item.description}</p>
 
-                  {/* Impact summary */}
                   <div className="flex flex-wrap gap-4 mt-3 text-xs">
                     <span className="text-indigo-600 font-medium">
-                      AEO uplift: +{item.totalAeoImpact} pts across {item.affectedVenues.length} venue{item.affectedVenues.length !== 1 ? "s" : ""}
+                      AEO uplift: +{item.totalAeoImpact} pts across {total} venue{total !== 1 ? "s" : ""}
                     </span>
                     <span className="text-emerald-600 font-medium">
                       GEO uplift: +{item.totalGeoImpact} pts
@@ -132,37 +176,62 @@ export default function ActionPlanView({ items }: { items: ActionItem[] }) {
                       (+{item.aeoImpactPerVenue} AEO / +{item.geoImpactPerVenue} GEO per venue)
                     </span>
                   </div>
+
+                  {/* Deployment progress bar */}
+                  <div className="mt-3 flex items-center gap-2">
+                    <div className="flex-1 max-w-[160px] h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full transition-all ${deployed === total ? "bg-emerald-500" : "bg-amber-400"}`}
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+                    <span className="text-xs text-slate-500">
+                      {deployed}/{total} venues deployed
+                    </span>
+                  </div>
                 </div>
 
-                {/* Venue count + toggle */}
                 <button
                   onClick={() => toggle(item.id)}
                   className="flex-shrink-0 text-xs text-slate-400 hover:text-slate-600 flex flex-col items-end gap-1"
                 >
-                  <span className="font-mono text-slate-600 font-medium">
-                    {item.affectedVenues.length}/20 venues
-                  </span>
+                  <span className="font-mono text-slate-600 font-medium">{total}/20 venues</span>
                   <span>{isOpen ? "▲ hide" : "▼ show"}</span>
                 </button>
               </div>
 
-              {/* Expandable venue list */}
+              {/* Expandable venue list with status toggles */}
               {isOpen && (
                 <div className="border-t border-slate-100 px-4 py-3 bg-slate-50">
-                  <div className="flex flex-wrap gap-1.5">
-                    {shown.map(v => (
-                      <Link
-                        key={v.slug}
-                        href={`/venue/${v.slug}`}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-white border border-slate-200 text-xs text-slate-700 hover:border-blue-400 hover:text-blue-700"
-                      >
-                        {v.name}
-                        <span className="text-slate-400">{v.region}</span>
-                      </Link>
-                    ))}
+                  <p className="text-xs text-slate-400 mb-2">
+                    Click a venue status badge to cycle: To do → In progress → Deployed
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {item.affectedVenues.map(v => {
+                      const s    = getStatus(item.id, v.slug);
+                      const cfg  = STATUS_CONFIG[s];
+                      return (
+                        <div key={v.slug} className="flex items-center gap-1 bg-white rounded border border-slate-200 pl-2 pr-1 py-0.5">
+                          <Link
+                            href={`/venue/${v.slug}`}
+                            className="text-xs text-slate-700 hover:text-blue-700"
+                          >
+                            {v.name}
+                          </Link>
+                          <button
+                            onClick={() => cycleStatus(item.id, v.slug)}
+                            title={`Click to advance status (currently: ${cfg.label})`}
+                            className={`inline-flex items-center gap-1 ml-1 px-1.5 py-0.5 rounded text-xs ${cfg.text} hover:opacity-75 transition-opacity`}
+                          >
+                            <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
+                            {cfg.label}
+                          </button>
+                        </div>
+                      );
+                    })}
                     {extra > 0 && (
-                      <span className="px-2 py-0.5 rounded bg-slate-200 text-xs text-slate-500">
-                        +{extra} more
+                      <span className="px-2 py-0.5 rounded bg-slate-200 text-xs text-slate-500 self-center">
+                        +{extra} more (expand to see all)
                       </span>
                     )}
                   </div>

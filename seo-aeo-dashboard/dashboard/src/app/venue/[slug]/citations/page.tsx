@@ -10,6 +10,8 @@ import {
   dailySearches,
   type VenuePrompt,
 } from "@/lib/citations";
+import { getVenueCitationHistory, getCitationDelta } from "@/lib/citation-history";
+import CitationTrendChart from "@/components/CitationTrendChart";
 
 export function generateStaticParams() {
   return venues.map(v => ({ slug: v.slug }));
@@ -23,6 +25,9 @@ export default function CitationsDetail({ params }: { params: { slug: string } }
 
   const citations = getVenueCitations(params.slug);
   if (!citations) notFound();
+
+  const citationHistory = getVenueCitationHistory(params.slug);
+  const citationDelta   = getCitationDelta(params.slug);
 
   const { prompts } = citations;
 
@@ -94,6 +99,21 @@ export default function CitationsDetail({ params }: { params: { slug: string } }
           />
         </div>
       </section>
+
+      {/* Citation rate trend */}
+      {citationHistory.length > 1 && (
+        <section className="bg-white rounded-lg border border-slate-200 p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-sm font-medium text-slate-700">Citation rate — 4-week trend</h2>
+            {citationDelta !== null && (
+              <span className={`text-xs font-mono font-medium ${citationDelta >= 0 ? "text-emerald-600" : "text-red-500"}`}>
+                {citationDelta >= 0 ? "+" : ""}{citationDelta}% since week 1
+              </span>
+            )}
+          </div>
+          <CitationTrendChart data={citationHistory} />
+        </section>
+      )}
 
       {/* Gap analysis */}
       {missedPrompts.length > 0 && (

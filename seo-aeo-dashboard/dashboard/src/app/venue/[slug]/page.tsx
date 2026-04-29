@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getVenue, venues } from "@/lib/data";
 import { getVenueHistory, getScoreDeltas } from "@/lib/history";
+import { getVenueCitationHistory, getCitationDelta } from "@/lib/citation-history";
 import { getVenueCitations, citationMeta, citationBandBg, dailySearches, computeReadinessScore, readinessBand } from "@/lib/citations";
 import { generateMusicVenueSchema, generateFaqSchema } from "@/lib/schema-snippets";
 import { ScoreBadge } from "@/components/ScoreBadge";
@@ -31,6 +32,8 @@ export default function VenueDetail({ params }: { params: { slug: string } }) {
 
   const history = getVenueHistory(params.slug);
   const deltas = getScoreDeltas(params.slug);
+  const citationHistory = getVenueCitationHistory(params.slug);
+  const citationDelta   = getCitationDelta(params.slug);
   const citations = getVenueCitations(params.slug);
   const citedPrompts  = citations ? citations.prompts.filter(p => p.cited) : [];
   const missedPrompts = citations ? citations.prompts.filter(p => !p.cited) : [];
@@ -69,14 +72,19 @@ export default function VenueDetail({ params }: { params: { slug: string } }) {
         <section className="bg-white rounded-lg border border-slate-200 p-4">
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-sm font-medium text-slate-700">Score trend — last 4 weeks</h2>
-            {deltas && (
-              <div className="flex gap-4 text-xs">
-                <DeltaBadge label="AEO" delta={deltas.aeo} />
-                <DeltaBadge label="GEO" delta={deltas.geo} />
-              </div>
-            )}
+            <div className="flex gap-4 text-xs">
+              {deltas && (
+                <>
+                  <DeltaBadge label="AEO" delta={deltas.aeo} />
+                  <DeltaBadge label="GEO" delta={deltas.geo} />
+                </>
+              )}
+              {citationDelta !== null && (
+                <DeltaBadge label="Citation" delta={citationDelta} suffix="%" />
+              )}
+            </div>
           </div>
-          <TrendChart data={history} />
+          <TrendChart data={history} citationData={citationHistory.length > 1 ? citationHistory : undefined} />
         </section>
       )}
 
@@ -204,11 +212,11 @@ export default function VenueDetail({ params }: { params: { slug: string } }) {
   );
 }
 
-function DeltaBadge({ label, delta }: { label: string; delta: number }) {
+function DeltaBadge({ label, delta, suffix = "" }: { label: string; delta: number; suffix?: string }) {
   const positive = delta >= 0;
   return (
     <span className={`font-mono ${positive ? "text-emerald-600" : "text-red-500"}`}>
-      {label}: {positive ? "+" : ""}{delta}
+      {label}: {positive ? "+" : ""}{delta}{suffix}
     </span>
   );
 }

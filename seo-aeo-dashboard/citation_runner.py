@@ -325,6 +325,32 @@ def main() -> None:
     output_path.write_text(json.dumps(output, indent=2))
     logger.info("Written → %s", output_path)
 
+    # ── Append to citation history ────────────────────────────────────────────
+    history_path = DATA_DIR / "citation_history.json"
+    try:
+        citation_history = json.loads(history_path.read_text()) if history_path.exists() else {}
+    except json.JSONDecodeError:
+        citation_history = {}
+
+    today = str(date.today())
+    for slug, v in venues_out.items():
+        if slug not in citation_history:
+            citation_history[slug] = []
+        # Remove any existing entry for today (idempotent re-runs)
+        citation_history[slug] = [s for s in citation_history[slug] if s["date"] != today]
+        citation_history[slug].append({
+            "date":           today,
+            "week":           len(citation_history[slug]) + 1,
+            "citation_rate":  v["citation_rate"],
+            "citation_count": v["citation_count"],
+            "citation_band":  v["citation_band"],
+        })
+        # Keep only the most recent 8 snapshots
+        citation_history[slug] = citation_history[slug][-8:]
+
+    history_path.write_text(json.dumps(citation_history, indent=2))
+    logger.info("Citation history updated → %s", history_path)
+
     print_summary(venues_out, json.loads(VENUES_FILE.read_text()))
     print(f"\nRun date: {output['run_date']}  Model: {model}")
     print(f"Output:   {output_path}\n")
