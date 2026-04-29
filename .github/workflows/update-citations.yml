@@ -20,8 +20,8 @@ on:
         description: "Model name (blank = provider default: claude-opus-4-5 / gpt-4o)"
         required: false
         default: ""
-      prompts:
-        description: "Comma-separated prompt IDs to run (blank = all 20)"
+      venue:
+        description: "Run for a single venue slug only (blank = all 20 venues)"
         required: false
         default: ""
       debug:
@@ -74,8 +74,8 @@ jobs:
           if [ -n "${{ inputs.model }}" ]; then
             ARGS="$ARGS --model ${{ inputs.model }}"
           fi
-          if [ -n "${{ inputs.prompts }}" ]; then
-            ARGS="$ARGS --prompts ${{ inputs.prompts }}"
+          if [ -n "${{ inputs.venue }}" ]; then
+            ARGS="$ARGS --venue ${{ inputs.venue }}"
           fi
           if [ "${{ inputs.debug }}" = "true" ]; then
             ARGS="$ARGS --debug --verbose"
