@@ -92,5 +92,5 @@ jobs:
           commit_user_name: Coreybot
           commit_user_email: coreybot+github-actions[bot]@users.noreply.github.com
           commit_message: "data: refresh LLM citation results (${{ steps.runner.outputs.provider }}, run ${{ github.run_id }})"
-          file_pattern: seo-aeo-dashboard/data/citation_results.json
+          file_pattern: seo-aeo-dashboard/data/citation_results.json seo-aeo-dashboard/data/citation_debug.json
           skip_dirty_check: false
