@@ -1,0 +1,73 @@
+name: Update LLM Citation Data
+
+on:
+  # Run every Monday at 08:00 UTC
+  schedule:
+    - cron: "0 8 * * 1"
+
+  # Allow manual runs from the Actions tab with optional overrides
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Claude model to use"
+        required: false
+        default: "claude-opus-4-5"
+      prompts:
+        description: "Comma-separated prompt IDs to run (blank = all 20)"
+        required: false
+        default: ""
+
+concurrency:
+  group: update-citations
+  cancel-in-progress: true
+
+jobs:
+  run-citation-runner:
+    name: Run citation runner and commit results
+    runs-on: ubuntu-slim
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: true
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: seo-aeo-dashboard/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r seo-aeo-dashboard/requirements.txt
+
+      - name: Run citation runner
+        id: runner
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          cd seo-aeo-dashboard
+
+          MODEL="${{ inputs.model || 'claude-opus-4-5' }}"
+          ARGS="--model $MODEL"
+
+          if [ -n "${{ inputs.prompts }}" ]; then
+            ARGS="$ARGS --prompts ${{ inputs.prompts }}"
+          fi
+
+          echo "Running: python citation_runner.py $ARGS"
+          python citation_runner.py $ARGS
+
+          echo "model=$MODEL" >> $GITHUB_OUTPUT
+
+      - name: Commit updated citation data
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_user_name: Coreybot
+          commit_user_email: coreybot+github-actions[bot]@users.noreply.github.com
+          commit_message: "data: refresh LLM citation results (${{ steps.runner.outputs.model }}, ${{ github.run_id }})"
+          file_pattern: seo-aeo-dashboard/data/citation_results.json
+          skip_dirty_check: false
