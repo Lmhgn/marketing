@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { venues } from "@/lib/data";
-import { competitors, portfolio } from "@/lib/competitors";
 import {
   getVenueCitations,
   citationMeta,
@@ -20,11 +19,6 @@ export function generateStaticParams() {
 }
 
 const INTENT_ORDER = ["must-answer", "demand-driven", "geo-stress"];
-
-// Build a slug → display name map from all known venues
-const VENUE_NAME_MAP: Record<string, { name: string; type: "portfolio" | "competitor" }> = {};
-for (const v of portfolio)   VENUE_NAME_MAP[v.slug] = { name: v.venue_name, type: "portfolio" };
-for (const v of competitors) VENUE_NAME_MAP[v.slug] = { name: v.venue_name, type: "competitor" };
 
 export default function CitationsDetail({ params }: { params: { slug: string } }) {
   const venue = venues.find(v => v.slug === params.slug);
@@ -157,7 +151,7 @@ export default function CitationsDetail({ params }: { params: { slug: string } }
           </div>
           <div className="space-y-2">
             {grouped[cat].map(p => (
-              <PromptRow key={p.id} prompt={p} nameMap={VENUE_NAME_MAP} />
+              <PromptRow key={p.id} prompt={p} />
             ))}
           </div>
         </section>

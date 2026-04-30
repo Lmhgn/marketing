@@ -1,14 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { intentColor, intentLabel, type VenuePrompt } from "@/lib/citations";
+import { type VenuePrompt } from "@/lib/citations";
 
 export default function PromptRow({
   prompt,
-  nameMap,
 }: {
   prompt: VenuePrompt;
-  nameMap: Record<string, { name: string; type: "portfolio" | "competitor" }>;
 }) {
   const [showResponse, setShowResponse] = useState(false);
   const daily = Math.round(prompt.monthly_searches / 30);
@@ -36,29 +34,6 @@ export default function PromptRow({
 
           {!prompt.cited && (
             <p className="text-xs text-red-700 mt-1.5 italic">{prompt.advice}</p>
-          )}
-
-          {!prompt.cited && prompt.also_cited && prompt.also_cited.length > 0 && (
-            <div className="flex flex-wrap items-center gap-1.5 mt-2">
-              <span className="text-xs text-slate-400 shrink-0">Cited instead:</span>
-              {prompt.also_cited.map(slug => {
-                const entry = nameMap[slug];
-                const label = entry?.name ?? slug;
-                const isCompetitor = entry?.type === "competitor";
-                return (
-                  <span
-                    key={slug}
-                    className={`px-1.5 py-0.5 rounded text-xs font-medium ${
-                      isCompetitor
-                        ? "bg-orange-100 text-orange-700"
-                        : "bg-blue-100 text-blue-700"
-                    }`}
-                  >
-                    {label}
-                  </span>
-                );
-              })}
-            </div>
           )}
 
           {prompt.response_text && (

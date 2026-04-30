@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { competitors, portfolio } from "@/lib/competitors";
-import { getCompetitorCitationData } from "@/lib/citations";
+import { competitors } from "@/lib/competitors";
 import { generateMusicVenueSchema, generateFaqSchema } from "@/lib/schema-snippets";
 import { ScoreBadge } from "@/components/ScoreBadge";
 import { RadarChart } from "@/components/RadarChart";
@@ -9,9 +8,6 @@ import { RecommendationPanel } from "@/components/RecommendationPanel";
 import SchemaSnippet from "@/components/SchemaSnippet";
 import { AEO_LABELS, GEO_LABELS } from "@/types/venue";
 import type { VenueReport } from "@/types/venue";
-
-const PORTFOLIO_NAME: Record<string, string> = {};
-for (const v of portfolio) PORTFOLIO_NAME[v.slug] = v.venue_name;
 
 export function generateStaticParams() {
   return competitors.map(v => ({ slug: v.slug }));
@@ -32,7 +28,6 @@ export default function CompetitorDetail({ params }: { params: { slug: string } 
 
   const musicVenueSchema = generateMusicVenueSchema(v);
   const faqSchema        = generateFaqSchema(v);
-  const citationData     = getCompetitorCitationData(params.slug);
 
   return (
     <div className="space-y-6">
@@ -66,48 +61,6 @@ export default function CompetitorDetail({ params }: { params: { slug: string } 
         <ComponentList title="AEO components" components={v.aeo_components} labels={AEO_LABELS} />
         <ComponentList title="GEO components" components={v.geo_components} labels={GEO_LABELS} />
       </section>
-
-      {citationData && (
-        <section className="bg-white rounded-lg border border-slate-200 overflow-hidden">
-          <div className="px-5 py-4 border-b border-slate-100">
-            <h2 className="text-base font-semibold text-slate-900">LLM co-citation — where they displace us</h2>
-            <p className="text-xs text-slate-500 mt-0.5">
-              {v.venue_name} was cited by AI instead of a portfolio venue on{" "}
-              <strong>{citationData.appearances} prompt{citationData.appearances !== 1 ? "s" : ""}</strong>,
-              displacing{" "}
-              <strong>{Math.round(citationData.weighted_monthly / 30).toLocaleString()}/day</strong> in search reach.
-            </p>
-          </div>
-          <div className="divide-y divide-slate-50">
-            {citationData.byVenue.map(({ venueSlug, prompts }) => (
-              <div key={venueSlug} className="px-5 py-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Link
-                    href={`/venue/${venueSlug}`}
-                    className="text-sm font-medium text-blue-700 hover:underline"
-                  >
-                    {PORTFOLIO_NAME[venueSlug] ?? venueSlug}
-                  </Link>
-                  <span className="text-xs text-slate-400">
-                    {prompts.length} prompt{prompts.length !== 1 ? "s" : ""}
-                  </span>
-                </div>
-                <ul className="space-y-1.5">
-                  {prompts.map(p => (
-                    <li key={p.id} className="flex items-start gap-2 text-xs">
-                      <span className="text-orange-400 mt-0.5 shrink-0">↪</span>
-                      <span className="text-slate-600 flex-1">&ldquo;{p.text}&rdquo;</span>
-                      <span className="text-slate-400 shrink-0 whitespace-nowrap">
-                        {Math.round(p.monthly_searches / 30).toLocaleString()}/day
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <RecommendationPanel title="Strengths" items={v.strengths} accent="green" />
