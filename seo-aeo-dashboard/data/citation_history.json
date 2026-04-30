@@ -27,6 +27,13 @@
       "citation_rate": 73.3,
       "citation_count": 11,
       "citation_band": "strong"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-shepherds-bush-empire": [
@@ -56,6 +63,13 @@
       "week": 4,
       "citation_rate": 73.3,
       "citation_count": 11,
+      "citation_band": "strong"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
       "citation_band": "strong"
     }
   ],
@@ -87,6 +101,13 @@
       "citation_rate": 73.3,
       "citation_count": 11,
       "citation_band": "strong"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "edinburgh-corn-exchange": [
@@ -116,6 +137,13 @@
       "week": 4,
       "citation_rate": 73.3,
       "citation_count": 11,
+      "citation_band": "strong"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
       "citation_band": "strong"
     }
   ],
@@ -147,6 +175,13 @@
       "citation_rate": 53.3,
       "citation_count": 8,
       "citation_band": "good"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-academy-birmingham": [
@@ -177,6 +212,13 @@
       "citation_rate": 53.3,
       "citation_count": 8,
       "citation_band": "good"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-academy-bristol": [
@@ -207,6 +249,13 @@
       "citation_rate": 53.3,
       "citation_count": 8,
       "citation_band": "good"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-academy-liverpool": [
@@ -237,6 +286,13 @@
       "citation_rate": 53.3,
       "citation_count": 8,
       "citation_band": "good"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-academy-glasgow": [
@@ -267,6 +323,13 @@
       "citation_rate": 53.3,
       "citation_count": 8,
       "citation_band": "good"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-guildhall-southampton": [
@@ -297,6 +360,13 @@
       "citation_rate": 40.0,
       "citation_count": 6,
       "citation_band": "moderate"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-ritz-manchester": [
@@ -327,6 +397,13 @@
       "citation_rate": 40.0,
       "citation_count": 6,
       "citation_band": "moderate"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-academy-leeds": [
@@ -357,6 +434,13 @@
       "citation_rate": 40.0,
       "citation_count": 6,
       "citation_band": "moderate"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-academy-sheffield": [
@@ -387,6 +471,13 @@
       "citation_rate": 40.0,
       "citation_count": 6,
       "citation_band": "moderate"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-city-hall-newcastle": [
@@ -417,6 +508,13 @@
       "citation_rate": 40.0,
       "citation_count": 6,
       "citation_band": "moderate"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-academy-islington": [
@@ -447,6 +545,13 @@
       "citation_rate": 20.0,
       "citation_count": 3,
       "citation_band": "weak"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-institute-birmingham": [
@@ -477,6 +582,13 @@
       "citation_rate": 20.0,
       "citation_count": 3,
       "citation_band": "weak"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-academy-leicester": [
@@ -507,6 +619,13 @@
       "citation_rate": 20.0,
       "citation_count": 3,
       "citation_band": "weak"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-academy-oxford": [
@@ -537,6 +656,13 @@
       "citation_rate": 20.0,
       "citation_count": 3,
       "citation_band": "weak"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-academy-bournemouth": [
@@ -567,6 +693,13 @@
       "citation_rate": 20.0,
       "citation_count": 3,
       "citation_band": "weak"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ],
   "o2-victoria-warehouse-manchester": [
@@ -597,6 +730,13 @@
       "citation_rate": 20.0,
       "citation_count": 3,
       "citation_band": "weak"
+    },
+    {
+      "date": "2026-04-30",
+      "week": 5,
+      "citation_rate": 100.0,
+      "citation_count": 15,
+      "citation_band": "strong"
     }
   ]
 }
